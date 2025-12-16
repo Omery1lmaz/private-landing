@@ -1,0 +1,163 @@
+[00:00:00.883] Server  LOG      ✓ Ready in 661ms
+[00:00:03.894] Server  LOG      ○ Compiling /[locale] ...
+[00:00:05.175] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `hero.svg_kurumsal_web_sitesi_subtitle` in messages for locale `en`.
+[00:00:05.255] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `testimonials_section.testimonial2_position` in messages for locale `en`.
+[00:00:05.260] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `testimonials_section.testimonial4_quote` in messages for locale `en`.
+[00:00:05.264] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `testimonials_section.testimonial4_author` in messages for locale `en`.
+[00:00:05.270] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `testimonials_section.testimonial4_handle` in messages for locale `en`.
+[00:00:05.274] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `testimonials_section.testimonial5_company` in messages for locale `en`.
+[00:00:05.278] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `testimonials_section.testimonial5_quote` in messages for locale `en`.
+[00:00:05.283] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `testimonials_section.testimonial5_author` in messages for locale `en`.
+[00:00:05.288] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `testimonials_section.testimonial5_position` in messages for locale `en`.
+[00:00:05.296] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `testimonials_section.testimonial5_additionalQuote` in messages for locale `en`.
+[00:00:05.300] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `testimonials_section.testimonial5_additionalAuthor` in messages for locale `en`.
+[00:00:05.304] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `testimonials_section.testimonial5_additionalHandle` in messages for locale `en`.
+[00:00:05.308] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `testimonials_section.testimonial6_company` in messages for locale `en`.
+[00:00:05.313] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `testimonials_section.testimonial6_quote` in messages for locale `en`.
+[00:00:05.316] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `testimonials_section.testimonial6_author` in messages for locale `en`.
+[00:00:05.319] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `testimonials_section.testimonial6_position` in messages for locale `en`.
+[00:00:05.322] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `testimonials_section.testimonial6_additionalQuote` in messages for locale `en`.
+[00:00:05.326] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `testimonials_section.testimonial6_additionalAuthor` in messages for locale `en`.
+[00:00:05.331] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `testimonials_section.testimonial6_additionalHandle` in messages for locale `en`.
+[00:00:05.335] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `testimonials_section.rating_text` in messages for locale `en`.
+[00:00:05.339] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `testimonials_section.cta_text` in messages for locale `en`.
+[00:00:05.348] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `contact_section.service_web_development` in messages for locale `en`.
+[00:00:05.353] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `contact_section.service_seo_optimization` in messages for locale `en`.
+[00:00:05.357] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `contact_section.service_ai_solutions` in messages for locale `en`.
+[00:00:05.362] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `contact_section.service_mobile_app` in messages for locale `en`.
+[00:00:05.366] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `contact_section.service_e_commerce` in messages for locale `en`.
+[00:00:05.371] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `contact_section.service_consulting` in messages for locale `en`.
+[00:00:05.374] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `contact_section.service_other` in messages for locale `en`.
+[00:00:05.636] Server  ERROR   Error: MISSING_MESSAGE: Could not resolve `common` in messages for locale `en`.
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `hero.svg_kurumsal_web_sitesi_subtitle` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `hero.svg_kurumsal_web_sitesi_subtitle` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial2_position` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial4_quote` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial4_author` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial4_handle` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_company` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_quote` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_author` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_position` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_additionalQuote` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_additionalAuthor` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_additionalHandle` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_company` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_quote` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_author` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_position` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_additionalQuote` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_additionalAuthor` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_additionalHandle` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.rating_text` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.cta_text` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial2_position` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial4_quote` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial4_author` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial4_handle` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_company` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_quote` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_author` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_position` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_additionalQuote` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_additionalAuthor` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_additionalHandle` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_company` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_quote` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_author` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_position` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_additionalQuote` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_additionalAuthor` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_additionalHandle` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.rating_text` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.cta_text` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `contact_section.service_web_development` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `contact_section.service_seo_optimization` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `contact_section.service_ai_solutions` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `contact_section.service_mobile_app` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `contact_section.service_e_commerce` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `contact_section.service_consulting` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `contact_section.service_other` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `contact_section.service_web_development` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `contact_section.service_seo_optimization` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `contact_section.service_ai_solutions` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `contact_section.service_mobile_app` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `contact_section.service_e_commerce` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `contact_section.service_consulting` in messages for locale `en`."}
+[00:00:06.632] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `contact_section.service_other` in messages for locale `en`."}
+[00:00:06.632] Browser WARN    GSAP target .services-title not found. https://gsap.com
+[00:00:06.632] Browser WARN    GSAP target  not found. https://gsap.com
+[00:00:06.632] Browser WARN    GSAP target  not found. https://gsap.com
+[00:00:06.632] Browser WARN    GSAP target .services-subtitle not found. https://gsap.com
+[00:00:06.632] Browser WARN    GSAP target  not found. https://gsap.com
+[00:00:06.633] Browser WARN    GSAP target  not found. https://gsap.com
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial2_position` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial4_quote` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial4_author` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial4_handle` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_company` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_quote` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_author` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_position` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_additionalQuote` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_additionalAuthor` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_additionalHandle` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_company` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_quote` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_author` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_position` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_additionalQuote` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_additionalAuthor` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_additionalHandle` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.description` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.rating_text` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.cta_text` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial2_position` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial4_quote` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial4_author` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial4_handle` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_company` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_quote` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_author` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_position` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_additionalQuote` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_additionalAuthor` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial5_additionalHandle` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_company` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_quote` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_author` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_position` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_additionalQuote` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_additionalAuthor` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.testimonial6_additionalHandle` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.description` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.rating_text` in messages for locale `tr`."}
+[00:00:12.524] Browser ERROR   {"code":"MISSING_MESSAGE","originalMessage":"Could not resolve `testimonials_section.cta_text` in messages for locale `tr`."}
+[00:00:12.524] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:00:12.524] Browser WARN    GSAP target  not found. https://gsap.com
+[00:00:12.524] Browser WARN    GSAP target  not found. https://gsap.com
+[00:00:12.524] Browser WARN    GSAP target  not found. https://gsap.com
+[00:00:12.524] Browser WARN    GSAP target  not found. https://gsap.com
+[00:00:12.524] Browser WARN    GSAP target  not found. https://gsap.com
+[00:00:12.524] Browser WARN    GSAP target  not found. https://gsap.com
+[00:00:12.524] Browser WARN    GSAP target .services-title not found. https://gsap.com
+[00:00:12.524] Browser WARN    GSAP target  not found. https://gsap.com
+[00:00:12.524] Browser WARN    GSAP target  not found. https://gsap.com
+[00:00:12.524] Browser WARN    GSAP target .services-subtitle not found. https://gsap.com
+[00:00:12.524] Browser WARN    GSAP target  not found. https://gsap.com
+[00:00:12.524] Browser WARN    GSAP target  not found. https://gsap.com
+[00:00:12.524] Browser WARN    GSAP target  not found. https://gsap.com
+[00:00:12.524] Browser WARN    GSAP target  not found. https://gsap.com
+[00:00:12.524] Browser WARN    GSAP target  not found. https://gsap.com
+[00:00:12.524] Browser WARN    GSAP target  not found. https://gsap.com
+[00:00:12.524] Browser WARN    GSAP target  not found. https://gsap.com
+[00:00:12.524] Browser WARN    GSAP target  not found. https://gsap.com
+[00:00:12.524] Browser WARN    GSAP target .services-title not found. https://gsap.com
+[00:00:12.524] Browser WARN    GSAP target  not found. https://gsap.com
+[00:00:12.524] Browser WARN    GSAP target  not found. https://gsap.com
+[00:00:12.524] Browser WARN    GSAP target .services-subtitle not found. https://gsap.com
+[00:00:12.524] Browser WARN    GSAP target  not found. https://gsap.com
+[00:00:12.524] Browser WARN    GSAP target  not found. https://gsap.com
+[00:00:13.779] Browser WARN    GSAP target  not found. https://gsap.com
+[00:00:13.779] Browser WARN    GSAP target  not found. https://gsap.com
+[00:00:13.979] Browser WARN    GSAP target  not found. https://gsap.com
