@@ -1,3 +1,0 @@
-module.exports=[27572,a=>{"use strict";var b=a.i(7997);function c({children:a}){return(0,b.jsx)("html",{lang:"en",suppressHydrationWarning:!0,className:"dark antialiased bg-background text-white",children:(0,b.jsx)("body",{className:"dark  antialiased bg-background text-white",children:a})})}a.s(["default",()=>c,"metadata",0,{title:{default:"Phishy - From awareness to action - Secure Every Click",template:"%s | Phishy"},description:"Ekiplerde siber güvenlik farkındalığını artıran, gelişmiş phishing saldırılarına karşı savunmayı güçlendiren eğitim ve simülasyon araçları"}])}];
-
-//# sourceMappingURL=src_app_layout_tsx_cc8184fa._.js.map

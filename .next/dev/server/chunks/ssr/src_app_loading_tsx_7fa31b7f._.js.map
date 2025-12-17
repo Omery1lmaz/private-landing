@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/heaven/private%20landing/src/app/loading.tsx"],"sourcesContent":["export default function Loading() {\n  return (\n    <div className=\"min-h-screen bg-[#030308] flex items-center justify-center\">\n      <div className=\"text-center\">\n        {/* Loading Spinner */}\n        <div className=\"relative mb-8\">\n          <div className=\"w-16 h-16 border-4 border-cyan-500/30 border-t-cyan-500 rounded-full animate-spin mx-auto\"></div>\n          <div className=\"absolute inset-0 w-16 h-16 border-4 border-transparent border-r-teal-500/50 rounded-full animate-spin mx-auto\" style={{ animationDirection: 'reverse', animationDuration: '1s' }}></div>\n        </div>\n\n        {/* Loading Text */}\n        <p className=\"text-gray-400 text-lg\">\n          Yükleniyor...\n        </p>\n      </div>\n    </div>\n  )\n}\n"],"names":[],"mappings":";;;;;;AAAe,SAAS;IACtB,qBACE,8OAAC;QAAI,WAAU;kBACb,cAAA,8OAAC;YAAI,WAAU;;8BAEb,8OAAC;oBAAI,WAAU;;sCACb,8OAAC;4BAAI,WAAU;;;;;;sCACf,8OAAC;4BAAI,WAAU;4BAAgH,OAAO;gCAAE,oBAAoB;gCAAW,mBAAmB;4BAAK;;;;;;;;;;;;8BAIjM,8OAAC;oBAAE,WAAU;8BAAwB;;;;;;;;;;;;;;;;;AAM7C"}}]
-}

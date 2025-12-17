@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 16, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/middleware.ts"],"sourcesContent":["// src/middleware.ts\nimport createMiddleware from 'next-intl/middleware';\n\nexport default createMiddleware({\n  locales: ['tr', 'en'],\n  defaultLocale: 'tr',\n  localeDetection: true\n});\n\nexport const config = {\n  matcher: [\n    '/',\n    '/(en|tr)/:path*'\n  ]\n};\n"],"names":[],"mappings":"AAAA,oBAAoB;;;;;;;AACpB;;uCAEe,IAAA,yMAAgB,EAAC;IAC9B,SAAS;QAAC;QAAM;KAAK;IACrB,eAAe;IACf,iBAAiB;AACnB;AAEO,MAAM,SAAS;IACpB,SAAS;QACP;QACA;KACD;AACH"}}]
-}
