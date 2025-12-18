@@ -56,11 +56,11 @@ export default function GlobeSection() {
 
             {/* Stats Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-              <StatCard icon={<Activity className="w-5 h-5" />} label={t('uptime_label')} value="99.9%" />
-              <StatCard icon={<Clock className="w-5 h-5" />} label={t('latency_label')} value="<50ms" />
+              <StatCard icon={<Activity className="w-5 h-5" />} label={t('uptime_label')} value="99.8%" />
+              <StatCard icon={<Clock className="w-5 h-5" />} label={t('latency_label')} value="<2s" />
               <StatCard icon={<Globe className="w-5 h-5" />} label={t('regions_label')} value="14+" />
-              <StatCard icon={<Users className="w-5 h-5" />} label={t('users_label')} value="31K+" />
-              <StatCard icon={<Zap className="w-5 h-5" />} label={t('api_calls_label')} value="2.5B+" />
+              <StatCard icon={<Users className="w-5 h-5" />} label={t('users_label')} value="50+" />
+              <StatCard icon={<Zap className="w-5 h-5" />} label={t('api_calls_label')} value="500+" />
               <StatCard icon={<Shield className="w-5 h-5" />} label={t('security_label')} value="GDPR" />
             </div>
 

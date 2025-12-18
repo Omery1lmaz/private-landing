@@ -440,8 +440,8 @@ export default function Services() {
                       ref={(el) => { contentRefs.current[index] = el }}
                       className={`absolute inset-0 transition-all duration-500 ${
                         activeTab === index
-                          ? 'opacity-100 translate-x-0 z-10'
-                          : 'opacity-0 translate-x-10 pointer-events-none z-0'
+                          ? 'opacity-100 translate-x-0 z-10 pointer-events-auto'
+                          : 'opacity-0 translate-x-10 pointer-events-none z-0 hidden'
                       }`}
                     >
                       <div className="relative h-full flex flex-col justify-center">

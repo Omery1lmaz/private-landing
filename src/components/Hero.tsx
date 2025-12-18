@@ -1,6 +1,6 @@
  'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import {
@@ -23,6 +23,43 @@ export default function Hero() {
   const subtitleRef = useRef<HTMLParagraphElement>(null)
   const ctaRef = useRef<HTMLDivElement>(null)
   const diagramRef = useRef<HTMLDivElement>(null)
+  const [displayText, setDisplayText] = useState('')
+  const [textIndex, setTextIndex] = useState(0)
+  const [isDeleting, setIsDeleting] = useState(false)
+
+  useEffect(() => {
+    const texts = [
+      "14 Günde Hazır",
+      "90 Günde 3 Kat Trafik"
+    ]
+    const currentText = texts[textIndex]
+    const displayLength = displayText.length
+    
+    let timeout: NodeJS.Timeout
+
+    if (!isDeleting && displayLength < currentText.length) {
+      // Writing mode
+      timeout = setTimeout(() => {
+        setDisplayText(currentText.substring(0, displayLength + 1))
+      }, 80)
+    } else if (isDeleting && displayLength > 0) {
+      // Deleting mode
+      timeout = setTimeout(() => {
+        setDisplayText(currentText.substring(0, displayLength - 1))
+      }, 40)
+    } else if (!isDeleting && displayLength === currentText.length) {
+      // Finished writing, wait before deleting
+      timeout = setTimeout(() => {
+        setIsDeleting(true)
+      }, 1500)
+    } else if (isDeleting && displayLength === 0) {
+      // Finished deleting, move to next text
+      setIsDeleting(false)
+      setTextIndex((prevIndex) => (prevIndex + 1) % 2)
+    }
+
+    return () => clearTimeout(timeout)
+  }, [displayText, textIndex, isDeleting])
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -110,12 +147,14 @@ export default function Hero() {
             <div>
               <h1
                 ref={titleRef}
-                className="text-4xl md:text-5xl lg:text-6xl font-normal leading-[1.15] mb-6 text-white"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-white min-h-[1.15em]"
               >
-                {t('title_part1')}{' '}
-                <br className="hidden sm:block" />
-                {t('title_part2')}{' '}
-                <span className="bg-gradient-to-r from-cyan-400 via-teal-400 to-blue-400 bg-clip-text text-transparent">{t('title_part3')}</span>
+                {t('main_title')}
+                <br />
+                <span className="bg-gradient-to-r from-cyan-400 via-teal-400 to-blue-400 bg-clip-text text-transparent">
+                  {displayText}
+                  <span className="animate-pulse">|</span>
+                </span>
               </h1>
             </div>
 
