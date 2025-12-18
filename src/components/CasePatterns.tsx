@@ -224,9 +224,12 @@ export default function CasePatterns() {
 
                         {/* Results */}
                         <div className={`p-4 rounded-lg ${colors.bg} border ${colors.border}`}>
-                          <h4 className={`text-sm font-bold mb-3 ${colors.text} uppercase tracking-wide`}>
-                            📊 Sonuçlar
-                          </h4>
+                          <div className="flex items-center gap-2 mb-3">
+                            <BarChart3 className={`w-4 h-4 ${colors.text}`} />
+                            <h4 className={`text-sm font-bold ${colors.text} uppercase tracking-wide`}>
+                              Sonuçlar
+                            </h4>
+                          </div>
                           <div className="space-y-2">
                             {[1, 2, 3].map((result) => (
                               <div key={result} className="flex items-center gap-2">

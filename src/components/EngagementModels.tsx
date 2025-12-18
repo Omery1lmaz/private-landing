@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Briefcase, Zap, TrendingUp, Wrench } from 'lucide-react'
+import { Briefcase, Zap, TrendingUp, Wrench, Clock } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -157,8 +157,9 @@ export default function EngagementModels() {
 
                       {/* Timeline */}
                       <div className="flex items-center gap-2 pt-6 border-t border-white/10">
+                        <Clock className={`w-4 h-4 ${isCyan ? 'text-purple-400' : 'text-blue-400'}`} />
                         <span className={`text-xs font-semibold ${isCyan ? 'text-purple-400' : 'text-blue-400'}`}>
-                          ⏱️ Tahmin:
+                          Tahmin:
                         </span>
                         <span className="text-sm text-gray-300">{t(`${model.key}_timeline`)}</span>
                       </div>

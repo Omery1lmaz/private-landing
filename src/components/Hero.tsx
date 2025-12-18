@@ -1,6 +1,6 @@
  'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import {
@@ -26,40 +26,45 @@ export default function Hero() {
   const [displayText, setDisplayText] = useState('')
   const [textIndex, setTextIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
+  const typewriterTexts = useMemo(
+    () => [t('typewriter_primary'), t('typewriter_secondary')].filter(Boolean),
+    [t]
+  )
 
   useEffect(() => {
-    const texts = [
-      "14 Günde Hazır",
-      "90 Günde 3 Kat Trafik"
-    ]
-    const currentText = texts[textIndex]
+    if (!typewriterTexts.length) {
+      return
+    }
+
+    const currentText = typewriterTexts[textIndex % typewriterTexts.length]
     const displayLength = displayText.length
-    
+
     let timeout: NodeJS.Timeout
 
     if (!isDeleting && displayLength < currentText.length) {
-      // Writing mode
       timeout = setTimeout(() => {
         setDisplayText(currentText.substring(0, displayLength + 1))
       }, 80)
     } else if (isDeleting && displayLength > 0) {
-      // Deleting mode
       timeout = setTimeout(() => {
         setDisplayText(currentText.substring(0, displayLength - 1))
       }, 40)
     } else if (!isDeleting && displayLength === currentText.length) {
-      // Finished writing, wait before deleting
       timeout = setTimeout(() => {
         setIsDeleting(true)
       }, 1500)
     } else if (isDeleting && displayLength === 0) {
-      // Finished deleting, move to next text
       setIsDeleting(false)
-      setTextIndex((prevIndex) => (prevIndex + 1) % 2)
+      setTextIndex((prevIndex) => {
+        if (typewriterTexts.length === 0) {
+          return 0
+        }
+        return (prevIndex + 1) % typewriterTexts.length
+      })
     }
 
     return () => clearTimeout(timeout)
-  }, [displayText, textIndex, isDeleting])
+  }, [displayText, textIndex, isDeleting, typewriterTexts])
 
   useEffect(() => {
     const ctx = gsap.context(() => {
