@@ -141,8 +141,8 @@ export default function Services() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Pin the section
-      const totalScrollHeight = services.length * 100 // vh per service
+      // Pin the section with more controlled scrolling
+      const totalScrollHeight = services.length * 120 // vh per service (increased for better spacing)
 
       ScrollTrigger.create({
         trigger: sectionRef.current,
@@ -153,17 +153,28 @@ export default function Services() {
         onUpdate: (self) => {
           const progress = self.progress
           setScrollProgress(progress)
-          
-          // Calculate which tab should be active based on scroll progress
-          const newActiveTab = Math.min(
-            Math.floor(progress * services.length),
-            services.length - 1
-          )
-          
+
+          // More precise tab calculation - ensure first service gets proper time
+          // Use a slight offset to give first service more visibility time
+          const adjustedProgress = Math.max(0, progress - 0.05) // Start first service earlier
+          const rawTab = adjustedProgress * services.length
+          const newActiveTab = Math.min(Math.max(0, Math.floor(rawTab)), services.length - 1)
+
           if (newActiveTab !== activeTab) {
             setActiveTab(newActiveTab)
           }
         },
+        // Add enter/leave callbacks for better control
+        onEnter: () => {
+          // Ensure we start with first service
+          if (activeTab !== 0) {
+            setActiveTab(0)
+          }
+        },
+        onLeaveBack: () => {
+          // Reset to first service when scrolling back up
+          setActiveTab(0)
+        }
       })
 
       // Initial animations
@@ -246,6 +257,24 @@ export default function Services() {
       ease: 'power2.out',
     })
   }, [activeTab])
+
+  // Initialize first service visibility on mount and ensure it's always visible initially
+  useEffect(() => {
+    const firstContent = contentRefs.current[0]
+    if (firstContent) {
+      gsap.set(firstContent, { opacity: 1, x: 0, zIndex: 10, pointerEvents: 'auto' })
+    }
+
+    // Also ensure all other contents start hidden
+    services.forEach((_, index) => {
+      if (index !== 0) {
+        const content = contentRefs.current[index]
+        if (content) {
+          gsap.set(content, { opacity: 0, x: 10, zIndex: 0, pointerEvents: 'none' })
+        }
+      }
+    })
+  }, [])
 
   const services: Service[] = [
     {

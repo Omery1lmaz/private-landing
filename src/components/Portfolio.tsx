@@ -7,6 +7,7 @@ import {
   Briefcase,
   Brain,
   TrendingUp,
+  AlertTriangle,
   Settings,
   Smartphone,
   ArrowRight,
@@ -15,6 +16,8 @@ import {
   Zap,
   Users,
   BarChart3,
+  Sparkles,
+  Clipboard,
   Code2,
   Gauge,
 } from 'lucide-react'
@@ -319,25 +322,35 @@ export default function Portfolio() {
       {/* Case Study Detail Modal */}
       {showModal && selectedProject && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center p-6"
+          style={{
+            background:
+              'radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.72) 60%, rgba(0,0,0,0.82) 100%)',
+            backdropFilter: 'blur(6px)',
+          }}
           onClick={() => setShowModal(false)}
         >
           <div
-            className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-gradient-to-br from-slate-900 to-slate-950 border border-cyan-500/20 shadow-2xl"
+            className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl bg-white/5 backdrop-blur-xl shadow-2xl"
             onClick={(e) => e.stopPropagation()}
+            style={{ boxShadow: '0 10px 30px rgba(2,6,23,0.6)' }}
           >
+            {/* Top accent */}
+            <div className="absolute top-0 left-0 right-0 h-2 rounded-t-2xl bg-gradient-to-r from-cyan-500 to-teal-400" />
+
             {/* Close Button */}
             <button
               onClick={() => setShowModal(false)}
-              className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors border border-white/20"
+              aria-label="Kapat"
+              className="absolute top-5 right-5 w-9 h-9 rounded-lg bg-white/6 hover:bg-white/12 flex items-center justify-center transition-colors border border-white/10"
             >
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
 
             {/* Content */}
-            <div className="p-8 md:p-12">
+            <div className="p-6 md:p-10">
               {caseStudies.map((study) => {
                 if (study.id !== selectedProject) return null
 
@@ -346,45 +359,44 @@ export default function Portfolio() {
                 return (
                   <div key={study.id}>
                     {/* Header */}
-                    <div className="mb-8">
-                      <div className="flex items-center gap-4 mb-4">
-                        <div
-                          className={`w-16 h-16 rounded-xl flex items-center justify-center ${
-                            isCyan
-                              ? 'bg-cyan-500/10 border border-cyan-500/20'
-                              : 'bg-teal-500/10 border border-teal-500/20'
-                          }`}
-                        >
-                          {study.icon}
+                    <div className="mb-6">
+                      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-3">
+                        <div className="flex items-center gap-4">
+                          <div
+                            className={`w-16 h-16 rounded-xl flex items-center justify-center shadow-sm ${
+                              isCyan
+                                ? 'bg-cyan-500/10 border border-cyan-500/20'
+                                : 'bg-teal-500/10 border border-teal-500/20'
+                            }`}
+                          >
+                            {study.icon}
+                          </div>
+                          <div>
+                            <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight">{study.title}</h2>
+                            <p className={`text-sm font-medium ${isCyan ? 'text-cyan-400' : 'text-teal-400'}`}>{study.client}</p>
+                          </div>
                         </div>
-                        <div>
-                          <h2 className="text-3xl font-bold text-white mb-1">{study.title}</h2>
-                          <p className={`text-sm font-medium ${isCyan ? 'text-cyan-400' : 'text-teal-400'}`}>
-                            {study.client}
-                          </p>
+
+                        <div className={`text-sm font-medium px-3 py-1 rounded-full inline-block ${isCyan ? 'bg-cyan-500/10 border border-cyan-500/20 text-cyan-400' : 'bg-teal-500/10 border border-teal-500/20 text-teal-400'}`}>
+                          {study.industry}
                         </div>
                       </div>
-                      <p className={`text-sm font-medium px-3 py-1 rounded-full inline-block ${
-                        isCyan
-                          ? 'bg-cyan-500/10 border border-cyan-500/20 text-cyan-400'
-                          : 'bg-teal-500/10 border border-teal-500/20 text-teal-400'
-                      }`}>
-                        {study.industry}
-                      </p>
                     </div>
 
                     {/* Problem & Solution */}
-                    <div className="space-y-6 mb-8">
+                    <div className="space-y-6 mb-8 border-t border-white/5 pt-6">
                       <div>
                         <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
-                          <span className={isCyan ? 'text-cyan-400' : 'text-teal-400'}>⚠️</span> Problem
+                          <AlertTriangle className={`w-5 h-5 ${isCyan ? 'text-cyan-400' : 'text-teal-400'}`} />
+                          {t('modal.problem')}
                         </h3>
                         <p className="text-gray-300 leading-relaxed">{study.problem}</p>
                       </div>
 
                       <div>
                         <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
-                          <span className={isCyan ? 'text-cyan-400' : 'text-teal-400'}>✨</span> Solution
+                          <Sparkles className={`w-5 h-5 ${isCyan ? 'text-cyan-400' : 'text-teal-400'}`} />
+                          {t('modal.solution')}
                         </h3>
                         <p className="text-gray-300 leading-relaxed">{study.solution}</p>
                       </div>
@@ -393,36 +405,36 @@ export default function Portfolio() {
                     {/* Results Grid */}
                     <div className="mb-8">
                       <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                        <span className={isCyan ? 'text-cyan-400' : 'text-teal-400'}>📊</span> Results
+                        <BarChart3 className={`w-5 h-5 ${isCyan ? 'text-cyan-400' : 'text-teal-400'}`} />
+                        {t('modal.results')}
                       </h3>
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4">
                         {study.results.map((result, i) => (
                           <div
                             key={i}
-                            className={`p-4 rounded-xl border ${
+                            className={`p-4 rounded-xl border flex items-center gap-4 ${
                               isCyan
                                 ? 'bg-cyan-500/5 border-cyan-500/20'
                                 : 'bg-teal-500/5 border-teal-500/20'
                             }`}
                           >
-                            <div className="flex items-center gap-2 mb-2">
-                              <div className={isCyan ? 'text-cyan-400' : 'text-teal-400'}>
-                                {result.icon}
-                              </div>
-                              <p className="text-sm text-gray-400">{result.metric}</p>
+                            <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${isCyan ? 'bg-cyan-500/10 text-cyan-400' : 'bg-teal-500/10 text-teal-400'}`}>
+                              {result.icon}
                             </div>
-                            <p className={`text-2xl font-bold ${isCyan ? 'text-cyan-400' : 'text-teal-400'}`}>
-                              {result.value}
-                            </p>
+                            <div>
+                              <p className="text-sm text-gray-400">{result.metric}</p>
+                              <p className={`text-2xl font-bold ${isCyan ? 'text-cyan-400' : 'text-teal-400'}`}>{result.value}</p>
+                            </div>
                           </div>
                         ))}
                       </div>
                     </div>
 
                     {/* Technologies */}
-                    <div className="mb-8">
+                    <div className="mb-8 border-t border-white/5 pt-6">
                       <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                        <span className={isCyan ? 'text-cyan-400' : 'text-teal-400'}>⚙️</span> Technologies Used
+                        <Settings className={`w-5 h-5 ${isCyan ? 'text-cyan-400' : 'text-teal-400'}`} />
+                        {t('modal.technologies')}
                       </h3>
                       <div className="flex flex-wrap gap-3">
                         {study.technologies.map((tech, i) => (
@@ -447,12 +459,13 @@ export default function Portfolio() {
                         : 'bg-teal-500/5 border-teal-500/20'
                     }`}>
                       <p className="text-gray-300 text-sm text-center">
-                        📋 <span className="font-semibold">Detailed case study coming soon!</span> We're preparing comprehensive documentation with screenshots and deeper insights.
+                        <Clipboard className="inline-block w-4 h-4 mr-2 text-gray-300" />
+                        <span className="font-semibold">{t('modal.coming_soon_title')}</span> {t('modal.coming_soon_body')}
                       </p>
                     </div>
 
                     {/* CTA */}
-                    <div className="mt-8 flex gap-4">
+                    <div className="mt-8 flex flex-col md:flex-row gap-4">
                       <button
                         onClick={() => {
                           setShowModal(false)
@@ -461,19 +474,19 @@ export default function Portfolio() {
                             contact?.scrollIntoView({ behavior: 'smooth' })
                           }, 300)
                         }}
-                        className={`flex-1 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+                        className={`w-full md:flex-1 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                           isCyan
                             ? 'bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-400 hover:to-cyan-500 text-white shadow-cyan-500/25'
                             : 'bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500 text-white shadow-teal-500/25'
                         } shadow-lg`}
                       >
-                        Get Similar Results
+                        {t('modal.get_similar_results')}
                       </button>
                       <button
                         onClick={() => setShowModal(false)}
-                        className="flex-1 py-3 rounded-xl font-semibold bg-white/10 hover:bg-white/20 text-white transition-colors border border-white/20"
+                        className="w-full md:flex-1 py-3 rounded-xl font-semibold bg-white/8 hover:bg-white/16 text-white transition-colors border border-white/12"
                       >
-                        Close
+                        {t('modal.close')}
                       </button>
                     </div>
                   </div>

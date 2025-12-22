@@ -36,7 +36,7 @@ export default function Home() {
       <div id="portfolio">
         <Portfolio />
       </div>
-      <Testimonials />
+   {/*    <Testimonials /> */}
       <div id="contact">
         <Contact />
       </div>

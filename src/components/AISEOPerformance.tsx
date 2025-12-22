@@ -189,12 +189,7 @@ export default function AISEOPerformance() {
                       </p>
 
                       {/* Bottom link */}
-                      <div className="mt-6 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
-                        <span className={`text-sm font-medium ${isCyan ? 'text-cyan-400' : 'text-teal-400'}`}>
-                          {t('details_button')}
-                        </span>
-                        <ArrowRight className={`w-4 h-4 ${isCyan ? 'text-cyan-400' : 'text-teal-400'} group-hover:translate-x-1 transition-transform`} />
-                      </div>
+                     
                     </div>
 
                     {/* Corner number */}

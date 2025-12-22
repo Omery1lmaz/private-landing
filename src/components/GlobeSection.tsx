@@ -61,7 +61,7 @@ export default function GlobeSection() {
               <StatCard icon={<Globe className="w-5 h-5" />} label={t('regions_label')} value="14+" />
               <StatCard icon={<Users className="w-5 h-5" />} label={t('users_label')} value="50+" />
               <StatCard icon={<Zap className="w-5 h-5" />} label={t('api_calls_label')} value="500+" />
-              <StatCard icon={<Shield className="w-5 h-5" />} label={t('security_label')} value="GDPR" />
+              <StatCard icon={<Shield className="w-5 h-5" />} label={t('security_label')} value="%30+" />
             </div>
 
             {/* Data center indicators */}

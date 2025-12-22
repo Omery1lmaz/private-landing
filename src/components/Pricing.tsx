@@ -223,7 +223,7 @@ export default function Pricing() {
                   key={index}
                   className={`pricing-card group relative ${plan.popular ? 'scale-105 z-10' : ''}`}
                 >
-                  <div className={`relative h-full p-6 md:p-8 rounded-2xl bg-white/[0.03] backdrop-blur-xl border ${plan.popular ? 'border-cyan-500/30' : 'border-white/[0.08]'} transition-all duration-500 hover:bg-white/[0.06] hover:border-white/[0.15] hover:scale-[1.02] hover:shadow-2xl overflow-hidden`}>
+                    <div className={`relative h-full p-6 md:p-8 rounded-2xl bg-white/[0.03] backdrop-blur-xl border ${plan.popular ? 'border-cyan-500/30' : 'border-white/[0.08]'} transition-all duration-500 hover:bg-white/[0.06] hover:border-white/[0.15] hover:scale-[1.02] hover:shadow-2xl overflow-visible`}>
                     {/* Animated Top Border */}
                     <div className="absolute top-0 left-0 w-full h-[2px] overflow-hidden rounded-t-2xl">
                       <div
@@ -241,7 +241,7 @@ export default function Pricing() {
                     />
 
                     {plan.popular && (
-                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-cyan-500 to-teal-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg uppercase tracking-wide">
+                      <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-20 bg-gradient-to-r from-cyan-500 to-teal-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg uppercase tracking-wide">
                         {t('popular_badge')}
                       </div>
                     )}
@@ -263,9 +263,9 @@ export default function Pricing() {
                       <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
                       <p className="text-gray-400 text-sm mb-4">{plan.subtitle}</p>
 
-                      <div className="flex items-baseline justify-center mb-6">
+                      <div className="flex flex-col items-center mb-6">
                         <span className="text-5xl font-bold text-white"><sup className="text-2xl font-normal">$</sup>{plan.price}</span>
-                        <span className="text-xl text-gray-400">{plan.period}</span>
+                        <span className="text-sm text-gray-400 mt-1">{plan.period}</span>
                       </div>
 
                       <p className="text-gray-300 text-sm leading-relaxed mb-8 max-w-[280px] mx-auto">

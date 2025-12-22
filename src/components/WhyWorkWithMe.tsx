@@ -151,7 +151,7 @@ export default function WhyWorkWithMe() {
                 key={index}
                 className="reason-card group relative"
               >
-                <div className="relative h-full p-6 md:p-8 rounded-2xl bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] transition-all duration-500 hover:bg-white/[0.06] hover:border-white/[0.15] hover:scale-[1.02] hover:shadow-2xl overflow-hidden">
+                <div className="relative h-full p-6 md:p-8 rounded-2xl bg-white/[0.03] backdrop-blur-2xl border border-white/[0.06] transition-all duration-500 hover:bg-white/[0.05] hover:scale-[1.01] hover:shadow-2xl overflow-hidden">
                   <div className="absolute top-0 left-0 w-full h-[2px] overflow-hidden rounded-t-2xl">
                     <div
                       className={`absolute inset-0 bg-gradient-to-r from-transparent via-${reason.color}-400 to-transparent animate-shimmer`}
@@ -160,9 +160,9 @@ export default function WhyWorkWithMe() {
                   </div>
 
                   <div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"
+                    className="absolute inset-0 opacity-0 transition-opacity duration-500 rounded-2xl pointer-events-none"
                     style={{
-                      background: `radial-gradient(ellipse at top left, ${isCyan ? 'rgba(6, 182, 212, 0.1)' : 'rgba(20, 184, 166, 0.1)'} 0%, transparent 50%)`
+                      background: `radial-gradient(ellipse at top left, ${isCyan ? 'rgba(6, 182, 212, 0.06)' : 'rgba(20, 184, 166, 0.06)'} 0%, transparent 60%)`
                     }}
                   />
 
@@ -186,28 +186,18 @@ export default function WhyWorkWithMe() {
                       {reason.title}
                     </h3>
 
-                    <p className="text-gray-400 text-[15px] leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
+                    <p className="text-gray-300 text-[15px] leading-relaxed">
                       {reason.description}
                     </p>
 
-                    <div className="mt-6 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
-                      <div
-                        className={`w-8 h-[2px] rounded-full bg-${reason.color}-400`}
-                      />
-                      <span
-                        className={`text-sm font-medium text-${reason.color}-400`}
-                      >
-                        {t('details_button')}
-                      </span>
-                      <ArrowRight
-                        className={`w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300 text-${reason.color}-400`}
-                      />
+                    {/* subtle divider for clean modern look */}
+                    <div className="mt-6">
+                      <div className={`h-[1px] bg-white/[0.04] rounded-full`} />
                     </div>
                   </div>
 
-                  <div
-                    className={`absolute top-4 right-4 text-5xl font-bold opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-500 select-none text-${reason.color}-400`}
-                  >
+                  {/* subtle index badge for structure (smaller, less intrusive) */}
+                  <div className={`absolute top-4 right-4 text-base font-semibold opacity-20 transition-opacity duration-300 select-none text-${reason.color}-400`}>
                     {String(index + 1).padStart(2, '0')}
                   </div>
                 </div>
@@ -216,24 +206,7 @@ export default function WhyWorkWithMe() {
           })}
         </div>
 
-        {/* Bottom Stats/Trust Section */}
-        <div className="mt-20 md:mt-24">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className="text-center p-6 rounded-xl bg-white/[0.02] border border-white/[0.05] backdrop-blur-sm hover:bg-white/[0.04] hover:border-white/[0.1] transition-all duration-300"
-              >
-                <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400 mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-gray-500 text-sm md:text-base">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+   
 
         {/* CTA Banner */}
         <div className="mt-20 md:mt-24 text-center">
