@@ -1,53 +1,52 @@
 'use client'
 
-import React from 'react'
-import { useTranslations, useLocale } from 'next-intl'
-import Link from 'next/link'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+import WebDevHero from './components/WebDevHero'
+import WebDevTechStack from './components/WebDevTechStack'
+import WebDevProcess from './components/WebDevProcess'
+import WebDevPerformance from './components/WebDevPerformance'
+import WebDevUseCases from './components/WebDevUseCases'
+import WebDevWhyUs from './components/WebDevWhyUs'
+import WebDevCTA from './components/WebDevCTA'
 
 export default function WebDevPage() {
-  const t = useTranslations('services_section')
-  const locale = useLocale()
-
   return (
-    <main className="container mx-auto px-6 py-20">
-      <header className="max-w-3xl">
-        <h1 className="text-4xl font-bold text-white">{t('web_dev_page_title')}</h1>
-        <p className="text-gray-300 mt-4">{t('web_dev_page_subtitle')}</p>
-      </header>
+    <main className="min-h-screen relative overflow-hidden bg-[#030308]">
+      {/* Animated Background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-600/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-teal-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 right-0 w-80 h-80 bg-cyan-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
 
-      <section className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="md:col-span-2">
-          <h2 className="text-2xl text-white mb-3">{t('web_dev_problem_title')}</h2>
-          <p className="text-gray-300 mb-6">{t('web_dev_problem')}</p>
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 opacity-[0.02]" style={{
+          backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+          backgroundSize: '50px 50px',
+        }} />
+      </div>
 
-          <h3 className="text-xl text-white mb-2">{t('web_dev_solution_title')}</h3>
-          <p className="text-gray-300 mb-6">{t('web_dev_solution')}</p>
+      <div className="relative z-10">
+        <Navbar />
 
-          <h3 className="text-xl text-white mb-2">{t('web_dev_results_title')}</h3>
-          <p className="text-gray-300">{t('web_dev_results')}</p>
+        {/* Hero Section */}
+        <WebDevHero />
 
-          <div className="mt-6">
-            <h4 className="text-lg text-white mb-2">Özellikler</h4>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-300">
-              <li className="p-4 bg-[#061018] rounded-md border border-white/5">{t('web_dev_feature1')}</li>
-              <li className="p-4 bg-[#061018] rounded-md border border-white/5">{t('web_dev_feature2')}</li>
-              <li className="p-4 bg-[#061018] rounded-md border border-white/5">{t('web_dev_feature3')}</li>
-              <li className="p-4 bg-[#061018] rounded-md border border-white/5">{t('web_dev_feature4')}</li>
-              <li className="p-4 bg-[#061018] rounded-md border border-white/5">{t('web_dev_feature5')}</li>
-            </ul>
-          </div>
+        {/* Content Sections */}
+        <div className="space-y-0">
+          <WebDevTechStack />
+          <WebDevProcess />
+          <WebDevPerformance />
+          <WebDevUseCases />
+          <WebDevWhyUs />
         </div>
 
-        <aside className="bg-[#061018] p-6 rounded-xl border border-white/5">
-          <h3 className="text-lg font-semibold text-white mb-2">{t('cta_badge') || 'Teklif'}</h3>
-          <p className="text-gray-300 mb-4">Projeniz için detaylı teklif ve plan almak üzere iletişime geçin.</p>
-          <Link href={`/${locale}/#contact`} className="inline-block px-5 py-2 rounded-lg bg-cyan-600 text-white">
-            Teklif Al
-          </Link>
-        </aside>
-      </section>
+        {/* Final CTA */}
+        <WebDevCTA />
+
+        <Footer />
+      </div>
     </main>
   )
 }
-
-

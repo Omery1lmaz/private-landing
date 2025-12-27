@@ -1,42 +1,54 @@
 'use client'
 
-import React from 'react'
-import { useTranslations, useLocale } from 'next-intl'
-import Link from 'next/link'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+import FastHero from './components/FastHero'
+import FastProblem from './components/FastProblem'
+import FastSolution from './components/FastSolution'
+import FastTimeline from './components/FastTimeline'
+import FastMethodology from './components/FastMethodology'
+import FastCases from './components/FastCases'
+import FastGuarantee from './components/FastGuarantee'
+import FastCTA from './components/FastCTA'
 
 export default function FastDeliveryPage() {
-  const t = useTranslations('services_section')
-  const locale = useLocale()
-
   return (
-    <main className="container mx-auto px-6 py-20">
-      <header className="max-w-3xl">
-        <h1 className="text-4xl font-bold text-white">{t('fast_delivery_page_title')}</h1>
-        <p className="text-gray-300 mt-4">{t('fast_delivery_page_subtitle')}</p>
-      </header>
+    <main className="min-h-screen relative overflow-hidden bg-[#030308]">
+      {/* Animated Background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-600/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-teal-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 right-0 w-80 h-80 bg-cyan-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
 
-      <section className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="md:col-span-2">
-          <h2 className="text-2xl text-white mb-3">{t('fast_delivery_problem_title')}</h2>
-          <p className="text-gray-300 mb-6">{t('fast_delivery_problem')}</p>
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 opacity-[0.02]" style={{
+          backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+          backgroundSize: '50px 50px',
+        }} />
+      </div>
 
-          <h3 className="text-xl text-white mb-2">{t('fast_delivery_solution_title')}</h3>
-          <p className="text-gray-300 mb-6">{t('fast_delivery_solution')}</p>
+      <div className="relative z-10">
+        <Navbar />
 
-          <h3 className="text-xl text-white mb-2">{t('fast_delivery_results_title')}</h3>
-          <p className="text-gray-300">{t('fast_delivery_results')}</p>
+        {/* Hero Section */}
+        <FastHero />
+
+        {/* Content Sections */}
+        <div className="space-y-0">
+          <FastProblem />
+          <FastSolution />
+          <FastTimeline />
+          <FastMethodology />
+          <FastCases />
+          <FastGuarantee />
         </div>
 
-        <aside className="bg-[#061018] p-6 rounded-xl border border-white/5">
-          <h3 className="text-lg font-semibold text-white mb-2">{t('cta_badge') || 'Hızlı Başlangıç'}</h3>
-          <p className="text-gray-300 mb-4">MVP ve hızlı test döngüleriyle pazara erken çıkın.</p>
-          <Link href={`/${locale}/#contact`} className="inline-block px-5 py-2 rounded-lg bg-cyan-600 text-white">
-            Hemen Başvur
-          </Link>
-        </aside>
-      </section>
+        {/* Final CTA */}
+        <FastCTA />
+
+        <Footer />
+      </div>
     </main>
   )
 }
-
-

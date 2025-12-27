@@ -1,53 +1,103 @@
 'use client'
 
-import React from 'react'
-import { useTranslations, useLocale } from 'next-intl'
-import Link from 'next/link'
+import { useEffect, useRef } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+import MobileHero from './components/MobileHero'
+import MobileProblem from './components/MobileProblem'
+import MobileSolution from './components/MobileSolution'
+import MobileTechStack from './components/MobileTechStack'
+import MobileProcess from './components/MobileProcess'
+import MobileFeatures from './components/MobileFeatures'
+import MobileShowcase from './components/MobileShowcase'
+import MobileCTA from './components/MobileCTA'
+
+gsap.registerPlugin(ScrollTrigger)
 
 export default function MobileAppPage() {
-  const t = useTranslations('services_section')
-  const locale = useLocale()
+  const mainRef = useRef<HTMLElement>(null)
+  const backgroundRef = useRef<HTMLDivElement>(null)
+  const gridRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Parallax background elements
+      const bgElements = backgroundRef.current?.querySelectorAll('.parallax-bg-element')
+      
+      bgElements?.forEach((element, index) => {
+        gsap.to(element, {
+          y: (index + 1) * 100,
+          scrollTrigger: {
+            trigger: mainRef.current,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1.5,
+          },
+        })
+      })
+
+      // Parallax grid pattern
+      if (gridRef.current) {
+        gsap.to(gridRef.current, {
+          backgroundPosition: '0% 100%',
+          scrollTrigger: {
+            trigger: mainRef.current,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 2,
+          },
+        })
+      }
+    }, mainRef)
+
+    return () => ctx.revert()
+  }, [])
 
   return (
-    <main className="container mx-auto px-6 py-20">
-      <header className="max-w-3xl">
-        <h1 className="text-4xl font-bold text-white">{t('mobile_dev_page_title')}</h1>
-        <p className="text-gray-300 mt-4">{t('mobile_dev_page_subtitle')}</p>
-      </header>
+    <main ref={mainRef} className="min-h-screen relative overflow-hidden bg-[#0a0a0f]">
+      {/* Parallax Background */}
+      <div ref={backgroundRef} className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f] via-[#0d0d15] to-[#0a0a0f]" />
+        
+        {/* Parallax background orbs */}
+        <div className="parallax-bg-element absolute top-0 left-1/4 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-3xl" />
+        <div className="parallax-bg-element absolute bottom-0 right-1/4 w-[700px] h-[700px] bg-teal-500/8 rounded-full blur-3xl" />
+        <div className="parallax-bg-element absolute top-1/2 right-0 w-[500px] h-[500px] bg-purple-500/8 rounded-full blur-3xl" />
 
-      <section className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="md:col-span-2">
-          <h2 className="text-2xl text-white mb-3">{t('mobile_dev_problem_title')}</h2>
-          <p className="text-gray-300 mb-6">{t('mobile_dev_problem')}</p>
+        {/* Parallax Grid Pattern */}
+        <div
+          ref={gridRef}
+          className="absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+            backgroundSize: '50px 50px',
+          }}
+        />
+      </div>
 
-          <h3 className="text-xl text-white mb-2">{t('mobile_dev_solution_title')}</h3>
-          <p className="text-gray-300 mb-6">{t('mobile_dev_solution')}</p>
+      <div className="relative z-10">
+        <Navbar />
 
-          <h3 className="text-xl text-white mb-2">{t('mobile_dev_results_title')}</h3>
-          <p className="text-gray-300">{t('mobile_dev_results')}</p>
+        {/* Hero Section */}
+        <MobileHero />
 
-          <div className="mt-6">
-            <h4 className="text-lg text-white mb-2">Hizmetler</h4>
-            <ul className="list-disc ml-5 text-gray-300 space-y-2">
-              <li>{t('mobile_dev_feature1')}</li>
-              <li>{t('mobile_dev_feature2')}</li>
-              <li>{t('mobile_dev_feature3')}</li>
-              <li>{t('mobile_dev_feature4')}</li>
-              <li>{t('mobile_dev_feature5')}</li>
-            </ul>
-          </div>
+        {/* Content Sections */}
+        <div className="space-y-0">
+          <MobileProblem />
+          <MobileSolution />
+          <MobileTechStack />
+          <MobileProcess />
+          <MobileFeatures />
+          <MobileShowcase />
         </div>
 
-        <aside className="bg-[#061018] p-6 rounded-xl border border-white/5">
-          <h3 className="text-lg font-semibold text-white mb-2">{t('cta_badge') || 'İletişim'}</h3>
-          <p className="text-gray-300 mb-4">Uygulama fikrinizi konuşalım; teknik yol haritanızı çıkaralım.</p>
-          <Link href={`/${locale}/#contact`} className="inline-block px-5 py-2 rounded-lg bg-cyan-600 text-white">
-            Ücretsiz Keşif Görüşmesi
-          </Link>
-        </aside>
-      </section>
+        {/* Final CTA */}
+        <MobileCTA />
+
+        <Footer />
+      </div>
     </main>
   )
 }
-
-

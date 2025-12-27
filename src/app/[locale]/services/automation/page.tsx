@@ -1,53 +1,54 @@
 'use client'
 
-import React from 'react'
-import { useTranslations, useLocale } from 'next-intl'
-import Link from 'next/link'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+import AutomationHero from './components/AutomationHero'
+import AutomationProblem from './components/AutomationProblem'
+import AutomationSolution from './components/AutomationSolution'
+import AutomationIntegrations from './components/AutomationIntegrations'
+import AutomationCapabilities from './components/AutomationCapabilities'
+import AutomationProcess from './components/AutomationProcess'
+import AutomationROI from './components/AutomationROI'
+import AutomationCTA from './components/AutomationCTA'
 
 export default function AutomationPage() {
-  const t = useTranslations('services_section')
-  const locale = useLocale()
-
   return (
-    <main className="container mx-auto px-6 py-20">
-      <header className="max-w-3xl">
-        <h1 className="text-4xl font-bold text-white">{t('automation_page_title')}</h1>
-        <p className="text-gray-300 mt-4">{t('automation_page_subtitle')}</p>
-      </header>
+    <main className="min-h-screen relative overflow-hidden bg-[#030308]">
+      {/* Animated Background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-600/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 right-0 w-80 h-80 bg-cyan-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
 
-      <section className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="md:col-span-2">
-          <h2 className="text-2xl text-white mb-3">{t('automation_problem_title')}</h2>
-          <p className="text-gray-300 mb-6">{t('automation_problem')}</p>
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 opacity-[0.02]" style={{
+          backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+          backgroundSize: '50px 50px',
+        }} />
+      </div>
 
-          <h3 className="text-xl text-white mb-2">{t('automation_solution_title')}</h3>
-          <p className="text-gray-300 mb-6">{t('automation_solution')}</p>
+      <div className="relative z-10">
+        <Navbar />
 
-          <h3 className="text-xl text-white mb-2">{t('automation_results_title')}</h3>
-          <p className="text-gray-300">{t('automation_results')}</p>
+        {/* Hero Section */}
+        <AutomationHero />
 
-          <div className="mt-6">
-            <h4 className="text-lg text-white mb-2">Çözümler</h4>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-300">
-              <li className="p-4 bg-[#061018] rounded-md border border-white/5">{t('automation_feature1')}</li>
-              <li className="p-4 bg-[#061018] rounded-md border border-white/5">{t('automation_feature2')}</li>
-              <li className="p-4 bg-[#061018] rounded-md border border-white/5">{t('automation_feature3')}</li>
-              <li className="p-4 bg-[#061018] rounded-md border border-white/5">{t('automation_feature4')}</li>
-              <li className="p-4 bg-[#061018] rounded-md border border-white/5">{t('automation_feature5')}</li>
-            </ul>
-          </div>
+        {/* Content Sections */}
+        <div className="space-y-0">
+          <AutomationProblem />
+          <AutomationSolution />
+          <AutomationIntegrations />
+          <AutomationCapabilities />
+          <AutomationProcess />
+          <AutomationROI />
         </div>
 
-        <aside className="bg-[#061018] p-6 rounded-xl border border-white/5">
-          <h3 className="text-lg font-semibold text-white mb-2">{t('cta_badge') || 'Operasyon'}</h3>
-          <p className="text-gray-300 mb-4">Operasyonel verimlilik ve otomasyon stratejisi için görüşelim.</p>
-          <Link href={`/${locale}/#contact`} className="inline-block px-5 py-2 rounded-lg bg-cyan-600 text-white">
-            Operasyon Görüşmesi Talep Et
-          </Link>
-        </aside>
-      </section>
+        {/* Final CTA */}
+        <AutomationCTA />
+
+        <Footer />
+      </div>
     </main>
   )
 }
-
-
