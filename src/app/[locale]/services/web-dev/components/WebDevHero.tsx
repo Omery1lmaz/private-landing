@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
-import { Code, Zap, Rocket, Globe, ArrowRight, Layers, Sparkles } from 'lucide-react'
+import { Code, Zap, Rocket, Globe, ArrowRight, Sparkles } from 'lucide-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -170,24 +170,8 @@ export default function WebDevHero() {
                 {t('subtitle')}
               </p>
 
-              {/* Feature Pills */}
-              <div className="flex flex-wrap items-center gap-4 mb-8">
-                {[
-                  { text: 'PageSpeed 90+', color: 'cyan' },
-                  { text: 'SEO-First', color: 'teal' },
-                  { text: 'Scalable', color: 'cyan' },
-                ].map((feature, idx) => (
-                  <div
-                    key={idx}
-                    className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm text-sm text-gray-300 hover:border-cyan-500/30 hover:text-cyan-400 transition-all"
-                  >
-                    {feature.text}
-                  </div>
-                ))}
-              </div>
-
-              {/* CTAs */}
-              <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4">
+              {/* Single CTA */}
+              <div ref={ctaRef}>
                 <button
                   onClick={scrollToContact}
                   className="group relative bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-white font-semibold px-10 py-5 rounded-xl text-lg md:text-xl transition-all duration-300 shadow-2xl shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:-translate-y-1 overflow-hidden"
@@ -197,16 +181,6 @@ export default function WebDevHero() {
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-teal-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </button>
-                <button
-                  onClick={() => {
-                    const processSection = document.querySelector('.web-dev-process')
-                    processSection?.scrollIntoView({ behavior: 'smooth' })
-                  }}
-                  className="group relative bg-white/5 border-2 border-white/10 text-white hover:bg-white/10 hover:border-cyan-500/40 font-medium px-8 py-5 rounded-xl text-lg transition-all duration-300 flex items-center gap-2 backdrop-blur-sm hover:shadow-lg hover:shadow-cyan-500/20"
-                >
-                  {t('cta_secondary')}
-                  <Layers className="w-5 h-5 group-hover:rotate-12 transition-transform" />
                 </button>
               </div>
             </div>

@@ -187,6 +187,15 @@
     50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
   }
 
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(200%);
+    }
+  }
+
   .liquid-flow {
     animation: liquid-flow 3s linear infinite;
   }

@@ -303,10 +303,71 @@
   },
   "web_dev": {
     "hero": {
-      "title": "High-Performance Web Development Built for Growth",
-      "subtitle": "We build fast, scalable, and conversion-optimized web applications using modern frameworks and AI-powered optimization.",
-      "cta_primary": "Start Your Project",
-      "cta_secondary": "View Architecture"
+      "title": "Websites That Generate Sales",
+      "subtitle": "Your website should be a sales-generating platform.",
+      "cta_primary": "Evaluate Your Web Project"
+    },
+    "problem_solution": {
+      "badge": "Real Problem",
+      "title": "Most Websites Look Good But Don't Work",
+      "subtitle": "The reader should see themselves here.",
+      "lead": "Most websites look good but don't work.",
+      "main_heading_part1": "Conversion",
+      "main_heading_part2": "focused web",
+      "main_description": "We transform your website into not just a beautiful site, but a sales-generating platform. Increase your conversion rates with real-time analytics and comprehensive optimization.",
+      "solution1_title": "Fast Loading & Performance",
+      "solution1_desc": "Ultra-fast loading times with PageSpeed 90+ target. Don't lose your users, convert them.",
+      "solution2_title": "SEO & Organic Traffic",
+      "solution2_desc": "Gain visibility on Google with SEO-first architecture and increase your organic traffic by 3x.",
+      "metric_card_title": "Conversion increase",
+      "metric_value": "40",
+      "metric_change": "+40%",
+      "metric1_label": "PageSpeed",
+      "metric1_value": "92+",
+      "metric2_label": "SEO Score",
+      "metric2_value": "95",
+      "chart_title": "Performance Metrics",
+      "bar1_label": "Conversion",
+      "bar2_label": "Speed",
+      "bar3_label": "SEO"
+    },
+    "what_you_get": {
+      "badge": "What You Get",
+      "title": "What Am I Getting From You?",
+      "subtitle": "Not technical, benefits.",
+      "benefit1": "Fast",
+      "benefit2": "SEO compliant",
+      "benefit3": "Mobile-first",
+      "benefit4": "Conversion-focused",
+      "benefit5": "Scalable"
+    },
+    "proof_outcome": {
+      "badge": "Proven Results",
+      "title": "Trust",
+      "subtitle": "We speak with real data.",
+      "outcome1_metric": "40%",
+      "outcome1_label": "more conversions",
+      "outcome2_metric": "60%",
+      "outcome2_label": "faster loading",
+      "outcome3_metric": "3x",
+      "outcome3_label": "organic traffic growth",
+      "outcome4_metric": "90+",
+      "outcome4_label": "PageSpeed score"
+    },
+    "pricing_teaser": {
+      "badge": "Pricing",
+      "title": "Web Development Packages starting from $749",
+      "subtitle": "Seriousness and filtering.",
+      "package1_name": "Foundation",
+      "package1_feature1": "Corporate web infrastructure",
+      "package1_feature2": "SEO-compliant technical architecture",
+      "package2_name": "Growth",
+      "package2_feature1": "Advanced web or mobile system",
+      "package2_feature2": "SEO & conversion architecture",
+      "package3_name": "Scale",
+      "package3_feature1": "Custom software or SaaS development",
+      "package3_feature2": "Premium architecture & security",
+      "cta": "View Packages"
     },
     "tech_stack": {
       "title": "Modern Technology Stack",
@@ -370,9 +431,8 @@
       "reason6_desc": "We grow with you"
     },
     "cta": {
-      "title": "Let's Build a Web Product That Scales With You",
-      "button": "Start Your Project",
-      "link": "Contact Us"
+      "title": "Let's turn your project into a growth tool.",
+      "button": "Evaluate Your Web Project"
     }
   },
   "globe_section": {

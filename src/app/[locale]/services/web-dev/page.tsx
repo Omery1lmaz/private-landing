@@ -3,11 +3,10 @@
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import WebDevHero from './components/WebDevHero'
-import WebDevTechStack from './components/WebDevTechStack'
-import WebDevProcess from './components/WebDevProcess'
-import WebDevPerformance from './components/WebDevPerformance'
-import WebDevUseCases from './components/WebDevUseCases'
-import WebDevWhyUs from './components/WebDevWhyUs'
+import WebDevProblemSolution from './components/WebDevProblemSolution'
+import WebDevWhatYouGet from './components/WebDevWhatYouGet'
+import WebDevProofOutcome from './components/WebDevProofOutcome'
+import WebDevPricingTeaser from './components/WebDevPricingTeaser'
 import WebDevCTA from './components/WebDevCTA'
 
 export default function WebDevPage() {
@@ -30,19 +29,22 @@ export default function WebDevPage() {
       <div className="relative z-10">
         <Navbar />
 
-        {/* Hero Section */}
+        {/* 1. Product Hero */}
         <WebDevHero />
 
-        {/* Content Sections */}
-        <div className="space-y-0">
-          <WebDevTechStack />
-          <WebDevProcess />
-          <WebDevPerformance />
-          <WebDevUseCases />
-          <WebDevWhyUs />
-        </div>
+        {/* 2. Problem → Solution */}
+        <WebDevProblemSolution />
 
-        {/* Final CTA */}
+        {/* 3. What You Get */}
+        <WebDevWhatYouGet />
+
+        {/* 4. Proof / Outcome */}
+        <WebDevProofOutcome />
+
+        {/* 5. Pricing Teaser */}
+        <WebDevPricingTeaser />
+
+        {/* 6. Final CTA */}
         <WebDevCTA />
 
         <Footer />

@@ -1,11 +1,10 @@
 'use client'
 
 import React, { useEffect, useRef } from 'react'
-import { useTranslations, useLocale } from 'next-intl'
-import { ArrowRight, CheckCircle, Sparkles } from 'lucide-react'
+import { useLocale, useTranslations } from 'next-intl'
+import { ArrowRight, Sparkles } from 'lucide-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Link from 'next/link'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -98,49 +97,20 @@ export default function WebDevCTA() {
                   <span>Ready to Start?</span>
                 </div>
 
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-10 leading-tight">
                   <span className="bg-gradient-to-r from-white via-cyan-100 to-white bg-clip-text text-transparent">
                     {t('title')}
                   </span>
                 </h2>
 
-                <p className="text-lg text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-                  Let's build a web product that scales with your business and delivers exceptional user experiences.
-                </p>
-
-                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+                <div className="flex justify-center items-center">
                   <button
                     onClick={scrollToContact}
-                    className="cta-button group relative bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-white font-semibold px-10 py-5 rounded-2xl text-xl transition-all duration-300 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:-translate-y-1 inline-flex items-center gap-3"
+                    className="cta-button group relative bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-white font-semibold px-12 py-6 rounded-2xl text-xl transition-all duration-300 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:-translate-y-1 inline-flex items-center gap-3"
                   >
                     <span>{t('button')}</span>
                     <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                   </button>
-
-                  {/* Secondary link */}
-                  <Link
-                    href={`/${locale}/#contact`}
-                    className="text-cyan-400 hover:text-cyan-300 text-lg font-medium transition-colors inline-flex items-center gap-2 px-6 py-3 rounded-xl hover:bg-white/5"
-                  >
-                    {t('link')}
-                    <ArrowRight className="w-5 h-5" />
-                  </Link>
-                </div>
-
-                {/* Features */}
-                <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-cyan-400" />
-                    <span>Free Consultation</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-cyan-400" />
-                    <span>Fast Response</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-cyan-400" />
-                    <span>Transparent Pricing</span>
-                  </div>
                 </div>
               </div>
             </div>

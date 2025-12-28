@@ -318,10 +318,71 @@
   },
   "web_dev": {
     "hero": {
-      "title": "Büyüme İçin Yüksek Performanslı Web Geliştirme",
-      "subtitle": "Modern framework'ler ve AI destekli optimizasyon kullanarak hızlı, ölçeklenebilir ve dönüşüm odaklı web uygulamaları geliştiriyoruz.",
-      "cta_primary": "Projenize Başlayın",
-      "cta_secondary": "Mimariyi Görüntüle"
+      "title": "Satış Üreten Web Siteleri",
+      "subtitle": "Web siteniz satış üreten bir platform olmalı.",
+      "cta_primary": "Web Projenizi Değerlendirelim"
+    },
+    "problem_solution": {
+      "badge": "Gerçek Sorun",
+      "title": "Çoğu Web Sitesi Güzeldir Ama İşe Yaramaz",
+      "subtitle": "Okuyan kişi kendini burada görsün.",
+      "lead": "Çoğu web sitesi güzeldir ama işe yaramaz.",
+      "main_heading_part1": "Dönüşüm",
+      "main_heading_part2": "odaklı web",
+      "main_description": "Web sitenizi sadece güzel değil, aynı zamanda satış üreten bir platforma dönüştürüyoruz. Gerçek zamanlı analitik ve kapsamlı optimizasyon ile dönüşüm oranlarınızı artırıyoruz.",
+      "solution1_title": "Hızlı Yükleme & Performans",
+      "solution1_desc": "PageSpeed 90+ hedefi ile ultra hızlı yükleme süreleri. Kullanıcılarınızı kaybetmeyin, onları dönüştürün.",
+      "solution2_title": "SEO & Organik Trafik",
+      "solution2_desc": "SEO-öncelikli mimari ile Google'da görünürlük kazanın ve organik trafiğinizi 3x artırın.",
+      "metric_card_title": "Dönüşüm artışı",
+      "metric_value": "40",
+      "metric_change": "+40%",
+      "metric1_label": "PageSpeed",
+      "metric1_value": "92+",
+      "metric2_label": "SEO Skoru",
+      "metric2_value": "95",
+      "chart_title": "Performans Metrikleri",
+      "bar1_label": "Dönüşüm",
+      "bar2_label": "Hız",
+      "bar3_label": "SEO"
+    },
+    "what_you_get": {
+      "badge": "Ne Alıyorsunuz?",
+      "title": "Benden Ne Alıyorum?",
+      "subtitle": "Teknik değil, fayda.",
+      "benefit1": "Hızlı",
+      "benefit2": "SEO uyumlu",
+      "benefit3": "Mobil-first",
+      "benefit4": "Dönüşüm odaklı",
+      "benefit5": "Ölçeklenebilir"
+    },
+    "proof_outcome": {
+      "badge": "Kanıtlanmış Sonuçlar",
+      "title": "Güven",
+      "subtitle": "Gerçek verilerle konuşuyoruz.",
+      "outcome1_metric": "%40",
+      "outcome1_label": "daha fazla dönüşüm",
+      "outcome2_metric": "%60",
+      "outcome2_label": "daha hızlı yükleme",
+      "outcome3_metric": "3x",
+      "outcome3_label": "organik trafik artışı",
+      "outcome4_metric": "90+",
+      "outcome4_label": "PageSpeed skoru"
+    },
+    "pricing_teaser": {
+      "badge": "Fiyatlandırma",
+      "title": "Web Development Packages starting from $749",
+      "subtitle": "Ciddiyet ve filtreleme.",
+      "package1_name": "Foundation",
+      "package1_feature1": "Kurumsal web altyapısı",
+      "package1_feature2": "SEO uyumlu teknik mimari",
+      "package2_name": "Growth",
+      "package2_feature1": "Gelişmiş web veya mobil sistem",
+      "package2_feature2": "SEO & dönüşüm mimarisi",
+      "package3_name": "Scale",
+      "package3_feature1": "Özel yazılım veya SaaS geliştirme",
+      "package3_feature2": "Premium mimari & güvenlik",
+      "cta": "Paketleri Görüntüle"
     },
     "tech_stack": {
       "title": "Modern Teknoloji Yığını",
@@ -385,9 +446,8 @@
       "reason6_desc": "Sizinle birlikte büyüyoruz"
     },
     "cta": {
-      "title": "Sizinle Birlikte Büyüyen Bir Web Ürünü İnşa Edelim",
-      "button": "Projenize Başlayın",
-      "link": "İletişime Geçin"
+      "title": "Projenizi büyüme aracına dönüştürelim.",
+      "button": "Web Projenizi Değerlendirelim"
     }
   },
   "globe_section": {
