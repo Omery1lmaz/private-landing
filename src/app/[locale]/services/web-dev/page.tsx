@@ -2,12 +2,11 @@
 
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import WebDevHero from './components/WebDevHero'
-import WebDevProblemSolution from './components/WebDevProblemSolution'
 import WebDevWhatYouGet from './components/WebDevWhatYouGet'
 import WebDevProofOutcome from './components/WebDevProofOutcome'
 import WebDevPricingTeaser from './components/WebDevPricingTeaser'
-import WebDevCTA from './components/WebDevCTA'
+import WebDevHero from './components/WebDevHero'
+import WebDevContact from './components/WebDevContact'
 
 export default function WebDevPage() {
   return (
@@ -33,7 +32,6 @@ export default function WebDevPage() {
         <WebDevHero />
 
         {/* 2. Problem → Solution */}
-        <WebDevProblemSolution />
 
         {/* 3. What You Get */}
         <WebDevWhatYouGet />
@@ -45,7 +43,7 @@ export default function WebDevPage() {
         <WebDevPricingTeaser />
 
         {/* 6. Final CTA */}
-        <WebDevCTA />
+        <WebDevContact />
 
         <Footer />
       </div>

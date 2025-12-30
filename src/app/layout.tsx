@@ -1,4 +1,4 @@
-import type {Metadata} from 'next';
+import type { Metadata } from 'next';
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   },
   description: 'AI-powered websites, mobile applications, and SEO solutions. High-performance digital growth strategies for brands.',
   keywords: 'Web Development, SEO, AI Solutions, Mobile Apps, E-commerce, Digital Marketing',
-  authors: [{name: 'EliteCode Studio'}],
+  authors: [{ name: 'EliteCode Studio' }],
   creator: 'EliteCode Studio',
   publisher: 'EliteCode Studio',
   metadataBase: new URL('https://elitecodestudio.com'),
@@ -47,7 +47,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`dark antialiased bg-background text-white`}>
-      <body className={`dark  antialiased bg-background text-white`}>{children}</body>
+      <body suppressHydrationWarning className={`dark antialiased bg-background text-white`}>{children}</body>
     </html>
   );
 }

@@ -2,226 +2,145 @@
 
 import React, { useEffect, useRef } from 'react'
 import { useTranslations } from 'next-intl'
-import { Code, Type, Palette, Server, Database, Cloud, Sparkles } from 'lucide-react'
+import { Atom, Code2, Database, Globe, Layers, Cpu, Server, ShieldCheck, Box, Workflow, Terminal, Zap } from 'lucide-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function WebDevTechStack() {
-  const t = useTranslations('web_dev.tech_stack')
+  const t = useTranslations('web_dev.tech_stack') // You might need to add this to your messages or just use generic text for now if key doesn't exist
   const sectionRef = useRef<HTMLElement>(null)
 
-  const technologies = [
-    {
-      icon: Code,
-      name: t('nextjs'),
-      description: t('nextjs_desc'),
-      gradient: 'from-cyan-500 via-blue-500 to-cyan-500',
-      accentColor: '#06b6d4',
-    },
-    {
-      icon: Type,
-      name: t('typescript'),
-      description: t('typescript_desc'),
-      gradient: 'from-blue-500 via-cyan-500 to-blue-500',
-      accentColor: '#3b82f6',
-    },
-    {
-      icon: Palette,
-      name: t('tailwind'),
-      description: t('tailwind_desc'),
-      gradient: 'from-teal-500 via-cyan-500 to-teal-500',
-      accentColor: '#14b8a6',
-    },
-    {
-      icon: Server,
-      name: t('nodejs'),
-      description: t('nodejs_desc'),
-      gradient: 'from-green-500 via-emerald-500 to-green-500',
-      accentColor: '#22c55e',
-    },
-    {
-      icon: Database,
-      name: t('database'),
-      description: t('database_desc'),
-      gradient: 'from-purple-500 via-violet-500 to-purple-500',
-      accentColor: '#a855f7',
-    },
-    {
-      icon: Cloud,
-      name: t('cloud'),
-      description: t('cloud_desc'),
-      gradient: 'from-cyan-500 via-teal-500 to-cyan-500',
-      accentColor: '#06b6d4',
-    },
+  // Tech "Stars"
+  const techs = [
+    { name: 'React', icon: Atom, x: -20, y: -15, size: 1.2, color: 'text-cyan-400', delay: 0 },
+    { name: 'Next.js', icon: Zap, x: 25, y: -20, size: 1.5, color: 'text-white', delay: 0.2 },
+    { name: 'TypeScript', icon: Code2, x: -35, y: 10, size: 1.1, color: 'text-blue-400', delay: 0.4 },
+    { name: 'Node.js', icon: Server, x: 30, y: 25, size: 1.3, color: 'text-green-400', delay: 0.1 },
+    { name: 'PostgreSQL', icon: Database, x: -10, y: 35, size: 1.0, color: 'text-indigo-400', delay: 0.5 },
+    { name: 'Tailwind', icon: Layers, x: 15, y: -35, size: 1.2, color: 'text-teal-400', delay: 0.3 },
+    { name: 'AWS', icon: Globe, x: 40, y: 5, size: 1.4, color: 'text-orange-400', delay: 0.6 },
+    { name: 'Security', icon: ShieldCheck, x: -25, y: -30, size: 0.9, color: 'text-red-400', delay: 0.7 },
   ]
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Section title animation
-      gsap.fromTo(
-        '.tech-stack-title',
-        { opacity: 0, y: 40 },
+      // 1. Initial Float-in
+      gsap.fromTo('.tech-star',
+        { scale: 0, opacity: 0 },
         {
+          scale: 1,
           opacity: 1,
-          y: 0,
+          duration: 1.5,
+          stagger: 0.1,
+          ease: 'elastic.out(1, 0.5)',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 70%'
+          }
+        }
+      )
+
+      // 2. Constant Floating Animation (Orbit-ish)
+      techs.forEach((_, i) => {
+        gsap.to(`.tech-star-${i}`, {
+          y: '+=15',
+          x: '+=10',
+          duration: 2 + Math.random() * 2,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          delay: Math.random() * 2
+        })
+      })
+
+      // 3. Parallax on Mouse Move
+      const handleMouseMove = (e: MouseEvent) => {
+        const { clientX, clientY } = e
+        const xPos = (clientX / window.innerWidth - 0.5) * 50
+        const yPos = (clientY / window.innerHeight - 0.5) * 50
+
+        gsap.to('.tech-universe', {
+          x: xPos,
+          y: yPos,
           duration: 1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      )
+          ease: 'power2.out'
+        })
+      }
 
-      // Cards stagger animation
-      gsap.fromTo(
-        '.tech-item',
-        { opacity: 0, y: 50, scale: 0.9 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.7,
-          stagger: 0.1,
-          ease: 'back.out(1.2)',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 75%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      )
+      window.addEventListener('mousemove', handleMouseMove)
+      return () => window.removeEventListener('mousemove', handleMouseMove)
 
-      // Icon animation
-      gsap.fromTo(
-        '.tech-icon-wrapper',
-        { scale: 0, rotation: -180 },
-        {
-          scale: 1,
-          rotation: 0,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: 'back.out(2)',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 75%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      )
     }, sectionRef)
 
     return () => ctx.revert()
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden bg-[#030308] py-32">
-      {/* Background effects */}
-      <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-teal-500/8 rounded-full blur-[100px] pointer-events-none" />
+    <section ref={sectionRef} className="relative min-h-[800px] flex items-center justify-center overflow-hidden bg-[#030308]">
+      {/* Deep Space Background */}
+      <div className="absolute inset-0 bg-[#030308]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-900/10 via-transparent to-transparent opacity-50" />
+      </div>
 
-      {/* Grid background */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-30"
-        style={{
-          backgroundImage:
-            'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)',
-          backgroundSize: '50px 50px',
-        }}
-      />
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-0 relative">
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-7xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-20 tech-stack-title">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-sm text-cyan-400 font-medium mb-6 backdrop-blur-sm">
-              <Sparkles className="w-4 h-4" />
-              <span>Technology Stack</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              <span className="bg-gradient-to-r from-white via-cyan-100 to-white bg-clip-text text-transparent">
-                {t('title')}
-              </span>
+          {/* Central Sun/Core */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px]">
+            <div className="absolute inset-0 bg-blue-500/5 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute inset-20 bg-indigo-500/5 rounded-full blur-2xl animate-pulse delay-75" />
+          </div>
+
+          {/* Main Title - Centered in Universe */}
+          <div className="relative z-20 pointer-events-none">
+            <span className="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-blue-300 mb-4 tracking-widest uppercase">Technology Stack</span>
+            <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter mb-4">
+              The <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Constellation</span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              {t('subtitle')}
+            <p className="text-xl text-gray-400 max-w-lg mx-auto">
+              Powered by a galaxy of modern tools.
             </p>
           </div>
 
-          {/* Technology Grid - Ana sayfa tarzı */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {technologies.map((tech, index) => {
-              const IconComponent = tech.icon
-              return (
-                <div
-                  key={index}
-                  className="tech-item group relative"
-                >
-                  <div className="relative h-full p-8 rounded-2xl bg-gradient-to-br from-white/[0.05] to-white/[0.02] border border-white/10 backdrop-blur-sm transition-all duration-500 hover:border-cyan-500/30 hover:from-white/[0.08] hover:to-white/[0.03] overflow-hidden">
-                    {/* Background pattern */}
-                    <div
-                      className="absolute inset-0 opacity-30"
-                      style={{
-                        backgroundImage: `
-                          linear-gradient(rgba(6,182,212,0.05) 1px, transparent 1px),
-                          linear-gradient(90deg, rgba(6,182,212,0.05) 1px, transparent 1px)
-                        `,
-                        backgroundSize: '20px 20px',
-                      }}
-                    />
-
-                    {/* Animated border glow */}
-                    <div
-                      className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                      style={{
-                        background: `linear-gradient(135deg, rgba(6,182,212,0.1) 0%, transparent 50%)`,
-                      }}
-                    />
-
-                    {/* Top accent line */}
-                    <div
-                      className="absolute top-0 left-6 right-6 h-[2px] bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    />
-
-                    {/* Content */}
-                    <div className="relative z-10">
-                      {/* Icon */}
-                      <div className="mb-6">
-                        <div className="tech-icon-wrapper w-16 h-16 rounded-2xl bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:shadow-lg shadow-cyan-500/20">
-                          <IconComponent className="w-8 h-8 text-cyan-400" />
-                        </div>
-                      </div>
-
-                      {/* Title */}
-                      <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-50 transition-colors">
-                        {tech.name}
-                      </h3>
-
-                      {/* Description */}
-                      <p className="text-gray-400 text-base leading-relaxed group-hover:text-gray-300 transition-colors">
-                        {tech.description}
-                      </p>
-
-                      {/* Bottom accent */}
-                      <div className="pt-6 mt-6 border-t border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        <div className="text-xs font-medium text-cyan-400">
-                          ✓ Production Ready
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Corner number */}
-                    <div className="absolute top-6 right-6 text-3xl font-bold opacity-[0.03] group-hover:opacity-[0.08] transition-opacity select-none text-cyan-400">
-                      {String(index + 1).padStart(2, '0')}
-                    </div>
-                  </div>
+          {/* The Universe of Icons */}
+          <div className="tech-universe absolute top-1/2 left-1/2 w-[800px] h-[600px] -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+            {techs.map((tech, i) => (
+              <div
+                key={i}
+                className={`tech-star tech-star-${i} absolute flex flex-col items-center justify-center gap-2`}
+                style={{
+                  left: `${50 + tech.x}%`,
+                  top: `${50 + tech.y}%`,
+                }}
+              >
+                <div className={`p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md shadow-2xl relative group transition-transform duration-300 hover:scale-110 hover:border-${tech.color.split('-')[1]}-500/50`}>
+                  <div className={`absolute inset-0 bg-${tech.color.split('-')[1]}-500/10 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity`} />
+                  <tech.icon className={`w-8 h-8 ${tech.color} relative z-10`} style={{ transform: `scale(${tech.size})` }} />
                 </div>
-              )
-            })}
+                <span className="text-xs font-mono text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity absolute top-full mt-2 whitespace-nowrap">
+                  {tech.name}
+                </span>
+              </div>
+            ))}
+
+            {/* Connecting Lines (Decor) */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20">
+              <path d="M400 300 L240 210" stroke="url(#lineGrad)" strokeWidth="1" strokeDasharray="5 5" />
+              <path d="M400 300 L600 180" stroke="url(#lineGrad)" strokeWidth="1" strokeDasharray="5 5" />
+              <path d="M400 300 L120 360" stroke="url(#lineGrad)" strokeWidth="1" strokeDasharray="5 5" />
+              <path d="M400 300 L640 450" stroke="url(#lineGrad)" strokeWidth="1" strokeDasharray="5 5" />
+              <defs>
+                <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="transparent" />
+                  <stop offset="50%" stopColor="#60a5fa" />
+                  <stop offset="100%" stopColor="transparent" />
+                </linearGradient>
+              </defs>
+            </svg>
           </div>
+
         </div>
       </div>
     </section>
