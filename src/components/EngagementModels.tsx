@@ -18,7 +18,7 @@ const models = [
 
 export default function EngagementModels() {
   const t = useTranslations('engagement_models_section')
-  const sectionRef = useRef<HTMLSection>(null)
+  const sectionRef = useRef<HTMLElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
   const modelsRef = useRef<HTMLDivElement>(null)
 
@@ -137,11 +137,10 @@ export default function EngagementModels() {
                     {/* Content */}
                     <div className="relative z-10">
                       {/* Icon */}
-                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 ${
-                        isCyan
+                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 ${isCyan
                           ? 'bg-purple-500/20 border border-purple-500/30 text-purple-400'
                           : 'bg-blue-500/20 border border-blue-500/30 text-blue-400'
-                      }`}>
+                        }`}>
                         <IconComponent className="w-6 h-6" />
                       </div>
 
@@ -166,9 +165,8 @@ export default function EngagementModels() {
                     </div>
 
                     {/* Corner number */}
-                    <div className={`absolute top-6 right-6 text-3xl font-bold opacity-[0.03] group-hover:opacity-[0.08] transition-opacity select-none ${
-                      isCyan ? 'text-purple-400' : 'text-blue-400'
-                    }`}>
+                    <div className={`absolute top-6 right-6 text-3xl font-bold opacity-[0.03] group-hover:opacity-[0.08] transition-opacity select-none ${isCyan ? 'text-purple-400' : 'text-blue-400'
+                      }`}>
                       {String(index + 1).padStart(2, '0')}
                     </div>
                   </div>

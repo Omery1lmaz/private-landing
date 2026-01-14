@@ -1,65 +1,78 @@
 'use client'
 
 import React, { useEffect, useRef } from 'react'
-import { useTranslations } from 'next-intl'
-import { Check, ArrowRight, LayoutTemplate, Crown, Server, Sparkles } from 'lucide-react'
-import { gsap } from 'gsap'
+import { Check, ArrowRight, LayoutTemplate, Crown, Server, HelpCircle, Users } from 'lucide-react'
+import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function WebDevPricingTeaser() {
-    const t = useTranslations('web_dev.pricing_teaser')
     const sectionRef = useRef<HTMLElement>(null)
 
-    const packages = [
+    const tiers = [
         {
-            id: 'starter',
-            name: t('package1_name'),
-            price: '$749',
+            name: "Foundation",
+            subtitle: "Sağlam Bir Başlangıç",
+            desc: "İşini doğru temsil eden, yönetilebilir bir web altyapısı. Kurumsal görünüm, net yapı ve uzun vadeli temel.",
             icon: LayoutTemplate,
-            accent: 'cyan',
-            features: [t('package1_feature1'), t('package1_feature2'), 'SEO Optimization', 'Mobile Responsive'],
-            pop: false
+            color: "indigo",
+            features: [
+                "Kurumsal web sistemi",
+                "Yönetilebilir içerik yapısı",
+                "Mobil uyumlu tasarım",
+                "Teknik altyapı kurulumu"
+            ],
+            forWhom: "Yeni başlayan veya dijital varlığını doğru kurmak isteyen markalar.",
+            highlight: false
         },
         {
-            id: 'pro',
-            name: t('package2_name'),
-            price: '$1,499',
+            name: "Growth",
+            subtitle: "İşinize Uyumlanan Sistem",
+            badge: "Önerilen Seviye",
+            desc: "Web sitesinden fazlasını isteyenler için. Operasyon, kullanıcı ve büyüme odaklı yapı.",
             icon: Crown,
-            accent: 'teal',
-            pop: true,
-            features: [t('package2_feature1'), t('package2_feature2'), 'Advanced Analytics', 'CMS Integration', 'Priority Support'],
+            color: "cyan",
+            features: [
+                "Gelişmiş web veya ürün platformu",
+                "Özel akışlar ve entegrasyonlar",
+                "Yönetilebilir paneller",
+                "Ölçeklenebilir mimari"
+            ],
+            forWhom: "Büyüyen ekipler, ürün odaklı işler ve dijital süreçlerini tek yerde toplamak isteyenler.",
+            highlight: true
         },
         {
-            id: 'enterprise',
-            name: t('package3_name'),
-            price: 'Custom',
+            name: "Scale",
+            subtitle: "Özel Sistemler & Ürünler",
+            desc: "Standart çözümlerin yetmediği projeler. SaaS, özel yazılım ve ileri seviye sistemler.",
             icon: Server,
-            accent: 'indigo',
-            features: [t('package3_feature1'), t('package3_feature2'), 'Custom Infrastructure', 'SLA 99.9%', '24/7 Dedicated Team'],
-            pop: false
-        },
+            color: "purple",
+            features: [
+                "Özel mimari ve sistem tasarımı",
+                "AI destekli modüller",
+                "Yüksek trafik ve yük optimizasyonu",
+                "Uzun vadeli teknik partnerlik"
+            ],
+            forWhom: "Ürün geliştiren, yüksek beklentisi olan ve ölçeklenebilir sistemlere ihtiyaç duyan ekipler.",
+            highlight: false
+        }
     ]
-
-    const scrollToContact = () => {
-        const contactSection = document.getElementById('contact')
-        contactSection?.scrollIntoView({ behavior: 'smooth' })
-    }
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            // Staggered entry
-            gsap.fromTo('.pricing-pillar',
-                { opacity: 0, y: 50, scaleY: 0.9 },
+            gsap.fromTo(".pricing-card",
+                { y: 50, opacity: 0 },
                 {
-                    opacity: 1,
                     y: 0,
-                    scaleY: 1,
+                    opacity: 1,
                     duration: 0.8,
                     stagger: 0.15,
-                    ease: 'power3.out',
-                    scrollTrigger: { trigger: sectionRef.current, start: 'top 75%' }
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: "top 85%"
+                    }
                 }
             )
         }, sectionRef)
@@ -67,111 +80,106 @@ export default function WebDevPricingTeaser() {
     }, [])
 
     return (
-        <section ref={sectionRef} className="relative py-32 bg-[#030308] text-white overflow-hidden">
-            {/* Grid background */}
-            <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                    backgroundImage: `
-            linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
-          `,
-                    backgroundSize: '50px 50px',
-                }}
-            />
+        <section ref={sectionRef} id="pricing" className="relative py-32 md:py-48 bg-[#020406] overflow-hidden">
+            {/* Background elements */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_var(--tw-gradient-stops))] from-blue-900/10 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute top-0 left-0 w-full h-full opacity-[0.02] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
-            {/* Ambient glow effects */}
-            <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[150px] pointer-events-none" />
-            <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-teal-500/10 rounded-full blur-[150px] pointer-events-none" />
-
-            <div className="container mx-auto px-4 relative z-10">
-
-                <div className="text-center max-w-4xl mx-auto mb-20 space-y-6">
-                    <div className="inline-flex items-center gap-2 bg-slate-800/50 border border-slate-700 rounded-full px-4 py-1.5 backdrop-blur-sm">
-                        <Sparkles size={14} className="text-cyan-400" />
-                        <span className="text-sm text-slate-300 font-medium">Clear & Transparent</span>
-                    </div>
-
-                    <h2 className="text-4xl md:text-5xl font-bold text-white">
-                        {t('title')}
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="text-center mb-24 space-y-6">
+                    <span className="inline-block px-4 py-1.5 rounded-full bg-cyan-500/5 border border-cyan-500/20 text-[10px] md:text-xs font-bold text-cyan-400 tracking-[0.4em] uppercase">
+                        Yaklaşım Seviyeleri
+                    </span>
+                    <h2 className="text-4xl md:text-5xl lg:text-7xl font-semibold text-white tracking-tight leading-[1.1]">
+                        Her Proje Aynı Değildir
                     </h2>
-
-                    {/* Explicit 'Starting From' Badge as Requested */}
-                    <div className="mt-4 inline-flex items-center justify-center px-6 py-2 rounded-lg bg-gradient-to-r from-cyan-900/40 to-teal-900/40 border border-cyan-500/30 backdrop-blur-md shadow-[0_0_20px_rgba(6,182,212,0.15)]">
-                        <span className="text-gray-300 mr-2 font-mono text-sm uppercase tracking-wide">Web Development Packages starting from</span>
-                        <span className="text-2xl font-bold text-white text-shadow-glow">$749</span>
+                    <div className="space-y-2">
+                        <p className="text-gray-400 max-w-2xl mx-auto text-lg md:text-xl font-light leading-relaxed">
+                            Bu nedenle herkese tek fiyat, tek paket sunmuyoruz.
+                        </p>
+                        <p className="text-white/60 max-w-2xl mx-auto text-lg md:text-xl font-light leading-relaxed">
+                            İhtiyaca göre şekillenen sistem seviyeleriyle ilerliyoruz.
+                        </p>
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch max-w-7xl mx-auto">
-                    {packages.map((pkg) => (
-                        <div
-                            key={pkg.id}
-                            className={`pricing-pillar group relative flex flex-col p-1 rounded-2xl transition-all duration-500
-                 ${pkg.pop ? 'lg:-mt-8 lg:-mb-8 z-10' : 'bg-transparent'}
-              `}
-                        >
-                            {/* Holographic Border Gradient */}
-                            <div className={`absolute inset-0 rounded-2xl bg-gradient-to-b from-white/10 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500 ${pkg.pop ? 'from-cyan-500/40 via-teal-500/10 to-transparent' : ''}`} />
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                    {tiers.map((tier, i) => (
+                        <div key={i} className={`pricing-card group relative flex flex-col p-8 md:p-10 rounded-[2.5rem] border transition-all duration-500 ${tier.highlight ? `bg-white/[0.03] border-${tier.color}-500/30 shadow-2xl shadow-${tier.color}-900/10 scale-105 z-20` : 'bg-transparent border-white/5 hover:border-white/10 z-10'}`}>
 
-                            {/* Card Content */}
-                            <div className={`relative flex flex-col h-full bg-[#0a0a0f]/90 backdrop-blur-xl rounded-xl p-8 border border-white/5 overflow-hidden group-hover:border-white/10 transition-colors
-                   ${pkg.pop ? 'shadow-[0_0_50px_rgba(6,182,212,0.15)] ring-1 ring-cyan-500/30' : ''}
-              `}>
-                                {/* Top Glow */}
-                                <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-${pkg.accent}-500 to-transparent opacity-50`} />
+                            {tier.highlight && (
+                                <div className={`absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-${tier.color}-500 rounded-full text-[10px] font-bold uppercase text-black tracking-widest shadow-[0_0_20px_rgba(34,211,238,0.4)]`}>
+                                    {tier.badge}
+                                </div>
+                            )}
 
-                                {pkg.pop && (
-                                    <div className="absolute top-4 right-4 animate-pulse">
-                                        <span className="bg-cyan-500 text-[#030308] text-[10px] font-bold px-2 py-0.5 rounded shadow-[0_0_10px_cyan]">POPULAR</span>
+                            <div className="mb-10">
+                                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-8 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 ${tier.highlight ? `bg-${tier.color}-500/10 text-${tier.color}-400 border border-${tier.color}-500/20` : `bg-${tier.color}-500/5 text-${tier.color}-400 border border-${tier.color}-500/10`}`}>
+                                    <tier.icon size={28} />
+                                </div>
+                                <div className="space-y-2">
+                                    <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">{tier.name}</h3>
+                                    <div className={`text-sm md:text-base font-medium text-${tier.color}-400`}>{tier.subtitle}</div>
+                                </div>
+                                <p className="mt-6 text-sm md:text-base text-gray-400 leading-relaxed font-light">{tier.desc}</p>
+                            </div>
+
+                            <div className="flex-1 flex flex-col space-y-10">
+                                {/* Features */}
+                                <div>
+                                    <div className="flex items-center gap-2 text-[10px] text-white/30 uppercase tracking-[0.2em] font-bold mb-5">
+                                        <HelpCircle size={12} className={`text-${tier.color}-500/50`} />
+                                        Bu seviyede
                                     </div>
-                                )}
-
-                                <div className="mb-8">
-                                    <div className={`w-14 h-14 rounded-lg flex items-center justify-center mb-6 bg-gradient-to-br from-white/5 to-transparent border border-white/5 group-hover:scale-110 transition-transform duration-500`}>
-                                        <pkg.icon size={28} className={`text-${pkg.accent}-400 drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]`} />
-                                    </div>
-                                    <h3 className="text-xl font-medium text-gray-300 mb-2">{pkg.name}</h3>
-                                    <div className="text-4xl font-bold text-white tracking-tight">{pkg.price}</div>
+                                    <ul className="space-y-4">
+                                        {tier.features.map((feat, k) => (
+                                            <li key={k} className="flex items-center gap-3 text-sm md:text-base text-gray-300 font-light">
+                                                <div className={`shrink-0 w-5 h-5 rounded-full flex items-center justify-center border bg-${tier.color}-500/10 border-${tier.color}-500/30`}>
+                                                    <Check size={12} className={`text-${tier.color}-400`} />
+                                                </div>
+                                                {feat}
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
 
-                                <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent mb-8" />
-
-                                <div className="flex-1 space-y-5 mb-8">
-                                    {pkg.features.map((feat, i) => (
-                                        <div key={i} className="flex items-start gap-4 group/item">
-                                            <div className={`mt-0.5 w-5 h-5 rounded-full bg-${pkg.accent}-500/10 flex items-center justify-center border border-${pkg.accent}-500/20 group-hover/item:bg-${pkg.accent}-500/20 transition-colors`}>
-                                                <Check size={12} className={`text-${pkg.accent}-400`} />
-                                            </div>
-                                            <span className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-200 transition-colors">{feat}</span>
-                                        </div>
-                                    ))}
+                                {/* Who for */}
+                                <div className={`p-5 rounded-2xl bg-${tier.color}-500/5 border border-${tier.color}-500/10`}>
+                                    <div className="flex items-center gap-2 text-[10px] text-white/30 uppercase tracking-[0.2em] font-bold mb-3">
+                                        <Users size={12} className={`text-${tier.color}-500/50`} />
+                                        Kim için?
+                                    </div>
+                                    <p className="text-[13px] md:text-sm text-gray-400 leading-snug">
+                                        {tier.forWhom}
+                                    </p>
                                 </div>
 
-                                <button
-                                    onClick={scrollToContact}
-                                    className={`w-full py-4 rounded-lg font-bold uppercase tracking-wider text-xs flex items-center justify-center gap-2 transition-all duration-300 relative overflow-hidden group/btn
-                          ${pkg.pop
-                                            ? 'bg-cyan-500 text-[#030308] hover:bg-cyan-400 hover:shadow-[0_0_30px_rgba(6,182,212,0.4)]'
-                                            : 'bg-white/5 text-white hover:bg-white/10 border border-white/5 hover:border-white/20'
-                                        }
-                      `}
-                                >
-                                    <span className="relative z-10">{t('cta')}</span>
-                                    <ArrowRight size={14} className="relative z-10 group-hover/btn:translate-x-1 transition-transform" />
-                                </button>
+                                {/* Card CTA */}
+                                <a href="#contact" className={`w-full py-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all ${tier.highlight ? `bg-${tier.color}-500 text-black hover:bg-${tier.color}-400 shadow-lg shadow-${tier.color}-500/20` : `bg-white/5 text-white hover:bg-white/10 border border-white/10 group-hover:border-${tier.color}-500/30 group-hover:text-${tier.color}-400 transition-colors`}`}>
+                                    Detayları Konuşalım <ArrowRight size={14} />
+                                </a>
                             </div>
                         </div>
                     ))}
                 </div>
 
-            </div>
+                <div className="mt-24 md:mt-32 text-center max-w-2xl mx-auto border-t border-white/5 pt-16">
+                    <div className="space-y-2 mb-10">
+                        <p className="text-lg md:text-2xl text-white font-medium">Fiyatı değil, doğru sistemi konuşuyoruz.</p>
+                        <p className="text-gray-400 md:text-lg font-light">Detayları projeye göre birlikte netleştiriyoruz.</p>
+                    </div>
 
-            <style jsx>{`
-        .text-shadow-glow {
-            text-shadow: 0 0 10px rgba(6,182,212,0.5);
-        }
-      `}</style>
+                    <div className="space-y-4">
+                        <a href="#contact" className="inline-flex items-center gap-3 px-10 py-5 rounded-2xl bg-cyan-500 text-black font-bold text-lg hover:bg-cyan-400 transition-all hover:scale-105 active:scale-95 shadow-xl shadow-cyan-500/10">
+                            Detayları Konuşalım <ArrowRight size={20} />
+                        </a>
+                        <p className="text-[11px] md:text-xs text-white/30 uppercase tracking-[0.2em] font-bold">
+                            Projenizin hangi seviyede olduğunu birlikte belirleyelim.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
         </section>
     )
 }

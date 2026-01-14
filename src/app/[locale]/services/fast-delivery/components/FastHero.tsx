@@ -39,12 +39,12 @@ export default function FastHero() {
         gsap.fromTo(
           countdownRef.current,
           { opacity: 0, scale: 0.3, rotation: -180 },
-          { 
-            opacity: 1, 
-            scale: 1, 
+          {
+            opacity: 1,
+            scale: 1,
             rotation: 0,
-            duration: 1.2, 
-            ease: 'back.out(2)', 
+            duration: 1.2,
+            ease: 'back.out(2)',
             delay: 0.2
           }
         )
@@ -65,7 +65,7 @@ export default function FastHero() {
         const titleText = titleRef.current.textContent || ''
         titleRef.current.innerHTML = ''
         const words = titleText.split(' ')
-        
+
         words.forEach((word, i) => {
           const span = document.createElement('span')
           span.textContent = word + ' '
@@ -73,7 +73,7 @@ export default function FastHero() {
           span.style.opacity = '0'
           span.style.transform = 'translateY(50px) rotateX(90deg)'
           titleRef.current?.appendChild(span)
-          
+
           gsap.to(span, {
             opacity: 1,
             y: 0,
@@ -89,9 +89,9 @@ export default function FastHero() {
       gsap.fromTo(
         subtitleRef.current,
         { opacity: 0, y: 30, clipPath: 'inset(0 0 100% 0)' },
-        { 
-          opacity: 1, 
-          y: 0, 
+        {
+          opacity: 1,
+          y: 0,
           clipPath: 'inset(0 0 0% 0)',
           duration: 1,
           ease: 'power3.out',
@@ -103,11 +103,11 @@ export default function FastHero() {
       gsap.fromTo(
         ctaRef.current,
         { opacity: 0, y: 20, scale: 0.9 },
-        { 
-          opacity: 1, 
-          y: 0, 
+        {
+          opacity: 1,
+          y: 0,
           scale: 1,
-          duration: 0.8, 
+          duration: 0.8,
           ease: 'back.out(1.2)',
           delay: 1
         }
@@ -117,23 +117,23 @@ export default function FastHero() {
       if (rocketRef.current) {
         gsap.fromTo(
           rocketRef.current,
-          { 
-            opacity: 0, 
-            y: 100, 
+          {
+            opacity: 0,
+            y: 100,
             rotateX: -45,
             rotateY: 15,
             scale: 0.6,
             z: -300
           },
-          { 
-            opacity: 1, 
-            y: 0, 
+          {
+            opacity: 1,
+            y: 0,
             rotateX: 0,
             rotateY: 0,
             scale: 1,
             z: 0,
-            duration: 1.5, 
-            ease: 'power3.out', 
+            duration: 1.5,
+            ease: 'power3.out',
             delay: 0.4
           }
         )
@@ -201,7 +201,7 @@ export default function FastHero() {
       )
 
       // Magnetic button effect
-      const buttons = document.querySelectorAll('.magnetic-button')
+      const buttons = document.querySelectorAll<HTMLElement>('.magnetic-button')
       buttons.forEach((button) => {
         button.addEventListener('mousemove', (e: MouseEvent) => {
           const rect = button.getBoundingClientRect()
@@ -261,7 +261,7 @@ export default function FastHero() {
             {/* Left: Content */}
             <div className="space-y-10 pt-8 max-w-3xl">
               {/* Badge with sparkle */}
-              <div 
+              <div
                 ref={badgeRef}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500/10 via-teal-500/10 to-cyan-500/10 border border-cyan-500/30 text-sm text-cyan-400 font-medium backdrop-blur-md shadow-xl shadow-cyan-500/20 relative overflow-hidden group"
               >
@@ -314,7 +314,7 @@ export default function FastHero() {
 
             {/* Right: Enhanced 3D Rocket Visual */}
             <div className="relative w-full flex items-center justify-center py-12" style={{ perspective: '2000px' }}>
-              <div 
+              <div
                 ref={rocketRef}
                 className="relative w-full max-w-md"
                 style={{ transformStyle: 'preserve-3d' }}
@@ -324,7 +324,7 @@ export default function FastHero() {
                   <div className="w-80 h-[500px] mx-auto">
                     <Rocket className="w-full h-full text-cyan-400 drop-shadow-2xl" />
                   </div>
-                  
+
                   {/* Enhanced Speed Lines with 3D effect */}
                   <div className="absolute inset-0">
                     {[...Array(8)].map((_, i) => (

@@ -17,7 +17,7 @@ const reasons = [
 
 export default function WhoIsNotFor() {
   const t = useTranslations('who_is_not_for_section')
-  const sectionRef = useRef<HTMLSection>(null)
+  const sectionRef = useRef<HTMLElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
   const reasonsRef = useRef<HTMLDivElement>(null)
 

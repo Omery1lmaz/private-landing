@@ -1,22 +1,45 @@
 'use client'
 
-import { CheckSquare, Filter, Search, Star, TrendingUp, BarChart3, Target, Zap } from 'lucide-react'
+import { CheckSquare, Filter } from 'lucide-react'
+import { useState, useEffect } from 'react'
+
+interface Particle {
+  width: number
+  height: number
+  left: string
+  top: string
+  opacity: number
+}
 
 export default function ProjectManagementShowcase() {
+  const [particles, setParticles] = useState<Particle[]>([])
+
+  useEffect(() => {
+    // Generate particles only on client side to avoid hydration mismatch
+    const generatedParticles = Array.from({ length: 80 }, () => ({
+      width: Math.random() * 2 + 0.5,
+      height: Math.random() * 2 + 0.5,
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      opacity: Math.random() * 0.6 + 0.2,
+    }))
+    setParticles(generatedParticles)
+  }, [])
+
   return (
     <section className="relative py-24 px-6 bg-[#0a0a0f] overflow-hidden">
       {/* Starry background effect */}
       <div className="absolute inset-0 opacity-30">
-        {Array.from({ length: 80 }).map((_, i) => (
+        {particles.map((particle, i) => (
           <div
             key={i}
             className="absolute rounded-full bg-white"
             style={{
-              width: Math.random() * 2 + 0.5,
-              height: Math.random() * 2 + 0.5,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              opacity: Math.random() * 0.6 + 0.2,
+              width: particle.width,
+              height: particle.height,
+              left: particle.left,
+              top: particle.top,
+              opacity: particle.opacity,
             }}
           />
         ))}
@@ -55,7 +78,7 @@ export default function ProjectManagementShowcase() {
           <div className="flex items-start justify-end">
             <div className="w-full max-w-2xl rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 p-6 shadow-2xl">
               <h3 className="text-white font-semibold text-lg mb-6">Project Timeline</h3>
-              
+
               {/* Timeline months */}
               <div className="flex gap-3 mb-6 overflow-x-auto pb-3 scrollbar-hide">
                 {['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP'].map((month, idx) => (
@@ -140,18 +163,16 @@ export default function ProjectManagementShowcase() {
                         { status: 'Completed', assignee: 'Mike Johnson', project: 'Mobile App', priority: 'Low', category: 'Development' },
                       ].map((item, i) => (
                         <div key={i} className="grid grid-cols-5 gap-3 text-sm text-gray-300 items-center py-2 hover:bg-white/5 rounded px-2 transition-colors">
-                          <div className={`px-2 py-1 rounded text-xs font-medium inline-block w-fit ${
-                            item.status === 'Active' ? 'bg-green-500/20 text-green-300' :
-                            item.status === 'In Progress' ? 'bg-yellow-500/20 text-yellow-300' :
-                            'bg-blue-500/20 text-blue-300'
-                          }`}>{item.status}</div>
+                          <div className={`px-2 py-1 rounded text-xs font-medium inline-block w-fit ${item.status === 'Active' ? 'bg-green-500/20 text-green-300' :
+                              item.status === 'In Progress' ? 'bg-yellow-500/20 text-yellow-300' :
+                                'bg-blue-500/20 text-blue-300'
+                            }`}>{item.status}</div>
                           <div className="text-sm">{item.assignee}</div>
                           <div className="text-sm">{item.project}</div>
-                          <div className={`px-2 py-1 rounded text-xs font-medium inline-block w-fit ${
-                            item.priority === 'High' ? 'bg-red-500/20 text-red-300' :
-                            item.priority === 'Medium' ? 'bg-yellow-500/20 text-yellow-300' :
-                            'bg-gray-500/20 text-gray-300'
-                          }`}>{item.priority}</div>
+                          <div className={`px-2 py-1 rounded text-xs font-medium inline-block w-fit ${item.priority === 'High' ? 'bg-red-500/20 text-red-300' :
+                              item.priority === 'Medium' ? 'bg-yellow-500/20 text-yellow-300' :
+                                'bg-gray-500/20 text-gray-300'
+                            }`}>{item.priority}</div>
                           <div className="px-2 py-1 rounded bg-blue-500/20 text-blue-300 text-xs font-medium inline-block w-fit">{item.category}</div>
                         </div>
                       ))}
@@ -180,7 +201,7 @@ export default function ProjectManagementShowcase() {
             <h2 className="text-5xl md:text-6xl font-bold text-purple-400 leading-tight">
               Powerful Project Management Tools.
             </h2>
-            
+
             <div className="space-y-5">
               <div className="flex items-start gap-4">
                 <CheckSquare className="w-6 h-6 text-purple-400 mt-1 flex-shrink-0" />

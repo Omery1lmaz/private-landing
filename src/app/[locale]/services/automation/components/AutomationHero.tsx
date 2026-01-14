@@ -1,306 +1,301 @@
 'use client'
 
-import React, { useEffect, useRef } from 'react'
-import { useTranslations } from 'next-intl'
-import { Workflow, ArrowRight, Zap, Sparkles } from 'lucide-react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import React, { useEffect, useRef, useState } from 'react'
+import { useLocale } from 'next-intl'
+import { ArrowRight, Sparkles, Cpu, Link as LinkIcon, Zap, Brain } from 'lucide-react'
+import gsap from 'gsap'
 
-gsap.registerPlugin(ScrollTrigger)
+const ServiceCard = ({ card, index, hoveredIndex, setHoveredIndex }: any) => {
+  const Icon = card.icon
+  const isFocused = hoveredIndex === index
+  const isDimmed = hoveredIndex !== null && !isFocused
+
+  return (
+    <div
+      onMouseEnter={() => setHoveredIndex(index)}
+      onMouseLeave={() => setHoveredIndex(null)}
+      className={`
+                animate-target group relative w-full h-full transition-all duration-700 ease-out
+                ${isDimmed ? 'opacity-30 blur-[2px] scale-[0.96]' : 'opacity-100 scale-100'}
+                ${isFocused ? 'z-30' : 'z-10'}
+            `}
+    >
+      {/* --- Animated Flowing Border --- */}
+      <div className={`
+                absolute -inset-[1px] rounded-[24px] overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-700
+                bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent
+            `}>
+        <div className="absolute inset-0 animate-[shimmer_3s_infinite] bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full" />
+      </div>
+
+      {/* --- Main Card Body --- */}
+      <div className={`
+                relative flex flex-col bg-[#080b12]/60 backdrop-blur-3xl rounded-[23px] p-6 border border-white/[0.05] shadow-2xl 
+                transition-all duration-700 group-hover:-translate-y-2 group-hover:bg-[#0c121d]/90 group-hover:border-white/[0.15]
+                group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.5),0_0_20px_rgba(6,182,212,0.1)]
+                h-full min-h-[180px] justify-between
+            `}>
+        {/* Internal Inner Glow */}
+        <div className="absolute inset-0 rounded-[23px] bg-gradient-to-br from-white/[0.02] to-transparent pointer-events-none" />
+
+        <div>
+          {/* Card Top Row: Icon */}
+          <div className="relative flex items-center justify-between mb-4">
+            <div className="w-10 h-10 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center transition-all duration-700 group-hover:scale-110 group-hover:rotate-[10deg] group-hover:border-cyan-500/40 group-hover:bg-cyan-500/10 shadow-inner">
+              <Icon size={20} className={`transition-colors duration-700 ${isFocused ? 'text-cyan-400' : 'text-gray-400'}`} strokeWidth={1.5} />
+            </div>
+          </div>
+
+          {/* Card Content */}
+          <div className="space-y-2">
+            <h3 className="text-base font-bold text-white tracking-tight group-hover:text-cyan-50 transition-colors">
+              {card.title}
+            </h3>
+            <div className="h-[1px] w-8 bg-white/[0.1] group-hover:w-full transition-all duration-700 bg-gradient-to-r from-cyan-500/50 to-transparent" />
+
+            <p className="text-sm font-medium text-gray-400 leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
+              {card.text}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export default function AutomationHero() {
-  const t = useTranslations('automation.hero')
-  const rootRef = useRef<HTMLDivElement | null>(null)
-  const workflowRef = useRef<HTMLDivElement | null>(null)
-  const titleRef = useRef<HTMLHeadingElement | null>(null)
-  const subtitleRef = useRef<HTMLParagraphElement | null>(null)
-  const ctaRef = useRef<HTMLDivElement | null>(null)
-  const badgeRef = useRef<HTMLDivElement | null>(null)
+  const locale = useLocale()
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
+
+  const content = {
+    tr: {
+      badge: "Sınırsız İş Gücü Otomasyonu",
+      titlePart1: "Operasyonlarınızı",
+      titleHighlight: "Otonomlaştırın",
+      subtitle: "Manuel süreçleri geride bırakın. AI destekli ajanlar ve akıllı entegrasyonlarla 7/24 kesintisiz çalışan sistemler inşa ediyoruz.",
+      support: "Hata oranını sıfırlayan, verimliliği %200 artıran otonom mimari.",
+      ctaButton: "Otomasyonu Başlatın",
+      ctaMicro: "Süreç analizi ve verimlilik raporu için iletişime geçin.",
+      cards: [
+        {
+          title: "Workflow Intelligence",
+          text: "Karmaşık iş akışlarını AI ile analiz edip optimize ediyoruz.",
+          icon: Brain
+        },
+        {
+          title: "API Ecosystem",
+          text: "Farklı yazılımlarınızı tek bir otonom yapı altında birleştirin.",
+          icon: LinkIcon
+        },
+        {
+          title: "Agentic AI",
+          text: "Karar verebilen ve işlem yapabilen dijital çalışanlar.",
+          icon: Cpu
+        },
+        {
+          title: "Real-time Operations",
+          text: "Gecikmesiz, anlık veri işleme ve aksiyon alma kapasitesi.",
+          icon: Zap
+        }
+      ]
+    },
+    en: {
+      badge: "Infinite Workforce Automation",
+      titlePart1: "Autonomous",
+      titleHighlight: "Operations",
+      subtitle: "Leave manual processes behind. We build 24/7 seamless systems with AI agents and smart integrations.",
+      support: "Autonomous architecture that eliminates errors and boosts efficiency by 200%.",
+      ctaButton: "Start Automation",
+      ctaMicro: "Contact us for a process analysis and efficiency report.",
+      cards: [
+        {
+          title: "Workflow Intelligence",
+          text: "AI analyzes and optimizes your complex business workflows.",
+          icon: Brain
+        },
+        {
+          title: "API Ecosystem",
+          text: "Connect your diverse software under a single autonomous structure.",
+          icon: LinkIcon
+        },
+        {
+          title: "Agentic AI",
+          text: "Digital workers that can make decisions and take actions.",
+          icon: Cpu
+        },
+        {
+          title: "Real-time Operations",
+          text: "Instant data processing and action-taking with zero lag.",
+          icon: Zap
+        }
+      ]
+    }
+  }
+
+  const text = content[locale as keyof typeof content] || content.en
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePos({
+        x: (e.clientX / window.innerWidth - 0.5) * 20,
+        y: (e.clientY / window.innerHeight - 0.5) * 20
+      })
+    }
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline()
+
+      tl.fromTo(".aurora-beam", {
+        opacity: 0,
+        scaleY: 0
+      }, {
+        opacity: 0.6,
+        scaleY: 1,
+        duration: 2,
+        stagger: 0.2,
+        ease: "power3.out"
+      }, 0)
+
+      tl.from(".animate-target", {
+        y: 40,
+        opacity: 0,
+        duration: 1.4,
+        stagger: 0.1,
+        ease: "power4.out",
+        clearProps: "all"
+      }, 0.5)
+
+    }, containerRef)
+    return () => ctx.revert()
+  }, [])
 
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact')
     contactSection?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Badge animation
-      if (badgeRef.current) {
-        gsap.fromTo(
-          badgeRef.current,
-          { opacity: 0, scale: 0.8, y: -20 },
-          { opacity: 1, scale: 1, y: 0, duration: 0.8, ease: 'back.out(1.7)' }
-        )
-      }
-
-      // Title split text animation
-      if (titleRef.current) {
-        const titleText = titleRef.current.textContent || ''
-        titleRef.current.innerHTML = ''
-        const words = titleText.split(' ')
-        
-        words.forEach((word, i) => {
-          const span = document.createElement('span')
-          span.textContent = word + ' '
-          span.style.display = 'inline-block'
-          span.style.opacity = '0'
-          span.style.transform = 'translateY(50px) rotateX(90deg)'
-          titleRef.current?.appendChild(span)
-          
-          gsap.to(span, {
-            opacity: 1,
-            y: 0,
-            rotationX: 0,
-            duration: 0.8,
-            delay: 0.1 * i,
-            ease: 'power3.out',
-          })
-        })
-      }
-
-      // Subtitle animation
-      gsap.fromTo(
-        subtitleRef.current,
-        { opacity: 0, y: 30, clipPath: 'inset(0 0 100% 0)' },
-        { 
-          opacity: 1, 
-          y: 0, 
-          clipPath: 'inset(0 0 0% 0)',
-          duration: 1,
-          ease: 'power3.out',
-          delay: 0.4
-        }
-      )
-
-      // CTA animation
-      gsap.fromTo(
-        ctaRef.current,
-        { opacity: 0, y: 20, scale: 0.9 },
-        { 
-          opacity: 1, 
-          y: 0, 
-          scale: 1,
-          duration: 0.8, 
-          ease: 'back.out(1.2)',
-          delay: 0.6
-        }
-      )
-
-      // Workflow diagram with enhanced 3D animation
-      if (workflowRef.current) {
-        gsap.fromTo(
-          workflowRef.current,
-          { opacity: 0, scale: 0.7, rotateY: -30 },
-          { 
-            opacity: 1, 
-            scale: 1, 
-            rotateY: 0,
-            duration: 1.5, 
-            ease: 'power3.out', 
-            delay: 0.3
-          }
-        )
-
-        // Animate connecting lines with draw effect
-        gsap.fromTo(
-          '.workflow-line',
-          { scaleX: 0, opacity: 0 },
-          {
-            scaleX: 1,
-            opacity: 1,
-            duration: 1.2,
-            stagger: 0.25,
-            ease: 'power2.out',
-            delay: 0.8,
-          }
-        )
-
-        // Animate nodes with 3D rotation
-        gsap.fromTo(
-          '.workflow-node',
-          { opacity: 0, scale: 0, rotation: -180, z: -200 },
-          {
-            opacity: 1,
-            scale: 1,
-            rotation: 0,
-            z: 0,
-            duration: 0.9,
-            stagger: 0.2,
-            ease: 'back.out(2)',
-            delay: 1,
-          }
-        )
-
-        // Continuous node pulse
-        gsap.to('.workflow-node', {
-          scale: 1.05,
-          repeat: -1,
-          yoyo: true,
-          duration: 2,
-          stagger: 0.3,
-          ease: 'sine.inOut',
-        })
-
-        // Parallax on scroll
-        gsap.to(workflowRef.current, {
-          y: -30,
-          rotateY: 5,
-          scrollTrigger: {
-            trigger: rootRef.current,
-            start: 'top top',
-            end: 'bottom top',
-            scrub: 1.5,
-          },
-        })
-      }
-
-      // Magnetic button effect
-      const buttons = document.querySelectorAll('.magnetic-button')
-      buttons.forEach((button) => {
-        button.addEventListener('mousemove', (e: MouseEvent) => {
-          const rect = button.getBoundingClientRect()
-          const x = e.clientX - rect.left - rect.width / 2
-          const y = e.clientY - rect.top - rect.height / 2
-
-          gsap.to(button, {
-            x: x * 0.3,
-            y: y * 0.3,
-            duration: 0.3,
-            ease: 'power2.out',
-          })
-        })
-
-        button.addEventListener('mouseleave', () => {
-          gsap.to(button, {
-            x: 0,
-            y: 0,
-            duration: 0.5,
-            ease: 'elastic.out(1, 0.5)',
-          })
-        })
-      })
-    }, rootRef)
-
-    return () => ctx.revert()
-  }, [])
-
   return (
-    <header ref={rootRef} className="bg-gradient-to-b min-h-screen from-[#030308] via-[#030308] to-[#030308] py-20 relative overflow-hidden">
-      {/* Enhanced Ambient glow effects */}
-      <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-cyan-500/25 rounded-full blur-[200px] pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-[700px] h-[700px] bg-purple-500/20 rounded-full blur-[180px] pointer-events-none" />
-      <div className="absolute top-1/2 right-0 w-[600px] h-[600px] bg-cyan-500/15 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-1/3 left-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
+    <header ref={containerRef} className="relative bg-transparent min-h-screen flex items-center justify-center overflow-hidden">
 
-      {/* Animated Grid Pattern */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.03]"
-        style={{
-          backgroundImage: 'linear-gradient(rgba(139, 92, 246, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(6, 182, 212, 0.1) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
-        }}
-      />
+      {/* --- LUXURY BACKGROUND --- */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* 1. Perspective Grid Floor */}
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: `
+                            linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
+                        `,
+            backgroundSize: '60px 60px',
+            transform: 'perspective(1000px) rotateX(60deg) translateY(200px) scale(2.5)',
+            transformOrigin: 'center bottom',
+            maskImage: 'linear-gradient(to top, black 20%, transparent 80%)'
+          }}
+        />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center min-h-[90vh]">
-            {/* Left: Content */}
-            <div className="space-y-10 pt-8 max-w-3xl">
-              {/* Badge with sparkle */}
-              <div 
-                ref={badgeRef}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-cyan-500/10 border border-cyan-500/30 text-sm text-cyan-400 font-medium backdrop-blur-md shadow-xl shadow-cyan-500/20 relative overflow-hidden group"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                <Sparkles className="w-4 h-4 relative z-10" />
-                <span className="relative z-10">{t('badge')}</span>
+        {/* 2. Aurora Light Beams */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="aurora-beam absolute top-0 -left-20 w-[300px] h-[120vh] bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent blur-3xl rotate-[15deg] origin-top" />
+          <div className="aurora-beam absolute top-0 left-1/3 w-[400px] h-[120vh] bg-gradient-to-r from-transparent via-blue-600/10 to-transparent blur-3xl rotate-[25deg] origin-top" />
+          <div className="aurora-beam absolute top-0 right-1/4 w-[350px] h-[120vh] bg-gradient-to-r from-transparent via-teal-500/10 to-transparent blur-3xl -rotate-[10deg] origin-top" />
+        </div>
+
+        {/* 3. Original Orbs Refined */}
+        <div
+          className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-cyan-500/5 rounded-full blur-[150px] opacity-30 mix-blend-screen transition-transform duration-[2000ms] ease-out"
+          style={{ transform: `translate(${mousePos.x * -1}px, ${mousePos.y * -1}px)` }}
+        />
+        <div
+          className="absolute bottom-0 right-1/4 w-[700px] h-[700px] bg-blue-600/5 rounded-full blur-[130px] opacity-30 mix-blend-screen transition-transform duration-[2000ms] ease-out"
+          style={{ transform: `translate(${mousePos.x * 0.8}px, ${mousePos.y * 0.8}px)` }}
+        />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10 py-24 lg:py-0">
+        <div className="container mx-auto px-6 relative z-10 pt-20">
+          <div className="grid lg:grid-cols-[1.2fr_1fr] items-center gap-12 xl:gap-20">
+
+            {/* LEFT COLUMN: Text Content */}
+            <div className="flex flex-col items-start text-left max-w-2xl">
+              <div className="animate-target inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/[0.03] border border-white/[0.08] backdrop-blur-xl mb-8 hover:border-cyan-500/30 transition-all cursor-default">
+                <Sparkles size={14} className="text-cyan-400" />
+                <span className="text-[10px] font-black text-white/80 tracking-[0.2em] uppercase">{text.badge}</span>
               </div>
 
-              {/* Main Title */}
-              <h1
-                ref={titleRef}
-                className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] mb-8 text-white"
-                style={{ perspective: '1000px' }}
-              >
-                <span className="bg-gradient-to-r from-white via-cyan-100 via-purple-100 to-white bg-clip-text text-transparent">
-                  {t('title')}
+              <h1 className="animate-target text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-bold text-white tracking-[-0.02em] leading-[1.1] mb-8 drop-shadow-2xl">
+                <span className="block mb-3 opacity-90">{text.titlePart1}</span>
+                <span className="relative inline-block">
+                  <span className="absolute -inset-2 blur-2xl bg-cyan-500/20 rounded-full" />
+                  <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-teal-200 to-blue-400 animate-[gradient_6s_linear_infinite] bg-[length:300%_auto]">
+                    {text.titleHighlight}
+                  </span>
                 </span>
               </h1>
 
-              {/* Subtitle */}
-              <p
-                ref={subtitleRef}
-                className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-2xl mb-12"
-              >
-                {t('subtitle')}
+              <p className="animate-target text-base lg:text-lg text-gray-400/90 leading-relaxed mb-6 font-medium max-w-xl">
+                {text.subtitle}
               </p>
 
-              {/* CTAs with magnetic effect */}
-              <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4">
+              <p className="animate-target text-sm text-cyan-300/80 font-medium tracking-wide mb-8 border-l-2 border-cyan-500/30 pl-4 py-1">
+                {text.support}
+              </p>
+
+              <div className="animate-target flex flex-col sm:flex-row items-center gap-6">
                 <button
                   onClick={scrollToContact}
-                  className="magnetic-button group relative bg-gradient-to-r from-cyan-500 via-purple-500 to-cyan-500 hover:from-cyan-400 hover:via-purple-400 hover:to-cyan-400 text-white font-bold px-12 py-6 rounded-2xl text-lg md:text-xl transition-all duration-300 shadow-2xl shadow-cyan-500/40 hover:shadow-cyan-500/60 overflow-hidden"
+                  className="w-full sm:w-auto group relative bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-semibold px-8 py-4 rounded-xl text-sm transition-all duration-300 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:-translate-y-0.5 flex items-center justify-center gap-3"
                 >
-                  <span className="relative z-10 flex items-center gap-3">
-                    {t('cta_primary')}
-                    <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                  {text.ctaButton}
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
+
+                <span className="text-[13px] text-gray-400 font-medium opacity-70">
+                  {text.ctaMicro}
+                </span>
               </div>
             </div>
 
-            {/* Right: Enhanced 3D Workflow Diagram */}
-            <div className="relative w-full flex items-center justify-center py-12" style={{ perspective: '2000px' }}>
-              <div 
-                ref={workflowRef}
-                className="relative w-full max-w-lg"
-                style={{ transformStyle: 'preserve-3d' }}
-              >
-                {/* Workflow Nodes with 3D effect */}
-                <div className="relative h-[550px]">
-                  {/* Node 1 - Top */}
-                  <div className="workflow-node absolute top-0 left-1/2 -translate-x-1/2 w-28 h-28 rounded-3xl bg-gradient-to-br from-cyan-500 via-cyan-600 to-cyan-700 flex items-center justify-center shadow-2xl shadow-cyan-500/50 relative">
-                    <Workflow className="w-12 h-12 text-white drop-shadow-lg relative z-10" />
-                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-cyan-600 opacity-50 blur-xl rounded-3xl" />
-                  </div>
-
-                  {/* Line 1 */}
-                  <div className="workflow-line absolute top-28 left-1/2 -translate-x-1/2 w-1.5 h-36 bg-gradient-to-b from-cyan-500 via-purple-500 to-cyan-500 origin-top shadow-lg shadow-cyan-500/30" />
-
-                  {/* Node 2 - Left */}
-                  <div className="workflow-node absolute top-36 left-1/4 -translate-x-1/2 w-24 h-24 rounded-2xl bg-gradient-to-br from-purple-500 via-purple-600 to-purple-700 flex items-center justify-center shadow-2xl shadow-purple-500/50 relative">
-                    <Zap className="w-10 h-10 text-white drop-shadow-lg relative z-10" />
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-purple-600 opacity-50 blur-xl rounded-2xl" />
-                  </div>
-
-                  {/* Node 3 - Right */}
-                  <div className="workflow-node absolute top-36 right-1/4 translate-x-1/2 w-24 h-24 rounded-2xl bg-gradient-to-br from-cyan-500 via-teal-500 to-cyan-600 flex items-center justify-center shadow-2xl shadow-cyan-500/50 relative">
-                    <Workflow className="w-10 h-10 text-white drop-shadow-lg relative z-10" />
-                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-teal-500 opacity-50 blur-xl rounded-2xl" />
-                  </div>
-
-                  {/* Lines 2 */}
-                  <div className="workflow-line absolute top-60 left-1/4 -translate-x-1/2 w-1.5 h-40 bg-gradient-to-b from-purple-500 via-cyan-500 to-purple-500 origin-top shadow-lg shadow-purple-500/30" />
-                  <div className="workflow-line absolute top-60 right-1/4 translate-x-1/2 w-1.5 h-40 bg-gradient-to-b from-cyan-500 via-purple-500 to-cyan-500 origin-top shadow-lg shadow-cyan-500/30" />
-
-                  {/* Node 4 - Bottom */}
-                  <div className="workflow-node absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-32 rounded-3xl bg-gradient-to-br from-purple-500 via-cyan-500 via-teal-500 to-purple-500 flex items-center justify-center shadow-2xl shadow-purple-500/50 relative">
-                    <Zap className="w-14 h-14 text-white drop-shadow-lg relative z-10" />
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-400 via-cyan-400 to-teal-400 opacity-50 blur-2xl rounded-3xl" />
-                  </div>
-                </div>
-
-                {/* Enhanced Glow Effects */}
-                <div className="absolute -top-16 -right-16 w-48 h-48 bg-cyan-500/30 rounded-full blur-3xl pointer-events-none" />
-                <div className="absolute -bottom-16 -left-16 w-56 h-56 bg-purple-500/30 rounded-full blur-3xl pointer-events-none" />
-                <div className="absolute top-1/2 -right-20 w-40 h-40 bg-cyan-500/25 rounded-full blur-2xl pointer-events-none" />
-              </div>
+            {/* RIGHT COLUMN: Service Matrix Grid */}
+            <div
+              className="animate-target grid grid-cols-1 sm:grid-cols-2 gap-4 perspective-[2000px]"
+              style={{ transformStyle: 'preserve-3d' }}
+            >
+              {text.cards.map((card, i) => (
+                <ServiceCard
+                  key={i}
+                  card={card}
+                  index={i}
+                  hoveredIndex={hoveredIndex}
+                  setHoveredIndex={setHoveredIndex}
+                />
+              ))}
             </div>
+
           </div>
         </div>
       </div>
+
+      {/* Bottom Tech Fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#020408] to-transparent pointer-events-none" />
+
+      <style jsx>{`
+                @keyframes gradient {
+                    0% { background-position: 0% 50%; }
+                    50% { background-position: 100% 50%; }
+                    100% { background-position: 0% 50%; }
+                }
+                @keyframes shimmer {
+                    0% { transform: translateX(-100%); }
+                    100% { transform: translateX(100%); }
+                }
+            `}</style>
     </header>
   )
 }

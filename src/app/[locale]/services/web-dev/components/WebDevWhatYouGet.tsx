@@ -1,243 +1,224 @@
 'use client'
 
-import React, { useEffect, useRef, useState, useCallback } from 'react'
-import { useTranslations } from 'next-intl'
-import { Zap, Search, Smartphone, Target, TrendingUp, Layers, Bot, Cpu, Sparkles } from 'lucide-react'
+import React, { useEffect, useRef, useState } from 'react'
+import { MessageSquare, Bot, LayoutDashboard, Link2, GitMerge, ArrowRight, Sparkles, Activity, Layers } from 'lucide-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import FeatureVisual from './FeatureVisual'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function WebDevWhatYouGet() {
-    const t = useTranslations('web_dev.what_you_get')
     const sectionRef = useRef<HTMLElement>(null)
-    const containerRef = useRef<HTMLDivElement>(null)
-    const hubRef = useRef<HTMLDivElement>(null)
-    const cardRefs = useRef<(HTMLDivElement | null)[]>([])
-    const [lines, setLines] = useState<{ id: string, d: string }[]>([])
+    const [activeIndex, setActiveIndex] = useState(0)
 
-    const benefits = [
-        { icon: Zap, text: t('benefit1'), stat: '99%', label: 'Performance', color: 'text-amber-400', glow: 'shadow-amber-500/20' },
-        { icon: Search, text: t('benefit2'), stat: '+45%', label: 'Traffic', color: 'text-cyan-400', glow: 'shadow-cyan-500/20' },
-        { icon: Smartphone, text: t('benefit3'), stat: '100%', label: 'Mobile', color: 'text-indigo-400', glow: 'shadow-indigo-500/20' },
-        { icon: Target, text: t('benefit4'), stat: '3.5x', label: 'Conv.', color: 'text-emerald-400', glow: 'shadow-emerald-500/20' },
-        { icon: TrendingUp, text: t('benefit5'), stat: '24/7', label: 'Uptime', color: 'text-teal-400', glow: 'shadow-teal-500/20' },
-        { icon: Layers, text: t('benefit2'), stat: 'Modern', label: 'Stack', color: 'text-violet-400', glow: 'shadow-violet-500/20' },
-        { icon: Bot, text: t('benefit3'), stat: 'Auto', label: 'Scale', color: 'text-pink-400', glow: 'shadow-pink-500/20' },
-        { icon: Cpu, text: t('benefit4'), stat: '<50ms', label: 'Fast', color: 'text-blue-400', glow: 'shadow-blue-500/20' },
+    const features = [
+        {
+            id: 'comms',
+            icon: MessageSquare,
+            title: "Akıllı Müşteri İletişimi",
+            tagline: "Tüm talepler tek yerde, doğru kişiye otomatik.",
+            desc: "Web sitesi, formlar ve WhatsApp üzerinden gelen müşteri mesajları tek merkezde toplanır. Sistem, talebin konusunu algılar ve satış, destek veya ilgili birime otomatik yönlendirir.",
+            results: ["Daha hızlı dönüş", "Daha az kaçan müşteri", "Daha az manuel iş"],
+            color: 'cyan',
+            tech: "Auto-Routing Node"
+        },
+        {
+            id: 'ai',
+            icon: Bot,
+            title: "AI Destekli Yardımcılar",
+            tagline: "Sorular cevaplanır, ekibiniz rahatlar.",
+            desc: "Tekrarlayan müşteri soruları 7/24 otomatik yanıtlanır. Ekibiniz gerçekten değer katan işlere odaklanır.",
+            results: ["Operasyonel yük azalır", "Müşteri memnuniyeti artar", "İnsan hatası düşer"],
+            color: 'purple',
+            tech: "NLP Processing"
+        },
+        {
+            id: 'panel',
+            icon: LayoutDashboard,
+            title: "Yönetilebilir Paneller",
+            tagline: "Veri dağınık değil, kontrol sizde.",
+            desc: "Karmaşık admin ekranları yerine, gerçekten kullanılan paneller tasarlarız. İçerik, talepler ve süreçler tek bir yerden izlenir.",
+            results: ["Netlik", "Daha hızlı karar alma", "Operasyonel düzen"],
+            color: 'blue',
+            tech: "Admin Interface"
+        },
+        {
+            id: 'integration',
+            icon: Link2,
+            title: "Entegre Çalışan Sistemler",
+            tagline: "Araçlar ayrı ayrı değil, birlikte çalışır.",
+            desc: "CRM, ödeme sistemleri, e-posta servisleri ve kullandığınız diğer araçlar birbiriyle konuşur. Manuel kopyala–yapıştır süreçleri ortadan kalkar.",
+            results: ["Zaman tasarrufu", "Daha az hata", "Daha akıcı operasyon"],
+            color: 'emerald',
+            tech: "API Gateway"
+        },
+        {
+            id: 'flow',
+            icon: GitMerge,
+            title: "Size Özel Akışlar",
+            tagline: "Standart işler standart değildir.",
+            desc: "“Bizim işimiz farklı” dediğiniz noktalar sorun yaratmaz. Tam tersine, sistemin nasıl kurgulanacağını belirler.",
+            results: ["İş modelinize birebir uyum", "Gelecekte büyümeye açık yapı", "Kontrol tamamen sizde"],
+            color: 'orange',
+            tech: "Custom Logic"
+        }
     ]
-
-    const mid = Math.ceil(benefits.length / 2)
-    const leftItems = benefits.slice(0, mid)
-    const rightItems = benefits.slice(mid)
-
-    const updateLines = useCallback(() => {
-        if (!containerRef.current || !hubRef.current) return
-
-        const containerRect = containerRef.current.getBoundingClientRect()
-        const hubRect = hubRef.current.getBoundingClientRect()
-        const hubCenterX = hubRect.left + hubRect.width / 2 - containerRect.left
-        const hubCenterY = hubRect.top + hubRect.height / 2 - containerRect.top
-
-        const newLines: { id: string; d: string }[] = []
-
-        cardRefs.current.forEach((card, index) => {
-            if (!card) return
-            const cardRect = card.getBoundingClientRect()
-            const isLeft = index < mid
-
-            let startX, startY, endX, endY, cp1X, cp1Y, cp2X, cp2Y
-
-            // Calculate connection points
-            if (isLeft) {
-                startX = cardRect.right - containerRect.left
-                startY = cardRect.top + cardRect.height / 2 - containerRect.top
-                endX = hubCenterX - 50 // Connect to hub radius
-                endY = hubCenterY
-                cp1X = startX + 60
-                cp1Y = startY
-                cp2X = endX - 60
-                cp2Y = endY
-            } else {
-                startX = cardRect.left - containerRect.left
-                startY = cardRect.top + cardRect.height / 2 - containerRect.top
-                endX = hubCenterX + 50
-                endY = hubCenterY
-                cp1X = startX - 60
-                cp1Y = startY
-                cp2X = endX + 60
-                cp2Y = endY
-            }
-
-            const pathData = `M ${startX} ${startY} C ${cp1X} ${cp1Y}, ${cp2X} ${cp2Y}, ${endX} ${endY}`
-            newLines.push({ id: `line-${index}`, d: pathData })
-        })
-
-        setLines(newLines)
-    }, [mid])
-
-    useEffect(() => {
-        updateLines()
-        window.addEventListener('resize', updateLines)
-        return () => window.removeEventListener('resize', updateLines)
-    }, [updateLines])
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            // Animate Header
-            gsap.fromTo('.header-animate',
-                { opacity: 0, y: 30 },
-                { opacity: 1, y: 0, duration: 1, stagger: 0.2, scrollTrigger: { trigger: sectionRef.current, start: 'top 80%' } }
+            gsap.fromTo('.feature-list-item',
+                { x: -50, opacity: 0 },
+                {
+                    x: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    stagger: 0.1,
+                    scrollTrigger: { trigger: sectionRef.current, start: 'top 70%' }
+                }
             )
 
-            // Animate Cards
-            gsap.fromTo('.card-animate',
-                { opacity: 0, scale: 0.8 },
-                { opacity: 1, scale: 1, duration: 0.6, stagger: { amount: 0.5, from: "center" }, scrollTrigger: { trigger: containerRef.current, start: 'top 75%' } }
+            gsap.fromTo('.visual-panel',
+                { opacity: 0, x: 50 },
+                {
+                    opacity: 1,
+                    x: 0,
+                    duration: 1,
+                    scrollTrigger: { trigger: sectionRef.current, start: 'top 70%' }
+                }
             )
-
         }, sectionRef)
         return () => ctx.revert()
     }, [])
 
+
     return (
-        <section ref={sectionRef} className="relative py-32 bg-[#030308] overflow-hidden">
-            {/* Grid background */}
-            <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                    backgroundImage: `
-            linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
-          `,
-                    backgroundSize: '50px 50px',
-                }}
-            />
+        <section ref={sectionRef} className="relative py-32 bg-[#020406] overflow-hidden min-h-[900px] flex items-center">
 
-            {/* Ambient glow effects */}
-            <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[150px] pointer-events-none" />
-            <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-teal-500/10 rounded-full blur-[120px] pointer-events-none" />
+            {/* Background */}
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute inset-0 opacity-[0.05]"
+                    style={{
+                        backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+                        backgroundSize: '30px 30px'
+                    }}
+                />
 
-            <div className="container mx-auto px-4 relative z-10">
+                <div
+                    className={`absolute top-0 right-0 w-[800px] h-[800px] rounded-full blur-[150px] opacity-20 transition-colors duration-1000 ease-in-out
+                    ${features[activeIndex].color === 'cyan' ? 'bg-cyan-600' :
+                            features[activeIndex].color === 'purple' ? 'bg-purple-600' :
+                                features[activeIndex].color === 'blue' ? 'bg-blue-600' :
+                                    features[activeIndex].color === 'emerald' ? 'bg-emerald-600' : 'bg-orange-600'
+                        }`}
+                />
+            </div>
 
-                {/* Modern Header */}
-                <div className="text-center mb-24 max-w-3xl mx-auto space-y-6">
-                    <div className="header-animate inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
-                        <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-                        <span className="text-sm font-medium text-gray-300">Core Value Proposition</span>
+            <div className="container mx-auto px-6 relative z-10">
+
+                <div className="text-center mb-16 md:hidden">
+                    <div className="inline-block px-3 py-1 mb-4 rounded-full bg-cyan-500/10 border border-cyan-500/20">
+                        <span className="text-xs font-bold text-cyan-400 tracking-widest uppercase">Gerçek Kazanım</span>
                     </div>
-                    <h2 className="header-animate text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
-                        {t('title')}
-                    </h2>
-                    <p className="header-animate text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                        {t('subtitle')}
+                    <h2 className="text-3xl font-bold text-white mb-4">Bu Sistem Size Ne Kazandırır?</h2>
+                    <p className="text-gray-400 text-sm leading-relaxed">
+                        Teknik detaylar arka planda kalır. Siz işinizin daha düzenli, daha hızlı ve daha kontrol edilebilir hale geldiğini görürsünüz.
                     </p>
                 </div>
 
-                {/* System Visualization */}
-                <div ref={containerRef} className="relative max-w-7xl mx-auto min-h-[600px] hidden md:flex items-center justify-between px-8">
+                <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
 
-                    {/* Animated Connecting Lines */}
-                    <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
-                        <defs>
-                            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" stopColor="rgba(6,182,212,0.1)" />
-                                <stop offset="50%" stopColor="rgba(6,182,212,0.5)" />
-                                <stop offset="100%" stopColor="rgba(6,182,212,0.1)" />
-                            </linearGradient>
-                        </defs>
-                        {lines.map((line) => (
-                            <g key={line.id}>
-                                {/* Base Line */}
-                                <path d={line.d} stroke="url(#lineGradient)" strokeWidth="1" fill="none" className="opacity-30" />
-                                {/* Animated Pulse */}
-                                <path d={line.d} stroke="#22d3ee" strokeWidth="2" fill="none" strokeDasharray="10 100" className="animate-[dash_3s_linear_infinite]" strokeLinecap="round" />
-                            </g>
-                        ))}
-                    </svg>
+                    {/* LEFT: Interactive List */}
+                    <div className="lg:col-span-5 flex flex-col gap-4">
+                        <div className="hidden lg:block mb-10 px-2 space-y-4">
+                            <div className="flex items-center gap-2">
+                                <Sparkles size={16} className="text-cyan-400" />
+                                <span className="text-xs font-bold text-cyan-400 tracking-[0.2em] uppercase">Gerçek Kazanım</span>
+                            </div>
+                            <h2 className="text-4xl font-bold text-white">Bu Sistem Size Ne Kazandırır?</h2>
+                            <p className="text-gray-400 text-base leading-relaxed max-w-lg">
+                                Teknik detaylar arka planda kalır. Siz işinizin daha düzenli, daha hızlı ve daha kontrol edilebilir hale geldiğini görürsünüz.
+                            </p>
+                        </div>
 
-                    {/* Left Column Cards */}
-                    <div className="flex flex-col gap-5 z-10 w-[300px]">
-                        {leftItems.map((item, i) => (
-                            <div key={i} ref={(el) => { cardRefs.current[i] = el }} className="card-animate group relative pl-4 transition-all duration-300 hover:-translate-x-2">
-                                <div className="absolute top-1/2 -right-2 w-2 h-2 bg-cyan-500/50 rounded-full" />
-                                <div className={`p-4 rounded-xl bg-[#111] border border-white/5 hover:border-cyan-500/30 transition-all duration-300 flex items-center justify-between shadow-lg ${item.glow}`}>
+                        {features.map((item, i) => (
+                            <div
+                                key={i}
+                                onMouseEnter={() => setActiveIndex(i)}
+                                onClick={() => setActiveIndex(i)}
+                                className={`feature-list-item group relative p-4 rounded-xl border transition-all duration-500 cursor-pointer overflow-hidden
+                                    ${activeIndex === i
+                                        ? 'bg-white/[0.12] border-white/30 shadow-[0_0_40px_rgba(0,0,0,0.5)] translate-x-3'
+                                        : 'bg-transparent border-transparent hover:bg-white/[0.04] hover:border-white/10'
+                                    }
+                                `}
+                            >
+                                {activeIndex === i && (
+                                    <>
+                                        <div className={`absolute left-0 top-0 bottom-0 w-1.5 bg-${item.color}-400 shadow-[0_0_20px_${item.color}] z-20`} />
+                                        <div className={`absolute inset-0 bg-gradient-to-r from-${item.color}-500/10 to-transparent opacity-40`} />
+                                    </>
+                                )}
+
+                                <div className="flex items-center justify-between relative z-10 mb-2">
                                     <div className="flex items-center gap-3">
-                                        <div className={`p-2 rounded-lg bg-white/5 ${item.color}`}>
-                                            <item.icon size={18} />
+                                        <div className={`
+                                            w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-500
+                                            ${activeIndex === i ? `bg-${item.color}-500/20 text-${item.color}-400` : 'bg-white/5 text-gray-500'}
+                                        `}>
+                                            <item.icon size={16} />
                                         </div>
-                                        <span className="text-sm font-semibold text-gray-200">{item.text}</span>
+                                        <h3 className={`text-base font-bold transition-colors ${activeIndex === i ? 'text-white' : 'text-gray-400'}`}>
+                                            {item.title}
+                                        </h3>
                                     </div>
-                                    <span className={`text-xs font-mono font-bold px-2 py-1 rounded bg-white/5 ${item.color}`}>{item.stat}</span>
+                                    {activeIndex === i && (
+                                        <ArrowRight size={14} className={`text-${item.color}-400 animate-pulse`} />
+                                    )}
+                                </div>
+
+                                <div className={`relative z-10 pl-11 space-y-3 overflow-hidden transition-all duration-500 ${activeIndex === i ? 'max-h-[500px] opacity-100 mt-2' : 'max-h-0 opacity-0'}`}>
+                                    <p className="text-sm font-medium text-cyan-400/90">{item.tagline}</p>
+                                    <p className="text-sm text-gray-300 leading-relaxed">{item.desc}</p>
+
+                                    <div className="pt-4 border-t border-white/5 mt-4">
+                                        <div className={`
+                                            inline-flex items-center gap-2 px-3 py-1 rounded-full
+                                            bg-${item.color}-500/10 border border-${item.color}-500/20
+                                            animate-pulse-slow
+                                        `}>
+                                            <Sparkles size={12} className={`text-${item.color}-400`} />
+                                            <span className={`text-[10px] font-bold text-${item.color}-300 uppercase tracking-widest`}>
+                                                {item.tech}
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         ))}
                     </div>
 
-                    {/* Central Reactor Core */}
-                    <div ref={hubRef} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-                        <div className="relative flex items-center justify-center">
-                            {/* Outer Glow */}
-                            <div className="absolute w-[300px] h-[300px] bg-cyan-500/10 rounded-full blur-[60px] animate-pulse" />
-
-                            {/* Spinning Rings */}
-                            <div className="absolute w-48 h-48 border border-cyan-500/20 rounded-full animate-[spin_10s_linear_infinite]" />
-                            <div className="absolute w-40 h-40 border border-teal-500/20 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
-                            <div className="absolute w-32 h-32 border border-white/10 rounded-full border-dashed animate-[spin_20s_linear_infinite]" />
-
-                            {/* Core Sphere */}
-                            <div className="relative w-24 h-24 bg-gradient-to-br from-gray-900 to-black rounded-full border border-white/10 shadow-[0_0_30px_rgba(6,182,212,0.3)] flex items-center justify-center backdrop-blur-xl z-20">
-                                <div className="absolute inset-0 rounded-full bg-cyan-500/5 animate-pulse" />
-                                <div className="flex flex-col items-center gap-1">
-                                    <Cpu className="w-8 h-8 text-cyan-400 drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]" />
-                                    <span className="text-[10px] font-bold text-gray-400 tracking-widest uppercase">System</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Right Column Cards */}
-                    <div className="flex flex-col gap-5 z-10 w-[300px]">
-                        {rightItems.map((item, i) => (
-                            <div key={i} ref={(el) => { cardRefs.current[mid + i] = el }} className="card-animate group relative pr-4 transition-all duration-300 hover:translate-x-2">
-                                <div className="absolute top-1/2 -left-2 w-2 h-2 bg-cyan-500/50 rounded-full" />
-                                <div className={`p-4 rounded-xl bg-[#111] border border-white/5 hover:border-cyan-500/30 transition-all duration-300 flex flex-row-reverse items-center justify-between shadow-lg ${item.glow}`}>
-                                    <div className="flex flex-row-reverse items-center gap-3">
-                                        <div className={`p-2 rounded-lg bg-white/5 ${item.color}`}>
-                                            <item.icon size={18} />
-                                        </div>
-                                        <span className="text-sm font-semibold text-gray-200">{item.text}</span>
-                                    </div>
-                                    <span className={`text-xs font-mono font-bold px-2 py-1 rounded bg-white/5 ${item.color}`}>{item.stat}</span>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+                    <FeatureVisual feature={features[activeIndex]} />
 
                 </div>
 
-                {/* Mobile Grid */}
-                <div className="md:hidden grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {benefits.map((item, i) => (
-                        <div key={i} className="p-4 bg-[#111] border border-white/5 rounded-xl flex items-center justify-between">
-                            <div className="flex items-center gap-3">
-                                <div className={`p-2 rounded-lg bg-white/5 ${item.color}`}>
-                                    <item.icon size={18} />
-                                </div>
-                                <span className="text-sm font-medium text-gray-200">{item.text}</span>
-                            </div>
-                            <span className={`text-xs font-bold ${item.color}`}>{item.stat}</span>
-                        </div>
-                    ))}
+                <div className="mt-24 text-center border-t border-white/5 pt-16">
+                    <p className="text-xl md:text-2xl text-white font-light leading-relaxed">
+                        Size bir web sitesi teslim etmiyoruz. <br />
+                        <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+                            İşinizi taşıyan, yöneten ve büyüten bir sistem kuruyoruz.
+                        </span>
+                    </p>
                 </div>
-
             </div>
 
             <style jsx>{`
-        @keyframes dash {
-           to { stroke-dashoffset: 0; }
-        }
-      `}</style>
-        </section>
+                @keyframes float {
+                    0% { transform: translateY(0px); }
+                    50% { transform: translateY(-10px); }
+                    100% { transform: translateY(0px); }
+                }
+            `}</style>
+        </section >
     )
 }

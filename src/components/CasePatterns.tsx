@@ -35,7 +35,7 @@ const cases = [
 
 export default function CasePatterns() {
   const t = useTranslations('case_patterns_section')
-  const sectionRef = useRef<HTMLSection>(null)
+  const sectionRef = useRef<HTMLElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
   const casesRef = useRef<HTMLDivElement>(null)
   const [expandedCase, setExpandedCase] = useState<number | null>(0)

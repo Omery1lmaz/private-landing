@@ -1,129 +1,104 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
-import { useTranslations } from 'next-intl'
-import { Search, PenTool, Code, Rocket, CheckCircle2 } from 'lucide-react'
-import { gsap } from 'gsap'
+import React, { useEffect, useRef } from 'react'
+import { Search, PenTool, Code2, Rocket } from 'lucide-react'
+import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function WebDevProcess() {
-  const t = useTranslations('web_dev.process')
   const sectionRef = useRef<HTMLElement>(null)
-  const lineRef = useRef<HTMLDivElement>(null)
 
   const steps = [
-    { icon: Search, title: 'Discovery', desc: 'We analyze your goals, audience, and market to build a strategy.' },
-    { icon: PenTool, title: 'UI/UX Design', desc: 'Creating high-fidelity wireframes and modern design systems.' },
-    { icon: Code, title: 'Development', desc: 'Writing clean, scalable code using Next.js and robust APIs.' },
-    { icon: Rocket, title: 'Launch', desc: 'Deploying to edge networks with full testing and optimization.' }
+    {
+      num: "01",
+      title: "Anlama",
+      desc: "İşinizi, hedefinizi ve mevcut sorunlarınızı netleştiririz.",
+      icon: Search
+    },
+    {
+      num: "02",
+      title: "Kurgulama",
+      desc: "Sadece görsel sayfa değil, çalışan bir sistem ve akış düşünürüz.",
+      icon: PenTool
+    },
+    {
+      num: "03",
+      title: "Geliştirme",
+      desc: "Parça parça, sık sık test ederek ve onay alarak ilerleriz.",
+      icon: Code2
+    },
+    {
+      num: "04",
+      title: "Teslim & Devam",
+      desc: "Yayına alırız ama işimiz bitmez, sizi yalnız bırakmayız.",
+      icon: Rocket
+    }
   ]
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const stepsEls = gsap.utils.toArray('.process-step')
-
-      // Animate the central line fill
-      gsap.fromTo(lineRef.current,
-        { height: '0%' },
-        {
-          height: '100%',
-          ease: 'none',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top center',
-            end: 'bottom center',
-            scrub: 0.5
-          }
+      gsap.from(".process-step", {
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%"
         }
-      )
-
-      // Light up steps as we scroll past them
-      stepsEls.forEach((step: any, i) => {
-        ScrollTrigger.create({
-          trigger: step,
-          start: 'top 60%',
-          onEnter: () => {
-            gsap.to(step.querySelector('.step-icon-box'), {
-              backgroundColor: '#06b6d4',
-              borderColor: '#22d3ee',
-              boxShadow: '0 0 30px rgba(6,182,212,0.4)',
-              scale: 1.1,
-              duration: 0.4
-            })
-            gsap.to(step.querySelector('.step-icon'), { color: '#fff', duration: 0.4 })
-            gsap.to(step.querySelector('.step-content'), { opacity: 1, x: 0, duration: 0.5 })
-          },
-          onLeaveBack: () => {
-            gsap.to(step.querySelector('.step-icon-box'), {
-              backgroundColor: '#0a0a12',
-              borderColor: 'rgba(255,255,255,0.1)',
-              boxShadow: 'none',
-              scale: 1,
-              duration: 0.4
-            })
-            gsap.to(step.querySelector('.step-icon'), { color: '#6b7280', duration: 0.4 })
-            // Keep content visible but maybe dim it? 
-            // Let's keep it visible for better UX, or slightly dim
-            gsap.to(step.querySelector('.step-content'), { opacity: 0.5, duration: 0.5 })
-          }
-        })
       })
 
+      gsap.from(".process-line", {
+        scaleX: 0,
+        transformOrigin: "left center",
+        duration: 1.5,
+        ease: "power3.inOut",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%"
+        }
+      })
     }, sectionRef)
     return () => ctx.revert()
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative py-32 bg-[#030308] overflow-hidden">
-      {/* Background Noise/Grid */}
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+    <section ref={sectionRef} className="relative py-32 bg-[#030308]">
+      <div className="container mx-auto px-6">
 
-      <div className="container mx-auto px-4 relative z-10">
+        {/* Header */}
         <div className="text-center mb-24">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">The <span className="text-cyan-400">Pipeline</span></h2>
-          <p className="text-gray-400">From concept to deployment in 4 stages.</p>
+          <span className="text-cyan-500 font-mono text-sm tracking-widest uppercase mb-2 block">Süreç</span>
+          <h2 className="text-4xl font-bold text-white">Nasıl Çalışıyoruz?</h2>
+          <p className="text-white/40 mt-4">Güven. Kontrol. Şeffaflık.</p>
         </div>
 
-        <div className="relative max-w-3xl mx-auto">
+        {/* Steps Container */}
+        <div className="relative">
+          {/* Connecting Line (Desktop) */}
+          <div className="process-line absolute top-12 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent hidden md:block" />
 
-          {/* Central Line Track */}
-          <div className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-1 bg-white/5 -translate-x-1/2 rounded-full overflow-hidden">
-            {/* Fill Line */}
-            <div ref={lineRef} className="w-full bg-cyan-500 shadow-[0_0_20px_#06b6d4]" />
-          </div>
-
-          {/* Steps */}
-          <div className="space-y-24">
+          <div className="grid md:grid-cols-4 gap-12 relative z-10">
             {steps.map((step, i) => (
-              <div key={i} className={`process-step flex items-center gap-8 md:gap-16 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} relative`}>
-
-                {/* Icon Node (Center) */}
-                <div className="absolute left-[20px] md:left-1/2 -translate-x-1/2 z-10">
-                  <div className="step-icon-box w-10 h-10 md:w-14 md:h-14 rounded-full bg-[#0a0a12] border border-white/10 flex items-center justify-center transition-all duration-300">
-                    <step.icon className="step-icon w-5 h-5 md:w-6 md:h-6 text-gray-500 transition-colors duration-300" />
+              <div key={i} className="process-step flex flex-col items-center text-center">
+                {/* Icon/Number Bulb */}
+                <div className="w-24 h-24 rounded-full bg-[#080c14] border border-white/10 flex items-center justify-center mb-8 relative group hover:border-cyan-500/50 transition-colors shadow-2xl">
+                  <div className="absolute inset-0 bg-cyan-500/5 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <step.icon size={28} className="text-gray-400 group-hover:text-cyan-400 transition-colors" />
+                  <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-cyan-950 border border-cyan-500/30 flex items-center justify-center text-xs font-bold text-cyan-400">
+                    {step.num}
                   </div>
                 </div>
 
-                {/* Content Card */}
-                <div className={`step-content opacity-50 transition-opacity duration-500 w-[calc(100%-60px)] md:w-[calc(50%-40px)] ml-[60px] md:ml-0 ${i % 2 === 0 ? 'text-left md:text-right' : 'text-left'}`}>
-                  <h3 className="text-2xl font-bold text-white mb-2">{step.title}</h3>
-                  <p className="text-gray-400 leading-relaxed">{step.desc}</p>
-                </div>
-
-                {/* Empty side for layout balance in desktop */}
-                <div className="hidden md:block md:w-[calc(50%-40px)]" />
-
+                <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">{step.desc}</p>
               </div>
             ))}
           </div>
-
-          {/* End Checkmark */}
-          <div className="absolute left-[20px] md:left-1/2 bottom-[-60px] -translate-x-1/2 text-cyan-500 opacity-50 animate-bounce">
-            <CheckCircle2 size={32} />
-          </div>
         </div>
+
       </div>
     </section>
   )

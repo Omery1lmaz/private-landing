@@ -1,112 +1,105 @@
 'use client'
 
 import React, { useEffect, useRef } from 'react'
-import { useTranslations } from 'next-intl'
-import { Search, Layout, Cog, BarChart3 } from 'lucide-react'
-import { gsap } from 'gsap'
+import { Search, Compass, Cpu, Rocket } from 'lucide-react'
+import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function AutomationProcess() {
-  const t = useTranslations('automation.process')
-  const sectionRef = useRef<HTMLDivElement | null>(null)
+  const sectionRef = useRef<HTMLElement>(null)
+
+  const steps = [
+    {
+      num: "01",
+      title: "Keşif",
+      desc: "Manuel süreçlerinizi, tıkanıklıkları ve otomasyon potansiyelini analiz ederiz.",
+      icon: Search
+    },
+    {
+      num: "02",
+      title: "Mimari",
+      desc: "Ajanların, entegrasyonların ve mantık akışlarının dijital planını kurgularız.",
+      icon: Compass
+    },
+    {
+      num: "03",
+      title: "Otonomizasyon",
+      desc: "AI ajanlarını ve sistemleri adım adım, test odaklı hayata geçiririz.",
+      icon: Cpu
+    },
+    {
+      num: "04",
+      title: "Ölçekleme",
+      desc: "Sistemi yayına alır ve sürekli optimizasyonla verimliliği artırırız.",
+      icon: Rocket
+    }
+  ]
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '.process-step',
-        { opacity: 0, x: -50 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.8,
-          stagger: 0.2,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 70%',
-          },
+      gsap.from(".process-step", {
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%"
         }
-      )
+      })
 
-      // Timeline line animation
-      gsap.fromTo(
-        '.timeline-line',
-        { scaleY: 0 },
-        {
-          scaleY: 1,
-          duration: 1.5,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 70%',
-          },
+      gsap.from(".process-line", {
+        scaleX: 0,
+        transformOrigin: "left center",
+        duration: 1.5,
+        ease: "power3.inOut",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%"
         }
-      )
+      })
     }, sectionRef)
-
     return () => ctx.revert()
   }, [])
 
-  const steps = [
-    { icon: Search, key: 'step1', number: '01' },
-    { icon: Layout, key: 'step2', number: '02' },
-    { icon: Cog, key: 'step3', number: '03' },
-    { icon: BarChart3, key: 'step4', number: '04' },
-  ]
-
   return (
-    <section ref={sectionRef} className="py-24 relative bg-gradient-to-b from-[#030308] to-[#050510]">
+    <section ref={sectionRef} className="relative py-32 bg-[#030308]">
       <div className="container mx-auto px-6">
-        <div className="max-w-6xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-sm text-cyan-400 font-medium mb-6">
-              {t('badge')}
-            </div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-              {t('title')}
-            </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              {t('subtitle')}
-            </p>
-          </div>
 
-          {/* Timeline */}
-          <div className="relative">
-            {/* Vertical Line */}
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-500 via-purple-500 to-cyan-500 timeline-line origin-top" />
+        {/* Header */}
+        <div className="text-center mb-24">
+          <span className="text-cyan-500 font-mono text-sm tracking-widest uppercase mb-2 block">Otonom Yolculuk</span>
+          <h2 className="text-4xl font-bold text-white">Nasıl Otonomlaştırıyoruz?</h2>
+          <p className="text-white/40 mt-4">Analiz. Kurgu. Mukemmeliyet.</p>
+        </div>
 
-            {/* Steps */}
-            <div className="space-y-12">
-              {steps.map((step, idx) => (
-                <div key={idx} className="process-step relative flex items-start gap-8">
-                  {/* Icon Circle */}
-                  <div className="relative z-10 flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center shadow-lg shadow-cyan-500/30">
-                    <step.icon className="w-7 h-7 text-white" />
-                  </div>
+        {/* Steps Container */}
+        <div className="relative">
+          {/* Connecting Line (Desktop) */}
+          <div className="process-line absolute top-12 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent hidden md:block" />
 
-                  {/* Content */}
-                  <div className="flex-1 pt-2">
-                    <div className="flex items-center gap-4 mb-3">
-                      <span className="text-cyan-400 font-bold text-lg">{step.number}</span>
-                      <h3 className="text-2xl font-semibold text-white">
-                        {t(`${step.key}_title`)}
-                      </h3>
-                    </div>
-                    <p className="text-gray-400 text-lg leading-relaxed">
-                      {t(`${step.key}_desc`)}
-                    </p>
+          <div className="grid md:grid-cols-4 gap-12 relative z-10">
+            {steps.map((step, i) => (
+              <div key={i} className="process-step flex flex-col items-center text-center">
+                {/* Icon/Number Bulb */}
+                <div className="w-24 h-24 rounded-full bg-[#080c14] border border-white/10 flex items-center justify-center mb-8 relative group hover:border-cyan-500/50 transition-colors shadow-2xl">
+                  <div className="absolute inset-0 bg-cyan-500/5 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <step.icon size={28} className="text-gray-400 group-hover:text-cyan-400 transition-colors" />
+                  <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-cyan-950 border border-cyan-500/30 flex items-center justify-center text-xs font-bold text-cyan-400">
+                    {step.num}
                   </div>
                 </div>
-              ))}
-            </div>
+
+                <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">{step.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
+
       </div>
     </section>
   )
 }
-
-

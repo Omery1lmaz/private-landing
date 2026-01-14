@@ -12,7 +12,7 @@ export function middleware(req: NextRequest) {
     pathname.startsWith('/api') ||
     pathname.startsWith('/static') ||
     pathname.startsWith('/public') ||
-    pathname.includes('.') // file extension like .png, .css
+    (pathname.includes('.') && !pathname.endsWith('/')) // file extension like .png, .css
   ) {
     return
   }
@@ -30,7 +30,8 @@ export function middleware(req: NextRequest) {
     .map((part) => part.split(';')[0].trim())
     .find((lang) => locales.some((loc) => lang.toLowerCase().startsWith(loc)))
 
-  const localeToUse = (preferred && locales.find((loc) => preferred.toLowerCase().startsWith(loc))) || locales[0]
+  // Default to 'tr' if no matching locale found, otherwise use the matched locale
+  const localeToUse = (preferred && locales.find((loc) => preferred.toLowerCase().startsWith(loc))) || 'tr'
 
   const url = req.nextUrl.clone()
   url.pathname = `/${localeToUse}${pathname}`
@@ -40,7 +41,12 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!_next|api|static|public).*)'],
+  matcher: [
+    // Match all pathnames except for
+    // - … if they start with `/api`, `/_next` or `/_vercel`
+    // - … the ones containing a dot (e.g. `favicon.ico`)
+    '/((?!api|_next|_vercel|.*\\..*).*)',
+  ],
 }
 
 

@@ -1,299 +1,301 @@
- 'use client'
+'use client'
 
-import React, { useEffect, useRef } from 'react'
-import { useTranslations, useLocale } from 'next-intl'
-import { Database, Zap, Rocket, ShieldCheck, Globe, Bot, Settings, ArrowRight } from 'lucide-react'
-import { gsap } from 'gsap'
-import Link from 'next/link'
+import React, { useEffect, useRef, useState } from 'react'
+import { useLocale } from 'next-intl'
+import { ArrowRight, Sparkles, Search, BarChart3, Link2, Zap } from 'lucide-react'
+import gsap from 'gsap'
+
+const ServiceCard = ({ card, index, hoveredIndex, setHoveredIndex }: any) => {
+  const Icon = card.icon
+  const isFocused = hoveredIndex === index
+  const isDimmed = hoveredIndex !== null && !isFocused
+
+  return (
+    <div
+      onMouseEnter={() => setHoveredIndex(index)}
+      onMouseLeave={() => setHoveredIndex(null)}
+      className={`
+                animate-target group relative w-full h-full transition-all duration-700 ease-out
+                ${isDimmed ? 'opacity-30 blur-[2px] scale-[0.96]' : 'opacity-100 scale-100'}
+                ${isFocused ? 'z-30' : 'z-10'}
+            `}
+    >
+      {/* --- Animated Flowing Border --- */}
+      <div className={`
+                absolute -inset-[1px] rounded-[24px] overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-700
+                bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent
+            `}>
+        <div className="absolute inset-0 animate-[shimmer_3s_infinite] bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full" />
+      </div>
+
+      {/* --- Main Card Body --- */}
+      <div className={`
+                relative flex flex-col bg-[#080b12]/60 backdrop-blur-3xl rounded-[23px] p-6 border border-white/[0.05] shadow-2xl 
+                transition-all duration-700 group-hover:-translate-y-2 group-hover:bg-[#0c121d]/90 group-hover:border-white/[0.15]
+                group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.5),0_0_20px_rgba(6,182,212,0.1)]
+                h-full min-h-[180px] justify-between
+            `}>
+        {/* Internal Inner Glow */}
+        <div className="absolute inset-0 rounded-[23px] bg-gradient-to-br from-white/[0.02] to-transparent pointer-events-none" />
+
+        <div>
+          {/* Card Top Row: Icon */}
+          <div className="relative flex items-center justify-between mb-4">
+            <div className="w-10 h-10 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center transition-all duration-700 group-hover:scale-110 group-hover:rotate-[10deg] group-hover:border-cyan-500/40 group-hover:bg-cyan-500/10 shadow-inner">
+              <Icon size={20} className={`transition-colors duration-700 ${isFocused ? 'text-cyan-400' : 'text-gray-400'}`} strokeWidth={1.5} />
+            </div>
+          </div>
+
+          {/* Card Content */}
+          <div className="space-y-2">
+            <h3 className="text-base font-bold text-white tracking-tight group-hover:text-cyan-50 transition-colors">
+              {card.title}
+            </h3>
+            <div className="h-[1px] w-8 bg-white/[0.1] group-hover:w-full transition-all duration-700 bg-gradient-to-r from-cyan-500/50 to-transparent" />
+
+            <p className="text-sm font-medium text-gray-400 leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
+              {card.text}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export default function AiSeoHero() {
-  const t = useTranslations('ai_seo')
   const locale = useLocale()
-  const rootRef = useRef<HTMLDivElement | null>(null)
-  const visualRef = useRef<HTMLDivElement | null>(null)
-  const centralRef = useRef<HTMLDivElement | null>(null)
-  const titleRef = useRef<HTMLHeadingElement | null>(null)
-  const subtitleRef = useRef<HTMLParagraphElement | null>(null)
-  const ctaRef = useRef<HTMLDivElement | null>(null)
-  const [displayText, setDisplayText] = React.useState('')
-  const [textIndex, setTextIndex] = React.useState(0)
-  const [isDeleting, setIsDeleting] = React.useState(false)
-  const typewriterTexts = React.useMemo(
-    () => [t('typewriter_primary'), t('typewriter_secondary')].filter(Boolean),
-    [t]
-  )
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
 
-  // Robust recursive timeout-based typewriter that handles variable delays
-  useEffect(() => {
-    if (!typewriterTexts.length) return
-
-    const wordIndexRef = { current: 0 }
-    const charIndexRef = { current: 0 }
-    const deletingRef = { current: false }
-    const timerRef: { id: number | null } = { id: null }
-
-    const tick = () => {
-      const current = typewriterTexts[wordIndexRef.current]
-
-      if (!deletingRef.current) {
-        // typing
-        if (charIndexRef.current < current.length) {
-          charIndexRef.current += 1
-          setDisplayText(current.slice(0, charIndexRef.current))
-          timerRef.id = window.setTimeout(tick, 80)
-          return
+  const content = {
+    tr: {
+      badge: "Yapay Zeka Destekli SEO Sistemleri",
+      titlePart1: "Görünürlüğünüzü Artıran",
+      titleHighlight: "AI & SEO Stratejileri",
+      subtitle: "Sadece anahtar kelimelere değil, anlama ve kullanıcı niyetine odaklanan, AI destekli içerik ve teknik SEO sistemleriyle organik büyümenizi otomatiğe bağlayın.",
+      support: "Veri odaklı, ölçülebilir ve sürdürülebilir arama motoru hakimiyeti.",
+      ctaButton: "Analizinizi Başlatın",
+      ctaMicro: "Ücretsiz AI-SEO strateji raporu için ilk adımı atın.",
+      cards: [
+        {
+          title: "AI İçerik Stratejisi",
+          text: "Semantik analiz ve AI desteğiyle otorite kuran içerikler.",
+          icon: Sparkles
+        },
+        {
+          title: "Teknik SEO Mimarisi",
+          text: "Hız, yapısal veri ve tarama bütçesi optimizasyonu.",
+          icon: Search
+        },
+        {
+          title: "Veri Odaklı Analiz",
+          text: "Rakipleri izleyen ve fırsatları yakalayan dashboardlar.",
+          icon: BarChart3
+        },
+        {
+          title: "Otomatize Backlink",
+          text: "Doğal ve kaliteli bağlantı inşası süreçleri.",
+          icon: Link2
         }
-
-        // finished typing, pause then start deleting
-        deletingRef.current = true
-        timerRef.id = window.setTimeout(tick, 1500)
-        return
-      }
-
-      // deleting
-      if (charIndexRef.current > 0) {
-        charIndexRef.current -= 1
-        setDisplayText(current.slice(0, charIndexRef.current))
-        timerRef.id = window.setTimeout(tick, 40)
-        return
-      }
-
-      // finished deleting, move to next word
-      deletingRef.current = false
-      wordIndexRef.current = (wordIndexRef.current + 1) % typewriterTexts.length
-      timerRef.id = window.setTimeout(tick, 400)
+      ]
+    },
+    en: {
+      badge: "AI-Powered SEO Systems",
+      titlePart1: "Business-Driving",
+      titleHighlight: "AI & SEO Strategies",
+      subtitle: "Beyond keywords, focused on meaning and intent. Automate your organic growth with AI-powered content and technical SEO infrastructures.",
+      support: "Data-driven, measurable, and sustainable search engine dominance.",
+      ctaButton: "Start Your Analysis",
+      ctaMicro: "Take the first step for a free AI-SEO strategy report.",
+      cards: [
+        {
+          title: "AI Content Strategy",
+          text: "Authority-building content with semantic analysis.",
+          icon: Sparkles
+        },
+        {
+          title: "Technical SEO Architecture",
+          text: "Optimization for speed, structured data, and crawl budget.",
+          icon: Search
+        },
+        {
+          title: "Data-Driven Analytics",
+          text: "Dashboards tracking competitors and opportunities.",
+          icon: BarChart3
+        },
+        {
+          title: "Automated Backlinking",
+          text: "Natural and high-quality link-building processes.",
+          icon: Link2
+        }
+      ]
     }
+  }
 
-    // start
-    timerRef.id = window.setTimeout(tick, 400)
+  const text = content[locale as keyof typeof content] || content.en
 
-    return () => {
-      if (timerRef.id) clearTimeout(timerRef.id)
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePos({
+        x: (e.clientX / window.innerWidth - 0.5) * 20,
+        y: (e.clientY / window.innerHeight - 0.5) * 20
+      })
     }
-  }, [typewriterTexts])
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline()
+
+      tl.fromTo(".aurora-beam", {
+        opacity: 0,
+        scaleY: 0
+      }, {
+        opacity: 0.6,
+        scaleY: 1,
+        duration: 2,
+        stagger: 0.2,
+        ease: "power3.out"
+      }, 0)
+
+      tl.from(".animate-target", {
+        y: 40,
+        opacity: 0,
+        duration: 1.4,
+        stagger: 0.1,
+        ease: "power4.out",
+        clearProps: "all"
+      }, 0.5)
+
+    }, containerRef)
+    return () => ctx.revert()
+  }, [])
 
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact')
     contactSection?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Text entrance timeline (left column)
-      const tl = gsap.timeline()
-      tl.fromTo(
-        titleRef.current,
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }
-      )
-        .fromTo(
-          subtitleRef.current,
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' },
-          '-=0.45'
-        )
-        .fromTo(
-          ctaRef.current,
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' },
-          '-=0.35'
-        )
-
-      // visual entrance (right)
-      if (visualRef.current) {
-        gsap.fromTo(
-          visualRef.current,
-          { opacity: 0, x: 40 },
-          { opacity: 1, x: 0, duration: 1, ease: 'power2.out', delay: 0.2 }
-        )
-      }
-
-      // idle float for central box
-      gsap.to(centralRef.current, {
-        y: -10,
-        repeat: -1,
-        yoyo: true,
-        duration: 3.2,
-        ease: 'sine.inOut',
-      })
-
-      // staggered entrance for icons
-      gsap.fromTo(
-        '.floating-icon',
-        { opacity: 0, y: 18, scale: 0.9 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.12, ease: 'power3.out' }
-      )
-    }, rootRef)
-
-    return () => ctx.revert()
-  }, [])
-
   return (
-    <header className="bg-gradient-to-b min-h-screen from-[#071422] to-[#031017] py-20">
-      {/* Ambient glow effects (copied from Hero) */}
-      <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-cyan-500/20 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-500/15 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-teal-500/10 rounded-full blur-[100px] pointer-events-none" />
+    <header ref={containerRef} className="relative bg-transparent min-h-screen flex items-center justify-center overflow-hidden">
 
-      {/* Grid background */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-40"
-        style={{
-          backgroundImage:
-            'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)',
-          backgroundSize: '50px 50px',
-        }}
-      />
+      {/* --- LUXURY BACKGROUND --- */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* 1. Perspective Grid Floor */}
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: `
+                            linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
+                        `,
+            backgroundSize: '60px 60px',
+            transform: 'perspective(1000px) rotateX(60deg) translateY(200px) scale(2.5)',
+            transformOrigin: 'center bottom',
+            maskImage: 'linear-gradient(to top, black 20%, transparent 80%)'
+          }}
+        />
 
-      <div ref={rootRef} className="container mx-auto px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            {/* Left: Content (copied from Hero) */}
-            <div className="space-y-6 pt-8 max-w-3xl">
-              {/* Announcement Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-sm text-cyan-400 font-medium">
-                {t('hero.announcement_badge')}
+        {/* 2. Aurora Light Beams */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="aurora-beam absolute top-0 -left-20 w-[300px] h-[120vh] bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent blur-3xl rotate-[15deg] origin-top" />
+          <div className="aurora-beam absolute top-0 left-1/3 w-[400px] h-[120vh] bg-gradient-to-r from-transparent via-blue-600/10 to-transparent blur-3xl rotate-[25deg] origin-top" />
+          <div className="aurora-beam absolute top-0 right-1/4 w-[350px] h-[120vh] bg-gradient-to-r from-transparent via-teal-500/10 to-transparent blur-3xl -rotate-[10deg] origin-top" />
+        </div>
+
+        {/* 3. Orbs */}
+        <div
+          className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-cyan-500/5 rounded-full blur-[150px] opacity-30 mix-blend-screen transition-transform duration-[2000ms] ease-out"
+          style={{ transform: `translate(${mousePos.x * -1}px, ${mousePos.y * -1}px)` }}
+        />
+        <div
+          className="absolute bottom-0 right-1/4 w-[700px] h-[700px] bg-blue-600/5 rounded-full blur-[130px] opacity-30 mix-blend-screen transition-transform duration-[2000ms] ease-out"
+          style={{ transform: `translate(${mousePos.x * 0.8}px, ${mousePos.y * 0.8}px)` }}
+        />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10 py-24 lg:py-0">
+        <div className="container mx-auto px-6 relative z-10 pt-20">
+          <div className="grid lg:grid-cols-[1.2fr_1fr] items-center gap-12 xl:gap-20">
+
+            {/* LEFT COLUMN: Text Content */}
+            <div className="flex flex-col items-start text-left max-w-2xl">
+              <div className="animate-target inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/[0.03] border border-white/[0.08] backdrop-blur-xl mb-8 hover:border-cyan-500/30 transition-all cursor-default">
+                <Sparkles size={14} className="text-cyan-400" />
+                <span className="text-[10px] font-black text-white/80 tracking-[0.2em] uppercase">{text.badge}</span>
               </div>
 
-              {/* Main Title */}
-              <div>
-                <h1
-                  ref={titleRef}
-                  className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight mb-6 text-white"
-                >
-                  {t('hero.title')}
-                </h1>
-              </div>
+              <h1 className="animate-target text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-bold text-white tracking-[-0.02em] leading-[1.1] mb-8 drop-shadow-2xl">
+                <span className="block mb-3 opacity-90">{text.titlePart1}</span>
+                <span className="relative inline-block">
+                  <span className="absolute -inset-2 blur-2xl bg-cyan-500/20 rounded-full" />
+                  <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-teal-200 to-blue-400 animate-[gradient_6s_linear_infinite] bg-[length:300%_auto]">
+                    {text.titleHighlight}
+                  </span>
+                </span>
+              </h1>
 
-              {/* Subtitle */}
-              <p
-                ref={subtitleRef}
-                className="text-lg md:text-xl text-gray-400 leading-relaxed max-w-2xl mb-8"
-              >
-                {t('hero.subtitle')}
+              <p className="animate-target text-base lg:text-lg text-gray-400/90 leading-relaxed mb-6 font-medium max-w-xl">
+                {text.subtitle}
               </p>
 
-              {/* Proof Strip */}
-              <div className="flex flex-wrap items-center gap-4 md:gap-6 mb-10">
-                <div className="flex items-center gap-2 text-cyan-400 font-medium">
-                  <div className="w-2 h-2 rounded-full bg-cyan-400"></div>
-                  <span>{t('hero.feature1')}</span>
-                </div>
-                <div className="flex items-center gap-2 text-teal-400 font-medium">
-                  <div className="w-2 h-2 rounded-full bg-teal-400"></div>
-                  <span>{t('hero.feature2')}</span>
-                </div>
-                <div className="flex items-center gap-2 text-blue-400 font-medium">
-                  <div className="w-2 h-2 rounded-full bg-blue-400"></div>
-                  <span>{t('hero.feature3')}</span>
-                </div>
-              </div>
+              <p className="animate-target text-sm text-cyan-300/80 font-medium tracking-wide mb-8 border-l-2 border-cyan-500/30 pl-4 py-1">
+                {text.support}
+              </p>
 
-              {/* Single CTA */}
-              <div ref={ctaRef} className="mb-8">
+              <div className="animate-target flex flex-col sm:flex-row items-center gap-6">
                 <button
                   onClick={scrollToContact}
-                  className="group relative bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-semibold px-10 py-5 rounded-xl text-lg md:text-xl transition-all duration-300 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:-translate-y-1"
+                  className="w-full sm:w-auto group relative bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-semibold px-8 py-4 rounded-xl text-sm transition-all duration-300 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:-translate-y-0.5 flex items-center justify-center gap-3"
                 >
-                  {t('hero.cta')}
-                  <ArrowRight className="inline-block w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  {text.ctaButton}
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
+
+                <span className="text-[13px] text-gray-400 font-medium opacity-70">
+                  {text.ctaMicro}
+                </span>
               </div>
             </div>
 
-            {/* Right: Visual (orbital rings + central AI icon + glow) */}
-            <div className="relative w-full flex items-center justify-center py-8">
-            <div ref={visualRef} className="relative w-full max-w-md aspect-square">
-                {/* Orbital Rings */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div
-                    className="absolute w-full h-full rounded-full border border-white/5 animate-spin"
-                    style={{ animationDuration: '30s' }}
-                  />
-                  <div
-                    className="absolute w-4/5 h-4/5 rounded-full border border-white/10 animate-spin"
-                    style={{ animationDuration: '20s', animationDirection: 'reverse' }}
-                  />
-                  <div
-                    className="absolute w-3/5 h-3/5 rounded-full border border-white/15 animate-spin"
-                    style={{ animationDuration: '15s' }}
-                  />
-                </div>
-
-                {/* Central Gradient Box */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div
-                    ref={centralRef}
-                    className="relative central-box w-40 h-40 md:w-48 md:h-48 rounded-3xl transition-all duration-700 bg-gradient-to-br from-violet-600 via-purple-500 to-fuchsia-500 p-0.5"
-                  >
-                    <div className="w-full h-full rounded-3xl bg-black/90 flex items-center justify-center p-6">
-                      <div className="w-full h-full">
-                        <AIIcon />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Glow Effect */}
-                  <div
-                    className="absolute w-48 h-48 md:w-56 md:h-56 rounded-full blur-3xl opacity-30 transition-all duration-700"
-                    style={{ backgroundColor: '#a855f7' }}
-                  />
-                </div>
- 
-                {/* Floating meaningful icons around central visual */}
-                {[
-                  { id: 'data', Icon: Database, angle: -Math.PI / 6, radius: 145, label: t('icons.data'), color: 'text-cyan-400' },
-                  { id: 'automation', Icon: Zap, angle: Math.PI / 3, radius: 170, label: t('icons.automation'), color: 'text-amber-400' },
-                  { id: 'speed', Icon: Rocket, angle: - (2 * Math.PI) / 3, radius: 180, label: t('icons.speed'), color: 'text-rose-400' },
-                  { id: 'security', Icon: ShieldCheck, angle: (2 * Math.PI) / 3, radius: 220, label: t('icons.security'), color: 'text-violet-400' },
-                ].map((item) => {
-                  const x = Math.cos(item.angle) * item.radius
-                  const y = Math.sin(item.angle) * item.radius
-
-                  return (
-                    <div
-                      key={item.id}
-                      className={`absolute left-1/2 top-1/2 transition-all duration-300 cursor-default`}
-                      style={{
-                        transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
-                      }}
-                      title={item.label}
-                    >
-                      <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center border border-white/10 bg-black/50 hover:scale-110 transition-transform duration-300 shadow-lg floating-icon">
-                        <item.Icon className={`${item.color} w-5 h-5`} strokeWidth={1.5} />
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
+            {/* RIGHT COLUMN: Service Matrix Grid */}
+            <div
+              className="animate-target grid grid-cols-1 sm:grid-cols-2 gap-4 perspective-[2000px]"
+              style={{ transformStyle: 'preserve-3d' }}
+            >
+              {text.cards.map((card, i) => (
+                <ServiceCard
+                  key={i}
+                  card={card}
+                  index={i}
+                  hoveredIndex={hoveredIndex}
+                  setHoveredIndex={setHoveredIndex}
+                />
+              ))}
             </div>
+
           </div>
         </div>
       </div>
+
+      {/* Bottom Tech Fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#020408] to-transparent pointer-events-none" />
+
+      <style jsx>{`
+                @keyframes gradient {
+                    0% { background-position: 0% 50%; }
+                    50% { background-position: 100% 50%; }
+                    100% { background-position: 0% 50%; }
+                }
+                @keyframes shimmer {
+                    0% { transform: translateX(-100%); }
+                    100% { transform: translateX(100%); }
+                }
+            `}</style>
     </header>
   )
 }
-
-const AIIcon = () => {
-  return (
-    <svg viewBox="0 0 80 80" fill="none" className="w-full h-full">
-      <defs>
-        <linearGradient id="aiGradHero" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#a855f7" />
-          <stop offset="100%" stopColor="#ec4899" />
-        </linearGradient>
-      </defs>
-      <circle cx="40" cy="40" r="30" stroke="url(#aiGradHero)" strokeWidth="2" fill="none" opacity="0.3" />
-      <circle cx="40" cy="40" r="20" stroke="url(#aiGradHero)" strokeWidth="2" fill="none" opacity="0.5" />
-      <circle cx="40" cy="40" r="10" fill="url(#aiGradHero)" opacity="0.8" />
-      <path d="M40 15 L40 25 M40 55 L40 65 M15 40 L25 40 M55 40 L65 40" stroke="url(#aiGradHero)" strokeWidth="2" strokeLinecap="round" />
-      <path d="M22 22 L30 30 M50 50 L58 58 M22 58 L30 50 M50 30 L58 22" stroke="url(#aiGradHero)" strokeWidth="2" strokeLinecap="round" opacity="0.6" />
-      <circle cx="40" cy="25" r="3" fill="#a855f7" />
-      <circle cx="40" cy="55" r="3" fill="#a855f7" />
-      <circle cx="25" cy="40" r="3" fill="#a855f7" />
-      <circle cx="55" cy="40" r="3" fill="#a855f7" />
-    </svg>
-  )
-}
-
-

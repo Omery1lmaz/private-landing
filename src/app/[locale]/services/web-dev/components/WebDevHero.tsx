@@ -1,56 +1,179 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useLocale } from 'next-intl'
-import { ArrowRight, Building2, Layers, ShoppingBag, Settings, Rocket, Globe, Users, Star, Shield } from 'lucide-react'
+import { ArrowRight, Globe, Sparkles, Building2, Layers, ShoppingCart, Settings } from 'lucide-react'
+import gsap from 'gsap'
+
+const ServiceCard = ({ card, index, hoveredIndex, setHoveredIndex }: any) => {
+    const Icon = card.icon
+    const isFocused = hoveredIndex === index
+    const isDimmed = hoveredIndex !== null && !isFocused
+
+    return (
+        <div
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
+            className={`
+                animate-target group relative w-full h-full transition-all duration-700 ease-out
+                ${isDimmed ? 'opacity-30 blur-[2px] scale-[0.96]' : 'opacity-100 scale-100'}
+                ${isFocused ? 'z-30' : 'z-10'}
+            `}
+        >
+            {/* --- Animated Flowing Border --- */}
+            <div className={`
+                absolute -inset-[1px] rounded-[24px] overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-700
+                bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent
+            `}>
+                <div className="absolute inset-0 animate-[shimmer_3s_infinite] bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full" />
+            </div>
+
+            {/* --- Main Card Body --- */}
+            <div className={`
+                relative flex flex-col bg-[#080b12]/60 backdrop-blur-3xl rounded-[23px] p-6 border border-white/[0.05] shadow-2xl 
+                transition-all duration-700 group-hover:-translate-y-2 group-hover:bg-[#0c121d]/90 group-hover:border-white/[0.15]
+                group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.5),0_0_20px_rgba(6,182,212,0.1)]
+                h-full min-h-[180px] justify-between
+            `}>
+                {/* Internal Inner Glow */}
+                <div className="absolute inset-0 rounded-[23px] bg-gradient-to-br from-white/[0.02] to-transparent pointer-events-none" />
+
+                <div>
+                    {/* Card Top Row: Icon */}
+                    <div className="relative flex items-center justify-between mb-4">
+                        <div className="w-10 h-10 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center transition-all duration-700 group-hover:scale-110 group-hover:rotate-[10deg] group-hover:border-cyan-500/40 group-hover:bg-cyan-500/10 shadow-inner">
+                            <Icon size={20} className={`transition-colors duration-700 ${isFocused ? 'text-cyan-400' : 'text-gray-400'}`} strokeWidth={1.5} />
+                        </div>
+                    </div>
+
+                    {/* Card Content */}
+                    <div className="space-y-2">
+                        <h3 className="text-base font-bold text-white tracking-tight group-hover:text-cyan-50 transition-colors">
+                            {card.title}
+                        </h3>
+                        <div className="h-[1px] w-8 bg-white/[0.1] group-hover:w-full transition-all duration-700 bg-gradient-to-r from-cyan-500/50 to-transparent" />
+
+                        <p className="text-sm font-medium text-gray-400 leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
+                            {card.text}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
 
 export default function WebDevHero() {
     const locale = useLocale()
+    const containerRef = useRef<HTMLDivElement>(null)
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+    const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
 
     const content = {
         tr: {
-            badge: "✨ Yeni Nesil Web Çözümleri",
-            titlePart1: "Dijital Dünyada",
-            titleHighlight: "Rakiplerinizi Geride Bırakın",
-            subtitle: "İşinize özel, stratejik web çözümleri. Markanızın dijital yüzünü birlikte tasarlayalım.",
-            ctaButton: "Ücretsiz Danışmanlık",
-            ctaSecondary: "Projelerimi Gör",
-            stat1Value: "500+",
-            stat1Label: "Mutlu Müşteri",
-            stat2Value: "99%",
-            stat2Label: "Memnuniyet",
-            stat3Value: "24/7",
-            stat3Label: "Destek",
+            badge: "Yeni Nesil Web Sistemleri",
+            titlePart1: "İşinizi Taşıyan",
+            titleHighlight: "Modern Web Sistemleri",
+            subtitle: "Kurumsal web sitelerinden ürün ve SaaS platformlarına kadar, kullanıcı, operasyon ve büyüme odaklı web altyapıları tasarlıyor ve geliştiriyoruz.",
+            support: "Tasarımıyla etkileyen, altyapısıyla işi taşıyan sistemler.",
+            ctaButton: "Projenizi Konuşalım",
+            ctaMicro: "Nereden başlayacağınızı birlikte netleştirelim.",
             cards: [
-                { title: "Corporate Websites", icon: Building2 },
-                { title: "SaaS & Product", icon: Layers },
-                { title: "E-Commerce", icon: ShoppingBag },
-                { title: "Custom Solutions", icon: Settings }
+                {
+                    title: "Kurumsal Web Sistemleri",
+                    text: "Güven veren, yönetilebilir ve uzun vadeli yapılar.",
+                    icon: Building2
+                },
+                {
+                    title: "Ürün & SaaS Platformları",
+                    text: "Kullanıcı kazandıran, büyümeye hazır sistemler.",
+                    icon: Layers
+                },
+                {
+                    title: "Satış & E-Ticaret Altyapıları",
+                    text: "Satışı destekleyen, süreci sadeleştiren platformlar.",
+                    icon: ShoppingCart
+                },
+                {
+                    title: "Özel Dijital Çözümler",
+                    text: "Standartların yetmediği işler için özel kurgular.",
+                    icon: Settings
+                }
             ]
         },
         en: {
-            badge: "✨ Next Gen Web Solutions",
-            titlePart1: "Leave Your Competitors",
-            titleHighlight: "Behind in the Digital World",
-            subtitle: "Strategic web solutions tailored to your business. Let's design your brand's digital presence together.",
-            ctaButton: "Free Consultation",
-            ctaSecondary: "View Projects",
-            stat1Value: "500+",
-            stat1Label: "Happy Clients",
-            stat2Value: "99%",
-            stat2Label: "Satisfaction",
-            stat3Value: "24/7",
-            stat3Label: "Support",
+            badge: "Next Gen Web Systems",
+            titlePart1: "Business-Driven",
+            titleHighlight: "Modern Web Systems",
+            subtitle: "From corporate websites to product platforms, we design and develop user, operation, and growth-focused web infrastructures.",
+            support: "We build systems that work, not just look good.",
+            ctaButton: "Let's Talk Project",
+            ctaMicro: "Let's clarify where to start together.",
             cards: [
-                { title: "Corporate Websites", icon: Building2 },
-                { title: "SaaS & Product", icon: Layers },
-                { title: "E-Commerce", icon: ShoppingBag },
-                { title: "Custom Solutions", icon: Settings }
+                {
+                    title: "Corporate Web Systems",
+                    text: "Trust-building, manageable, sustainable structures",
+                    icon: Building2
+                },
+                {
+                    title: "Product & SaaS Platforms",
+                    text: "User-acquiring, growth-ready systems",
+                    icon: Layers
+                },
+                {
+                    title: "Sales & E-Commerce",
+                    text: "Structures that simplify processes and support sales",
+                    icon: ShoppingCart
+                },
+                {
+                    title: "Custom Digital Solutions",
+                    text: "Special systems for unique business needs",
+                    icon: Settings
+                }
             ]
         }
     }
 
     const text = content[locale as keyof typeof content] || content.en
+
+    useEffect(() => {
+        const handleMouseMove = (e: MouseEvent) => {
+            setMousePos({
+                x: (e.clientX / window.innerWidth - 0.5) * 20,
+                y: (e.clientY / window.innerHeight - 0.5) * 20
+            })
+        }
+        window.addEventListener('mousemove', handleMouseMove)
+        return () => window.removeEventListener('mousemove', handleMouseMove)
+    }, [])
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            const tl = gsap.timeline()
+
+            tl.fromTo(".aurora-beam", {
+                opacity: 0,
+                scaleY: 0
+            }, {
+                opacity: 0.6,
+                scaleY: 1,
+                duration: 2,
+                stagger: 0.2,
+                ease: "power3.out"
+            }, 0)
+
+            tl.from(".animate-target", {
+                y: 40,
+                opacity: 0,
+                duration: 1.4,
+                stagger: 0.1,
+                ease: "power4.out",
+                clearProps: "all"
+            }, 0.5)
+
+        }, containerRef)
+        return () => ctx.revert()
+    }, [])
 
     const scrollToContact = () => {
         const contactSection = document.getElementById('contact')
@@ -58,155 +181,121 @@ export default function WebDevHero() {
     }
 
     return (
-        <header className="relative bg-[#030810] min-h-screen flex items-center justify-center overflow-hidden">
+        <header ref={containerRef} className="relative bg-transparent min-h-screen flex items-center justify-center overflow-hidden">
 
-            {/* Premium Background Effects */}
-            <div className="absolute inset-0">
-                {/* Gradient Orbs */}
-                <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-cyan-500/20 rounded-full blur-[150px] opacity-60" />
-                <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-600/15 rounded-full blur-[130px] opacity-60" />
-                <div className="absolute top-1/3 right-1/3 w-[400px] h-[400px] bg-teal-500/10 rounded-full blur-[100px] opacity-50" />
-
-                {/* Gradient Mesh */}
+            {/* --- LUXURY BACKGROUND --- */}
+            <div className="absolute inset-0 pointer-events-none">
+                {/* 1. Perspective Grid Floor */}
                 <div
-                    className="absolute inset-0 opacity-40"
-                    style={{
-                        backgroundImage: `
-                            radial-gradient(at 20% 30%, rgba(6, 182, 212, 0.15) 0px, transparent 50%),
-                            radial-gradient(at 80% 70%, rgba(20, 184, 166, 0.12) 0px, transparent 50%),
-                            radial-gradient(at 50% 50%, rgba(59, 130, 246, 0.08) 0px, transparent 50%)
-                        `
-                    }}
-                />
-
-                {/* Grid Pattern */}
-                <div
-                    className="absolute inset-0 opacity-30"
+                    className="absolute inset-0 opacity-20"
                     style={{
                         backgroundImage: `
                             linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
                             linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
                         `,
                         backgroundSize: '60px 60px',
+                        transform: 'perspective(1000px) rotateX(60deg) translateY(200px) scale(2.5)',
+                        transformOrigin: 'center bottom',
+                        maskImage: 'linear-gradient(to top, black 20%, transparent 80%)'
                     }}
+                />
+
+                {/* 2. Aurora Light Beams */}
+                <div className="absolute inset-0 overflow-hidden">
+                    <div className="aurora-beam absolute top-0 -left-20 w-[300px] h-[120vh] bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent blur-3xl rotate-[15deg] origin-top" />
+                    <div className="aurora-beam absolute top-0 left-1/3 w-[400px] h-[120vh] bg-gradient-to-r from-transparent via-blue-600/10 to-transparent blur-3xl rotate-[25deg] origin-top" />
+                    <div className="aurora-beam absolute top-0 right-1/4 w-[350px] h-[120vh] bg-gradient-to-r from-transparent via-teal-500/10 to-transparent blur-3xl -rotate-[10deg] origin-top" />
+                </div>
+
+                {/* 3. Original Orbs Refined */}
+                <div
+                    className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-cyan-500/5 rounded-full blur-[150px] opacity-30 mix-blend-screen transition-transform duration-[2000ms] ease-out"
+                    style={{ transform: `translate(${mousePos.x * -1}px, ${mousePos.y * -1}px)` }}
+                />
+                <div
+                    className="absolute bottom-0 right-1/4 w-[700px] h-[700px] bg-blue-600/5 rounded-full blur-[130px] opacity-30 mix-blend-screen transition-transform duration-[2000ms] ease-out"
+                    style={{ transform: `translate(${mousePos.x * 0.8}px, ${mousePos.y * 0.8}px)` }}
                 />
             </div>
 
-            {/* Main Content */}
-            <div className="container mx-auto px-4 relative z-10">
-                <div className="max-w-5xl mx-auto text-center">
+            <div className="container mx-auto px-4 relative z-10 py-24 lg:py-0">
+                <div className="container mx-auto px-6 relative z-10 pt-20">
+                    <div className="grid lg:grid-cols-[1.2fr_1fr] items-center gap-12 xl:gap-20">
 
-                    {/* Badge */}
-                    <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-500/10 to-teal-500/10 border border-cyan-500/20 backdrop-blur-sm mb-8 hover:border-cyan-500/40 transition-all cursor-default">
-                        <span className="text-sm font-medium text-cyan-300 tracking-wide">{text.badge}</span>
-                    </div>
-
-                    {/* Main Heading */}
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.1] mb-6">
-                        <span className="block mb-2">{text.titlePart1}</span>
-                        <span className="relative inline-block">
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-400 bg-[length:200%_auto]">
-                                {text.titleHighlight}
-                            </span>
-                            {/* Underline decoration */}
-                            <svg className="absolute -bottom-2 left-0 w-full h-3" viewBox="0 0 300 12" fill="none">
-                                <path
-                                    d="M2 10C50 4 100 4 150 7C200 10 250 6 298 3"
-                                    stroke="url(#underlineGradient)"
-                                    strokeWidth="3"
-                                    strokeLinecap="round"
-                                    fill="none"
-                                />
-                                <defs>
-                                    <linearGradient id="underlineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" stopColor="#06b6d4" />
-                                        <stop offset="50%" stopColor="#14b8a6" />
-                                        <stop offset="100%" stopColor="#06b6d4" />
-                                    </linearGradient>
-                                </defs>
-                            </svg>
-                        </span>
-                    </h1>
-
-                    {/* Subtitle */}
-                    <p className="max-w-2xl mx-auto text-lg md:text-xl text-gray-400 leading-relaxed mb-10">
-                        {text.subtitle}
-                    </p>
-
-                    {/* CTA Buttons */}
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-                        <button
-                            onClick={scrollToContact}
-                            className="group px-8 py-4 bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-white font-semibold text-base rounded-full flex items-center gap-3 transition-all shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105"
-                        >
-                            <Rocket size={20} />
-                            {text.ctaButton}
-                            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                        </button>
-
-                        <button className="px-8 py-4 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white font-medium text-base rounded-full flex items-center gap-3 transition-all backdrop-blur-sm">
-                            <Globe size={18} />
-                            {text.ctaSecondary}
-                        </button>
-                    </div>
-
-                    {/* Stats Row */}
-                    <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16">
-                        {[
-                            { value: text.stat1Value, label: text.stat1Label, icon: Users },
-                            { value: text.stat2Value, label: text.stat2Label, icon: Star },
-                            { value: text.stat3Value, label: text.stat3Label, icon: Shield },
-                        ].map((stat, i) => (
-                            <div key={i} className="flex items-center gap-3">
-                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-teal-500/20 border border-cyan-500/20 flex items-center justify-center">
-                                    <stat.icon size={20} className="text-cyan-400" />
-                                </div>
-                                <div className="text-left">
-                                    <div className="text-2xl font-bold text-white">{stat.value}</div>
-                                    <div className="text-sm text-gray-500">{stat.label}</div>
-                                </div>
+                        {/* LEFT COLUMN: Text Content */}
+                        <div className="flex flex-col items-start text-left max-w-2xl">
+                            <div className="animate-target inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/[0.03] border border-white/[0.08] backdrop-blur-xl mb-8 hover:border-cyan-500/30 transition-all cursor-default">
+                                <Sparkles size={14} className="text-cyan-400" />
+                                <span className="text-[10px] font-black text-white/80 tracking-[0.2em] uppercase">{text.badge}</span>
                             </div>
-                        ))}
-                    </div>
 
+                            <h1 className="animate-target text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-bold text-white tracking-[-0.02em] leading-[1.1] mb-8 drop-shadow-2xl">
+                                <span className="block mb-3 opacity-90">{text.titlePart1}</span>
+                                <span className="relative inline-block">
+                                    <span className="absolute -inset-2 blur-2xl bg-cyan-500/20 rounded-full" />
+                                    <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-teal-200 to-blue-400 animate-[gradient_6s_linear_infinite] bg-[length:300%_auto]">
+                                        {text.titleHighlight}
+                                    </span>
+                                </span>
+                            </h1>
+
+                            <p className="animate-target text-base lg:text-lg text-gray-400/90 leading-relaxed mb-6 font-medium max-w-xl">
+                                {text.subtitle}
+                            </p>
+
+                            <p className="animate-target text-sm text-cyan-300/80 font-medium tracking-wide mb-8 border-l-2 border-cyan-500/30 pl-4 py-1">
+                                {text.support}
+                            </p>
+
+                            <div className="animate-target flex flex-col sm:flex-row items-center gap-6">
+                                <button
+                                    onClick={scrollToContact}
+                                    className="w-full sm:w-auto group relative bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-semibold px-8 py-4 rounded-xl text-sm transition-all duration-300 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:-translate-y-0.5 flex items-center justify-center gap-3"
+                                >
+                                    {text.ctaButton}
+                                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                </button>
+
+                                <span className="text-[13px] text-gray-400 font-medium opacity-70">
+                                    {text.ctaMicro}
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* RIGHT COLUMN: Service Matrix Grid */}
+                        <div
+                            className="animate-target grid grid-cols-1 sm:grid-cols-2 gap-4 perspective-[2000px]"
+                            style={{ transformStyle: 'preserve-3d' }}
+                        >
+                            {text.cards.map((card, i) => (
+                                <ServiceCard
+                                    key={i}
+                                    card={card}
+                                    index={i}
+                                    hoveredIndex={hoveredIndex}
+                                    setHoveredIndex={setHoveredIndex}
+                                />
+                            ))}
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
-            {/* --- FLOATING SERVICE CARDS (Sides) --- */}
+            {/* Bottom Tech Fade */}
+            <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#020408] to-transparent pointer-events-none" />
 
-            {/* Left Side Cards */}
-            <div className="absolute top-1/2 -translate-y-1/2 left-4 lg:left-8 xl:left-16 hidden xl:flex flex-col gap-6">
-                {text.cards.slice(0, 2).map((card, i) => {
-                    const Icon = card.icon
-                    return (
-                        <div key={i} className="group flex items-center gap-4 bg-[#0c1119]/80 backdrop-blur-xl border border-white/10 rounded-2xl p-4 w-[200px] shadow-2xl hover:border-cyan-500/30 transition-all hover:-translate-y-1 cursor-default">
-                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-teal-500 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <Icon size={20} className="text-white" strokeWidth={1.5} />
-                            </div>
-                            <span className="text-sm font-semibold text-white tracking-wide">{card.title}</span>
-                        </div>
-                    )
-                })}
-            </div>
-
-            {/* Right Side Cards */}
-            <div className="absolute top-1/2 -translate-y-1/2 right-4 lg:right-8 xl:right-16 hidden xl:flex flex-col gap-6">
-                {text.cards.slice(2, 4).map((card, i) => {
-                    const Icon = card.icon
-                    return (
-                        <div key={i} className="group flex items-center gap-4 bg-[#0c1119]/80 backdrop-blur-xl border border-white/10 rounded-2xl p-4 w-[200px] shadow-2xl hover:border-cyan-500/30 transition-all hover:-translate-y-1 cursor-default">
-                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-teal-500 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <Icon size={20} className="text-white" strokeWidth={1.5} />
-                            </div>
-                            <span className="text-sm font-semibold text-white tracking-wide">{card.title}</span>
-                        </div>
-                    )
-                })}
-            </div>
-
-            {/* Bottom Gradient Fade */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#030810] to-transparent pointer-events-none" />
-
+            <style jsx>{`
+                @keyframes gradient {
+                    0% { background-position: 0% 50%; }
+                    50% { background-position: 100% 50%; }
+                    100% { background-position: 0% 50%; }
+                }
+                @keyframes shimmer {
+                    0% { transform: translateX(-100%); }
+                    100% { transform: translateX(100%); }
+                }
+            `}</style>
         </header>
     )
 }

@@ -1,229 +1,114 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
+import Link from 'next/link'
 import { useLocale } from 'next-intl'
-import { Send, Mail, Phone, MapPin, ArrowRight, CheckCircle, Sparkles } from 'lucide-react'
+import { ArrowUpRight, Sparkles, Rocket } from 'lucide-react'
 
 export default function WebDevContact() {
     const locale = useLocale()
-    const [formState, setFormState] = useState({ name: '', email: '', phone: '', message: '' })
-    const [isSubmitting, setIsSubmitting] = useState(false)
-    const [isSubmitted, setIsSubmitted] = useState(false)
-
-    const content = {
-        tr: {
-            badge: "Bizimle İletişime Geçin",
-            title: "Projenizi Hayata",
-            titleHighlight: "Geçirelim",
-            subtitle: "Web siteniz veya uygulamanız hakkında sorularınız mı var? Size en kısa sürede dönüş yapalım.",
-            namePlaceholder: "Adınız",
-            emailPlaceholder: "E-posta adresiniz",
-            phonePlaceholder: "Telefon numaranız",
-            messagePlaceholder: "Projeniz hakkında bize biraz bilgi verin...",
-            submitButton: "Mesaj Gönder",
-            submitting: "Gönderiliyor...",
-            successTitle: "Mesajınız Alındı!",
-            successMessage: "En kısa sürede size dönüş yapacağız.",
-            contactInfo: "İletişim Bilgileri",
-            emailLabel: "E-posta",
-            phoneLabel: "Telefon",
-            addressLabel: "Adres",
-            emailValue: "info@elitecode.dev",
-            phoneValue: "+90 555 123 4567",
-            addressValue: "İstanbul, Türkiye",
-        },
-        en: {
-            badge: "Get In Touch",
-            title: "Let's Bring Your",
-            titleHighlight: "Project to Life",
-            subtitle: "Have questions about your website or application? We'll get back to you as soon as possible.",
-            namePlaceholder: "Your name",
-            emailPlaceholder: "Your email address",
-            phonePlaceholder: "Your phone number",
-            messagePlaceholder: "Tell us a bit about your project...",
-            submitButton: "Send Message",
-            submitting: "Sending...",
-            successTitle: "Message Received!",
-            successMessage: "We'll get back to you shortly.",
-            contactInfo: "Contact Information",
-            emailLabel: "Email",
-            phoneLabel: "Phone",
-            addressLabel: "Address",
-            emailValue: "info@elitecode.dev",
-            phoneValue: "+90 555 123 4567",
-            addressValue: "Istanbul, Turkey",
-        }
-    }
-
-    const text = content[locale as keyof typeof content] || content.en
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault()
-        setIsSubmitting(true)
-
-        // Simulate form submission
-        await new Promise(resolve => setTimeout(resolve, 1500))
-
-        setIsSubmitting(false)
-        setIsSubmitted(true)
-    }
-
+    
     return (
-        <section id="contact" className="relative py-24 bg-[#030810] overflow-hidden">
+        <section id="contact" className="relative py-32 md:py-48 bg-[#030308] overflow-hidden">
 
-            {/* Background Effects */}
-            <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[150px]" />
-                <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-teal-500/10 rounded-full blur-[120px]" />
-
-                {/* Grid Pattern */}
-                <div
-                    className="absolute inset-0 opacity-30"
-                    style={{
-                        backgroundImage: `
-                            linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-                            linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
-                        `,
-                        backgroundSize: '50px 50px',
-                    }}
-                />
+            <div className="absolute inset-0">
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(6,182,212,0.1),transparent)]" />
+                <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             </div>
 
-            <div className="container mx-auto px-4 relative z-10">
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl animate-drift-1" />
+                <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-teal-500/5 rounded-full blur-3xl animate-drift-2" />
+            </div>
 
-                {/* Header */}
-                <div className="text-center mb-16">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/30 mb-6">
-                        <Sparkles size={14} className="text-cyan-400" />
-                        <span className="text-sm font-medium text-cyan-300">{text.badge}</span>
-                    </div>
+            <div className="container mx-auto px-6 relative z-10">
 
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                        {text.title}{' '}
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
-                            {text.titleHighlight}
-                        </span>
-                    </h2>
+                <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center max-w-7xl mx-auto">
 
-                    <p className="text-gray-400 max-w-xl mx-auto">
-                        {text.subtitle}
-                    </p>
-                </div>
+                    <div className="space-y-8">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 backdrop-blur-sm">
+                            <Sparkles className="w-4 h-4 text-cyan-400" />
+                            <span className="text-sm text-cyan-400 font-medium">Hadi Konusalim</span>
+                        </div>
 
-                <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight">
+                            Projenizi
+                            <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-300">
+                                Hayata Gecirelim
+                            </span>
+                        </h2>
 
-                    {/* Contact Form */}
-                    <div className="bg-[#0a0f18]/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8">
-                        {isSubmitted ? (
-                            <div className="flex flex-col items-center justify-center h-full text-center py-12">
-                                <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mb-6">
-                                    <CheckCircle size={32} className="text-green-400" />
-                                </div>
-                                <h3 className="text-2xl font-bold text-white mb-2">{text.successTitle}</h3>
-                                <p className="text-gray-400">{text.successMessage}</p>
+                        <p className="text-lg md:text-xl text-white/50 max-w-lg leading-relaxed">
+                            Fikrinizi dinlemek ve size ozel cozumler uretmek icin sabirsizlaniyoruz. 24 saat icinde donus yapiyoruz.
+                        </p>
+
+                        <div className="flex flex-wrap gap-6 pt-4">
+                            <div className="flex items-center gap-3 text-white/50">
+                                <div className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
+                                <span className="text-sm">7/24 Destek</span>
                             </div>
-                        ) : (
-                            <form onSubmit={handleSubmit} className="space-y-5">
-                                <div>
-                                    <input
-                                        type="text"
-                                        placeholder={text.namePlaceholder}
-                                        value={formState.name}
-                                        onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                                        required
-                                        className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 transition-all"
-                                    />
-                                </div>
-
-                                <div className="grid md:grid-cols-2 gap-5">
-                                    <input
-                                        type="email"
-                                        placeholder={text.emailPlaceholder}
-                                        value={formState.email}
-                                        onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                                        required
-                                        className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 transition-all"
-                                    />
-                                    <input
-                                        type="tel"
-                                        placeholder={text.phonePlaceholder}
-                                        value={formState.phone}
-                                        onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
-                                        className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 transition-all"
-                                    />
-                                </div>
-
-                                <div>
-                                    <textarea
-                                        placeholder={text.messagePlaceholder}
-                                        value={formState.message}
-                                        onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                                        required
-                                        rows={5}
-                                        className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 transition-all resize-none"
-                                    />
-                                </div>
-
-                                <button
-                                    type="submit"
-                                    disabled={isSubmitting}
-                                    className="w-full px-6 py-4 bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-white font-semibold rounded-xl flex items-center justify-center gap-3 transition-all shadow-lg shadow-cyan-500/25 disabled:opacity-70 disabled:cursor-not-allowed"
-                                >
-                                    {isSubmitting ? (
-                                        <>
-                                            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                                            {text.submitting}
-                                        </>
-                                    ) : (
-                                        <>
-                                            <Send size={18} />
-                                            {text.submitButton}
-                                            <ArrowRight size={18} />
-                                        </>
-                                    )}
-                                </button>
-                            </form>
-                        )}
-                    </div>
-
-                    {/* Contact Info Cards */}
-                    <div className="space-y-6">
-                        <h3 className="text-xl font-semibold text-white mb-6">{text.contactInfo}</h3>
-
-                        {[
-                            { icon: Mail, label: text.emailLabel, value: text.emailValue, color: 'cyan' },
-                            { icon: Phone, label: text.phoneLabel, value: text.phoneValue, color: 'teal' },
-                            { icon: MapPin, label: text.addressLabel, value: text.addressValue, color: 'blue' },
-                        ].map((item, i) => (
-                            <div
-                                key={i}
-                                className="flex items-center gap-5 p-5 bg-[#0a0f18]/60 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-cyan-500/30 transition-all group"
-                            >
-                                <div className={`w-14 h-14 rounded-xl bg-${item.color}-500/20 flex items-center justify-center group-hover:scale-110 transition-transform`}>
-                                    <item.icon size={24} className={`text-${item.color}-400`} />
-                                </div>
-                                <div>
-                                    <div className="text-sm text-gray-500 mb-1">{item.label}</div>
-                                    <div className="text-lg font-semibold text-white">{item.value}</div>
-                                </div>
+                            <div className="flex items-center gap-3 text-white/50">
+                                <div className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
+                                <span className="text-sm">Ucretsiz Danismanlik</span>
                             </div>
-                        ))}
-
-                        {/* Decorative Card */}
-                        <div className="p-6 bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-500/20 rounded-2xl">
-                            <div className="flex items-center gap-3 mb-3">
-                                <div className="w-3 h-3 rounded-full bg-green-400 animate-pulse" />
-                                <span className="text-sm text-green-400 font-medium">Online</span>
-                            </div>
-                            <p className="text-gray-300 text-sm">
-                                {locale === 'tr'
-                                    ? 'Genellikle 24 saat içinde yanıt veriyoruz. Acil durumlar için bizi arayabilirsiniz.'
-                                    : 'We usually respond within 24 hours. For urgent matters, feel free to call us.'}
-                            </p>
                         </div>
                     </div>
+
+                    <div className="relative">
+                        <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/10 via-teal-500/10 to-cyan-500/10 rounded-3xl blur-2xl opacity-60" />
+
+                        <div className="relative space-y-6">
+                            <Link
+                                href={`/${locale}/contact`}
+                                className="group relative block p-8 md:p-10 rounded-3xl bg-gradient-to-br from-cyan-500/15 via-teal-500/10 to-cyan-500/15 border border-cyan-500/20 backdrop-blur-sm hover:border-cyan-500/40 transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_60px_rgba(6,182,212,0.25)]"
+                            >
+                                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                
+                                <div className="relative flex items-center justify-between">
+                                    <div className="flex items-center gap-6">
+                                        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500 to-teal-500 flex items-center justify-center shadow-lg shadow-cyan-500/25">
+                                            <Rocket className="w-7 h-7 text-white" />
+                                        </div>
+                                        <div>
+                                            <h3 className="text-xl md:text-2xl font-bold text-white mb-2">Projeyi Baslat</h3>
+                                            <p className="text-base text-white/50">Ucretsiz danismanlik ile baslayin</p>
+                                        </div>
+                                    </div>
+                                    <div className="w-14 h-14 rounded-full bg-gradient-to-r from-cyan-500 to-teal-500 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-lg shadow-cyan-500/30">
+                                        <ArrowUpRight className="w-6 h-6 text-white" />
+                                    </div>
+                                </div>
+                            </Link>
+
+                            <div className="grid grid-cols-3 gap-4">
+                                {['50+', '99%', '24s'].map((stat, i) => (
+                                    <div key={i} className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] text-center hover:border-cyan-500/20 transition-colors">
+                                        <div className="text-2xl font-bold text-white mb-1">{stat}</div>
+                                        <div className="text-xs text-white/40">
+                                            {i === 0 ? 'Proje' : i === 1 ? 'Memnuniyet' : 'Donus Suresi'}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
             </div>
+
+            <style jsx global>{`
+                @keyframes drift-1 {
+                    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+                    50% { transform: translate(30px, -30px) rotate(5deg); }
+                }
+                @keyframes drift-2 {
+                    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+                    50% { transform: translate(-20px, 20px) rotate(-5deg); }
+                }
+                .animate-drift-1 { animation: drift-1 20s ease-in-out infinite; }
+                .animate-drift-2 { animation: drift-2 25s ease-in-out infinite; }
+            `}</style>
         </section>
     )
 }

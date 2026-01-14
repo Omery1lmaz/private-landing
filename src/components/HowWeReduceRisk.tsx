@@ -18,7 +18,7 @@ const risks = [
 
 export default function HowWeReduceRisk() {
   const t = useTranslations('how_we_reduce_risk_section')
-  const sectionRef = useRef<HTMLSection>(null)
+  const sectionRef = useRef<HTMLElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
   const risksRef = useRef<HTMLDivElement>(null)
 
@@ -121,7 +121,7 @@ export default function HowWeReduceRisk() {
                     />
 
                     {/* Animated border glow */}
-                    <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
+                    <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                       style={{
                         background: 'linear-gradient(135deg, rgba(239,68,68,0.1) 0%, transparent 50%)',
                       }}
