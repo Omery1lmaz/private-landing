@@ -1513,5 +1513,25 @@
     "benefit4": "MERKEZİ OLMAYAN",
     "benefit5": "MALİYET REKABETÇİ",
     "benefit6": "PROTOKOL BAĞIMSIZ"
+  },
+  "project_management_showcase": {
+    "project_management": "Proje Yönetimi",
+    "monitor_progress": "İlerlemeyi Takip Et",
+    "faster_than_ever": "Her Zamankinden Daha Hızlı.",
+    "description": "Proje ilerlemesini takip etmek ve hızlı ayarlamalar yapmak için gerçek zamanlı güncellemelere anında erişin. Platformumuz dijital projeleriniz hakkında kapsamlı içgörüler sağlar.",
+    "increase_progress_tracking": "İlerleme Takibinde Artış",
+    "increase_productivity": "Verimlilik Artışı",
+    "start_trial": "7 günlük ücretsiz denemenizi başlatın",
+    "design_system": "Tasarım Sistemi",
+    "frontend_dev": "Frontend Geliştirme",
+    "backend_integration": "Backend Entegrasyonu",
+    "all_projects": "Tüm Projeler",
+    "active": "Aktif",
+    "completed": "Tamamlandı",
+    "project_timeline": "Proje Zaman Çizelgesi",
+    "smart_priority": "Akıllı Öncelik Sıralaması",
+    "custom_labeling": "Özel Etiketleme",
+    "advanced_filtering": "Gelişmiş Filtreleme",
+    "visual_categorization": "Görsel Kategorizasyon"
   }
 }

@@ -50,17 +50,17 @@ export default function Home() {
       <div id="templates">
         <Templates />
       </div>
-      <EventWebsiteShowcase />
+      {/* <EventWebsiteShowcase /> */}
       <ProjectManagementShowcase />
-      <CryptoTradingShowcase />
-      <HRDepartment />
-      <UnifiedAISpace />
-      <FinancialAdvantages />
-      <SimpleClearUseful />
-      <AISEOFeatures />
-      <PalantirFoundry />
-      <Web3Infrastructure />
-   {/*    <Testimonials /> */}
+      {/* <CryptoTradingShowcase />
+      <HRDepartment /> */}
+      {/* <UnifiedAISpace /> */}
+      {/* <FinancialAdvantages /> */}
+      {/* <SimpleClearUseful /> */}
+      {/* <AISEOFeatures /> */}
+      {/* <PalantirFoundry />
+      <Web3Infrastructure /> */}
+      {/*    <Testimonials /> */}
       <div id="contact">
         <Contact />
       </div>

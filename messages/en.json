@@ -1489,5 +1489,25 @@
     "benefit4": "DECENTRALIZED",
     "benefit5": "COST COMPETITIVE",
     "benefit6": "PROTOCOL AGNOSTIC"
+  },
+  "project_management_showcase": {
+    "project_management": "Project Management",
+    "monitor_progress": "Monitor Progress",
+    "faster_than_ever": "Faster Than Ever.",
+    "description": "Instantly access real-time updates to track project progress and make quick adjustments. Our platform provides comprehensive insights into your digital projects.",
+    "increase_progress_tracking": "Increase in Progress Tracking",
+    "increase_productivity": "Increase in Productivity",
+    "start_trial": "Start your 7 day free trial",
+    "design_system": "Design System",
+    "frontend_dev": "Frontend Dev",
+    "backend_integration": "Backend Integration",
+    "all_projects": "All Projects",
+    "active": "Active",
+    "completed": "Completed",
+    "project_timeline": "Project Timeline",
+    "smart_priority": "Smart Priority Sorting",
+    "custom_labeling": "Custom Labeling",
+    "advanced_filtering": "Advanced Filtering",
+    "visual_categorization": "Visual Categorization"
   }
 }
