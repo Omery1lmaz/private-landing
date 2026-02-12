@@ -203,112 +203,112 @@ export default function Contact() {
       <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-teal-500/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container relative z-10 mx-auto px-6">
-          <div className="max-w-6xl mx-auto">
-            {/* Header */}
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 text-sm text-cyan-400 mb-4">
-                <MessageSquare className="w-4 h-4" />
-                <span>{t('badge')}</span>
-              </div>
-              <h2 ref={titleRef} className="text-3xl md:text-4xl font-bold mb-2 text-white">
-                {t('title_part1')}{' '}
-                <span className="bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
-                  {t('title_part2')}
-                </span>
-              </h2>
-              <p className="text-md text-gray-400 max-w-3xl mx-auto leading-relaxed">
-                {t('subtitle')}
-              </p>
+        <div className="max-w-6xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 text-sm text-cyan-400 mb-4">
+              <MessageSquare className="w-4 h-4" />
+              <span>{t('badge')}</span>
+            </div>
+            <h2 ref={titleRef} className="text-3xl md:text-4xl font-bold mb-2 text-white">
+              {t('title_part1')}{' '}
+              <span className="bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
+                {t('title_part2')}
+              </span>
+            </h2>
+            <p className="text-md text-gray-400 max-w-3xl mx-auto leading-relaxed">
+              {t('subtitle')}
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+            {/* Calendly CTA */}
+            <div className="flex flex-col items-start justify-center bg-white/[0.02] backdrop-blur-sm rounded-2xl p-8">
+              <h3 className="text-2xl font-bold text-white mb-3">Takvimden Randevu Al</h3>
+              <p className="text-gray-400 mb-6">Takvimimize bağlanıp uygun bir zaman seçin. Görüşme Zoom/Meet üzerinden planlanacaktır.</p>
+              <a
+                href="https://calendly.com/omery020040/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-semibold hover:opacity-95 transition"
+              >
+                Takvimden Randevu Al
+                <ExternalLink className="w-4 h-4" />
+              </a>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-              {/* Calendly CTA */}
-              <div className="flex flex-col items-start justify-center bg-white/[0.02] backdrop-blur-sm rounded-2xl p-8">
-                <h3 className="text-2xl font-bold text-white mb-3">Takvimden Randevu Al</h3>
-                <p className="text-gray-400 mb-6">Takvimimize bağlanıp uygun bir zaman seçin. Görüşme Zoom/Meet üzerinden planlanacaktır.</p>
-                <a
-                  href="https://calendly.com/your-calendly-username"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-semibold hover:opacity-95 transition"
-                >
-                  Takvimden Randevu Al
-                  <ExternalLink className="w-4 h-4" />
-                </a>
-              </div>
+            {/* Email form */}
+            <div ref={formRef} className="bg-white/[0.03] backdrop-blur-xl rounded-2xl p-8">
+              <h3 className="text-2xl font-bold text-white mb-4">{t('form_title')}</h3>
 
-              {/* Email form */}
-              <div ref={formRef} className="bg-white/[0.03] backdrop-blur-xl rounded-2xl p-8">
-                <h3 className="text-2xl font-bold text-white mb-4">{t('form_title')}</h3>
+              {submitStatus === 'success' && (
+                <div className="mb-4 p-3 rounded-lg bg-green-500/10 flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <span className="text-green-400">{t('submit_success')}</span>
+                </div>
+              )}
 
-                {submitStatus === 'success' && (
-                  <div className="mb-4 p-3 rounded-lg bg-green-500/10 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-400" />
-                    <span className="text-green-400">{t('submit_success')}</span>
-                  </div>
-                )}
+              {submitStatus === 'error' && (
+                <div className="mb-4 p-3 rounded-lg bg-red-500/10 flex items-center gap-2">
+                  <AlertCircle className="w-5 h-5 text-red-400" />
+                  <span className="text-red-400">{t('submit_error')}</span>
+                </div>
+              )}
 
-                {submitStatus === 'error' && (
-                  <div className="mb-4 p-3 rounded-lg bg-red-500/10 flex items-center gap-2">
-                    <AlertCircle className="w-5 h-5 text-red-400" />
-                    <span className="text-red-400">{t('submit_error')}</span>
-                  </div>
-                )}
-
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <label htmlFor="name" className="block text-sm text-gray-300 mb-1">{t('label_name')}</label>
-                    <input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      className="w-full px-3 py-2 bg-white/[0.04] rounded-lg text-white placeholder-gray-400"
-                      placeholder={t('placeholder_name')}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm text-gray-300 mb-1">{t('label_email')}</label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="w-full px-3 py-2 bg-white/[0.04] rounded-lg text-white placeholder-gray-400"
-                      placeholder={t('placeholder_email')}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="message" className="block text-sm text-gray-300 mb-1">{t('label_message')}</label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      rows={4}
-                      className="w-full px-3 py-2 bg-white/[0.04] rounded-lg text-white placeholder-gray-400"
-                      placeholder={t('placeholder_message')}
-                    />
-                  </div>
-                  <div className="flex gap-3">
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-semibold"
-                    >
-                      {isSubmitting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
-                      {isSubmitting ? t('button_submitting') : t('button_submit')}
-                    </button>
-                    <a
-                      href="mailto:hello@elitecodestudio.com"
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/6 text-white"
-                    >
-                      <Mail className="w-4 h-4" />
-                      Email Gönder
-                    </a>
-                  </div>
-                </form>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm text-gray-300 mb-1">{t('label_name')}</label>
+                  <input
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className="w-full px-3 py-2 bg-white/[0.04] rounded-lg text-white placeholder-gray-400"
+                    placeholder={t('placeholder_name')}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm text-gray-300 mb-1">{t('label_email')}</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="w-full px-3 py-2 bg-white/[0.04] rounded-lg text-white placeholder-gray-400"
+                    placeholder={t('placeholder_email')}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="message" className="block text-sm text-gray-300 mb-1">{t('label_message')}</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    rows={4}
+                    className="w-full px-3 py-2 bg-white/[0.04] rounded-lg text-white placeholder-gray-400"
+                    placeholder={t('placeholder_message')}
+                  />
+                </div>
+                <div className="flex gap-3">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-semibold"
+                  >
+                    {isSubmitting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
+                    {isSubmitting ? t('button_submitting') : t('button_submit')}
+                  </button>
+                  <a
+                    href="mailto:hello@elitecodestudio.com"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/6 text-white"
+                  >
+                    <Mail className="w-4 h-4" />
+                    Email Gönder
+                  </a>
+                </div>
+              </form>
             </div>
           </div>
         </div>

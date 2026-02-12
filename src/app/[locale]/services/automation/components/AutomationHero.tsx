@@ -80,22 +80,22 @@ export default function AutomationHero() {
       ctaMicro: "Süreç analizi ve verimlilik raporu için iletişime geçin.",
       cards: [
         {
-          title: "Workflow Intelligence",
+          title: "İş Akışı Zekası",
           text: "Karmaşık iş akışlarını AI ile analiz edip optimize ediyoruz.",
           icon: Brain
         },
         {
-          title: "API Ecosystem",
+          title: "API Ekosistemi",
           text: "Farklı yazılımlarınızı tek bir otonom yapı altında birleştirin.",
           icon: LinkIcon
         },
         {
-          title: "Agentic AI",
+          title: "Ajan Tabanlı Yapay Zeka",
           text: "Karar verebilen ve işlem yapabilen dijital çalışanlar.",
           icon: Cpu
         },
         {
-          title: "Real-time Operations",
+          title: "Gerçek Zamanlı Operasyonlar",
           text: "Gecikmesiz, anlık veri işleme ve aksiyon alma kapasitesi.",
           icon: Zap
         }

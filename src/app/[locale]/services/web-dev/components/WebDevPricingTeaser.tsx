@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Check, ArrowRight, LayoutTemplate, Crown, Server, HelpCircle, Users } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -10,10 +10,14 @@ gsap.registerPlugin(ScrollTrigger)
 export default function WebDevPricingTeaser() {
     const sectionRef = useRef<HTMLElement>(null)
 
+    const [currency, setCurrency] = useState<'TRY' | 'USD'>('TRY')
+
     const tiers = [
         {
             name: "Foundation",
             subtitle: "Sağlam Bir Başlangıç",
+            price: currency === 'TRY' ? "19.900" : "990",
+            currencySymbol: currency === 'TRY' ? "₺" : "$",
             desc: "İşini doğru temsil eden, yönetilebilir bir web altyapısı. Kurumsal görünüm, net yapı ve uzun vadeli temel.",
             icon: LayoutTemplate,
             color: "indigo",
@@ -30,6 +34,8 @@ export default function WebDevPricingTeaser() {
             name: "Growth",
             subtitle: "İşinize Uyumlanan Sistem",
             badge: "Önerilen Seviye",
+            price: currency === 'TRY' ? "39.900" : "1.990",
+            currencySymbol: currency === 'TRY' ? "₺" : "$",
             desc: "Web sitesinden fazlasını isteyenler için. Operasyon, kullanıcı ve büyüme odaklı yapı.",
             icon: Crown,
             color: "cyan",
@@ -45,6 +51,8 @@ export default function WebDevPricingTeaser() {
         {
             name: "Scale",
             subtitle: "Özel Sistemler & Ürünler",
+            price: currency === 'TRY' ? "69.900" : "3.490",
+            currencySymbol: currency === 'TRY' ? "₺" : "$",
             desc: "Standart çözümlerin yetmediği projeler. SaaS, özel yazılım ve ileri seviye sistemler.",
             icon: Server,
             color: "purple",
@@ -100,6 +108,28 @@ export default function WebDevPricingTeaser() {
                         <p className="text-white/60 max-w-2xl mx-auto text-lg md:text-xl font-light leading-relaxed">
                             İhtiyaca göre şekillenen sistem seviyeleriyle ilerliyoruz.
                         </p>
+
+                        {/* Currency Toggle */}
+                        <div className="inline-flex items-center p-1 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm mt-8">
+                            <button
+                                onClick={() => setCurrency('TRY')}
+                                className={`px-6 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${currency === 'TRY'
+                                    ? 'bg-cyan-500 text-black shadow-lg shadow-cyan-500/20'
+                                    : 'text-gray-400 hover:text-white hover:bg-white/5'
+                                    }`}
+                            >
+                                ₺ TRY
+                            </button>
+                            <button
+                                onClick={() => setCurrency('USD')}
+                                className={`px-6 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${currency === 'USD'
+                                    ? 'bg-cyan-500 text-black shadow-lg shadow-cyan-500/20'
+                                    : 'text-gray-400 hover:text-white hover:bg-white/5'
+                                    }`}
+                            >
+                                $ USD
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -119,7 +149,11 @@ export default function WebDevPricingTeaser() {
                                 </div>
                                 <div className="space-y-2">
                                     <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">{tier.name}</h3>
-                                    <div className={`text-sm md:text-base font-medium text-${tier.color}-400`}>{tier.subtitle}</div>
+                                    <div className={`text-sm md:text-base font-medium text-${tier.color}-400 mb-4`}>{tier.subtitle}</div>
+                                    <div className="flex items-baseline gap-1 text-white">
+                                        <span className="text-2xl font-normal text-gray-400">{tier.currencySymbol}</span>
+                                        <span className="text-4xl font-bold tracking-tight">{tier.price}</span>
+                                    </div>
                                 </div>
                                 <p className="mt-6 text-sm md:text-base text-gray-400 leading-relaxed font-light">{tier.desc}</p>
                             </div>

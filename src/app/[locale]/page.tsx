@@ -51,7 +51,7 @@ export default function Home() {
         <Templates />
       </div>
       {/* <EventWebsiteShowcase /> */}
-      <ProjectManagementShowcase />
+      {/* <ProjectManagementShowcase /> */}
       {/* <CryptoTradingShowcase />
       <HRDepartment /> */}
       {/* <UnifiedAISpace /> */}

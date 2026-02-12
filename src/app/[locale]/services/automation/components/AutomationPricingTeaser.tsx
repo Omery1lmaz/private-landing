@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Check, ArrowRight, Layers, Cpu, Infinity as InfinityIcon, HelpCircle, Users } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -10,10 +10,14 @@ gsap.registerPlugin(ScrollTrigger)
 export default function AutomationPricingTeaser() {
     const sectionRef = useRef<HTMLElement>(null)
 
+    const [currency, setCurrency] = useState<'TRY' | 'USD'>('TRY')
+
     const tiers = [
         {
-            name: "Foundation",
-            subtitle: "Task Automation",
+            name: "Temel",
+            subtitle: "Görev Otomasyonu",
+            price: currency === 'TRY' ? "19.900" : "990",
+            currencySymbol: currency === 'TRY' ? "₺" : "$",
             desc: "Tekil ve tekrarlayan görevlerin otomasyonu. Belirli işleri otonom hale getirerek zaman kazanın.",
             icon: Layers,
             color: "indigo",
@@ -27,9 +31,11 @@ export default function AutomationPricingTeaser() {
             highlight: false
         },
         {
-            name: "Growth",
-            subtitle: "Smart Ecosystem",
+            name: "Büyüme",
+            subtitle: "Akıllı Ekosistem",
             badge: "En Popüler",
+            price: currency === 'TRY' ? "39.900" : "1.990",
+            currencySymbol: currency === 'TRY' ? "₺" : "$",
             desc: "Uçtan uca otonom süreçler. Birbirini tetikleyen akıllı akışlar ve tam entegrasyon.",
             icon: Cpu,
             color: "cyan",
@@ -43,15 +49,17 @@ export default function AutomationPricingTeaser() {
             highlight: true
         },
         {
-            name: "Scale",
-            subtitle: "Agentic Enterprise",
+            name: "Ölçeklenme",
+            subtitle: "Ajan Tabanlı İşletme",
+            price: currency === 'TRY' ? "69.900" : "3.490",
+            currencySymbol: currency === 'TRY' ? "₺" : "$",
             desc: "Kendi başına karar verebilen AI ajan ordusu. Karmaşık problemler için tam otonomi.",
             icon: InfinityIcon,
             color: "purple",
             features: [
-                "Agentic AI Swarms",
-                "Self-healing otonom mimari",
-                "Enterprise entegrasyon havuzu",
+                "Ajan Tabanlı Yapay Zeka Sürüleri",
+                "Kendi kendini onaran otonom mimari",
+                "Kurumsal entegrasyon havuzu",
                 "Özel AI model eğitimleri"
             ],
             forWhom: "İşletmesini tamamen otonom bir sistem builder üzerine inşa etmek isteyen vizyoner ekipler.",
@@ -120,7 +128,11 @@ export default function AutomationPricingTeaser() {
                                 </div>
                                 <div className="space-y-2">
                                     <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">{tier.name}</h3>
-                                    <div className={`text-sm md:text-base font-medium text-${tier.color}-400`}>{tier.subtitle}</div>
+                                    <div className={`text-sm md:text-base font-medium text-${tier.color}-400 mb-4`}>{tier.subtitle}</div>
+                                    <div className="flex items-baseline gap-1 text-white">
+                                        <span className="text-2xl font-normal text-gray-400">{tier.currencySymbol}</span>
+                                        <span className="text-4xl font-bold tracking-tight">{tier.price}</span>
+                                    </div>
                                 </div>
                                 <p className="mt-6 text-sm md:text-base text-gray-400 leading-relaxed font-light">{tier.desc}</p>
                             </div>

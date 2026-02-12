@@ -1,4 +1,4 @@
- 'use client'
+'use client'
 
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { gsap } from 'gsap'
@@ -96,16 +96,7 @@ export default function Hero() {
         )
       }
 
-      gsap.to(heroRef.current, {
-        yPercent: -8,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: true,
-        },
-      })
+
     }, heroRef)
 
     return () => ctx.revert()
@@ -129,8 +120,8 @@ export default function Hero() {
       {/* Grid background */}
       <div
         className="absolute inset-0 pointer-events-none opacity-40"
-      style={{
-        backgroundImage: `
+        style={{
+          backgroundImage: `
             linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
             linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
           `,
@@ -181,7 +172,7 @@ export default function Hero() {
                 {t('cta_project_start')}
                 <ArrowRight className="inline-block w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </button>
-              <button 
+              <button
                 onClick={() => {
                   const pricingSection = document.getElementById('pricing')
                   pricingSection?.scrollIntoView({ behavior: 'smooth' })
@@ -226,7 +217,7 @@ export default function Hero() {
                 transformOrigin: 'center center',
               }}
             >
-                <defs>
+              <defs>
                 {/* Card grid patterns */}
                 <pattern id="cardGridCyan" width="12" height="12" patternUnits="userSpaceOnUse">
                   <path d="M 12 0 L 0 0 0 12" fill="none" stroke="rgba(6, 182, 212, 0.12)" strokeWidth="0.5" />
@@ -239,7 +230,7 @@ export default function Hero() {
                 </pattern>
                 <pattern id="cardGridGreen" width="12" height="12" patternUnits="userSpaceOnUse">
                   <path d="M 12 0 L 0 0 0 12" fill="none" stroke="rgba(34, 197, 94, 0.12)" strokeWidth="0.5" />
-                  </pattern>
+                </pattern>
 
                 {/* Glow filters */}
                 <filter id="glowCyan" x="-50%" y="-50%" width="200%" height="200%">
@@ -251,7 +242,7 @@ export default function Hero() {
                     <feMergeNode in="SourceGraphic" />
                   </feMerge>
                 </filter>
-                
+
                 <filter id="glowTeal" x="-50%" y="-50%" width="200%" height="200%">
                   <feGaussianBlur stdDeviation="8" result="blur" />
                   <feFlood floodColor="#14b8a6" floodOpacity="0.6" />
@@ -284,11 +275,11 @@ export default function Hero() {
 
                 <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
                   <feGaussianBlur stdDeviation="4" result="blur" />
-                    <feMerge>
+                  <feMerge>
                     <feMergeNode in="blur" />
                     <feMergeNode in="SourceGraphic" />
-                    </feMerge>
-                  </filter>
+                  </feMerge>
+                </filter>
 
                 {/* Gradients */}
                 <linearGradient id="cardGradientCyan" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -373,7 +364,7 @@ export default function Hero() {
                   <stop offset="100%" stopColor="#06b6d4" stopOpacity="0">
                     <animate attributeName="offset" values="0;2" dur="3s" repeatCount="indefinite" />
                   </stop>
-                  </linearGradient>
+                </linearGradient>
 
                 {/* Pulse filter */}
                 <filter id="pulse">
@@ -383,7 +374,7 @@ export default function Hero() {
                     <feMergeNode in="SourceGraphic" />
                   </feMerge>
                 </filter>
-                </defs>
+              </defs>
 
               {/* Grid background */}
               <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -404,7 +395,7 @@ export default function Hero() {
 
                 <path d="M 540 165 L 600 165 L 600 320 L 580 340" fill="none" stroke="#06b6d4" strokeWidth="3" opacity="0.2" />
                 <path d="M 540 165 L 600 165 L 600 320 L 580 340" fill="none" stroke="url(#flowGradient1)" strokeWidth="3" filter="url(#softGlow)" />
-                
+
                 <circle r="6" fill="#06b6d4" filter="url(#glowCyan)">
                   <animateMotion dur="2.5s" repeatCount="indefinite" path="M 540 165 L 600 165 L 600 320 L 580 340" />
                 </circle>
@@ -421,7 +412,7 @@ export default function Hero() {
               </g>
 
               {/* ===== KARTLAR ===== */}
-              
+
               {/* LEFT COLUMN - Müşteri Akışı */}
               <g transform="translate(30, 100)">
                 {/* Müşteri icon with glow */}
@@ -527,7 +518,7 @@ export default function Hero() {
                 <rect x="-5" y="-5" width="310" height="350" rx="18" fill="rgba(20, 184, 166, 0.03)" />
                 <rect x="0" y="0" width="300" height="340" rx="16" fill="url(#cardGridTeal)" />
                 <rect x="0" y="0" width="300" height="340" rx="16" fill="none" stroke="url(#borderAnimatedTeal)" strokeWidth="2" strokeDasharray="12 6" />
-                
+
                 {/* Title */}
                 <rect x="50" y="10" width="200" height="50" rx="10" fill="rgba(20, 184, 166, 0.12)" />
                 <rect x="50" y="10" width="200" height="50" rx="10" fill="none" stroke="rgba(20, 184, 166, 0.3)" strokeWidth="1" />
@@ -626,7 +617,7 @@ export default function Hero() {
                 <rect x="0" y="0" width="200" height="140" rx="14" fill="url(#cardGradientTeal)" />
                 <rect x="0" y="0" width="200" height="140" rx="14" fill="url(#cardGridTeal)" />
                 <rect x="0" y="0" width="200" height="140" rx="14" fill="none" stroke="url(#borderAnimatedTeal)" strokeWidth="2" />
-                
+
                 {/* Header */}
                 <rect x="0" y="0" width="200" height="38" rx="14" fill="rgba(20, 184, 166, 0.15)" />
                 {/* Settings icon */}
@@ -641,7 +632,7 @@ export default function Hero() {
                   </g>
                 </g>
                 <text x="55" y="26" fill="#14b8a6" fontSize="13" fontWeight="700" filter="url(#softGlow)">{t('svg_otomasyon_merkezi')}</text>
-                
+
                 {/* Features with glowing dots */}
                 <g transform="translate(15, 52)">
                   <circle cx="8" cy="6" r="5" fill="#06b6d4" opacity="0.3" />
@@ -703,7 +694,7 @@ export default function Hero() {
                 </g>
               </g>
 
-              </svg>
+            </svg>
           </div>
         </div>
       </div>

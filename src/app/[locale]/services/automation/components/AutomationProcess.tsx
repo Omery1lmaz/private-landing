@@ -72,7 +72,7 @@ export default function AutomationProcess() {
         <div className="text-center mb-24">
           <span className="text-cyan-500 font-mono text-sm tracking-widest uppercase mb-2 block">Otonom Yolculuk</span>
           <h2 className="text-4xl font-bold text-white">Nasıl Otonomlaştırıyoruz?</h2>
-          <p className="text-white/40 mt-4">Analiz. Kurgu. Mukemmeliyet.</p>
+          <p className="text-white/40 mt-4">Analiz. Kurgu. Mükemmeliyet.</p>
         </div>
 
         {/* Steps Container */}

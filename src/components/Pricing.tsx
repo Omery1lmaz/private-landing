@@ -23,12 +23,14 @@ export default function Pricing() {
   const cardsRef = useRef<HTMLDivElement>(null)
   const faqRef = useRef<HTMLDivElement>(null)
   const [activeFaq, setActiveFaq] = useState<number | null>(null)
+  const [currency, setCurrency] = useState<'TRY' | 'USD'>('TRY')
 
   const plans = [
     {
       name: t('plan1_name'),
       subtitle: t('plan1_subtitle'),
-      price: t('plan1_price'),
+      price: currency === 'TRY' ? t('plan1_price') : t('plan1_price_usd'),
+      currencySymbol: currency === 'TRY' ? '₺' : '$',
       period: t('plan_period'),
       description: t('plan1_description'),
       icon: Star,
@@ -47,7 +49,8 @@ export default function Pricing() {
     {
       name: t('plan2_name'),
       subtitle: t('plan2_subtitle'),
-      price: t('plan2_price'),
+      price: currency === 'TRY' ? t('plan2_price') : t('plan2_price_usd'),
+      currencySymbol: currency === 'TRY' ? '₺' : '$',
       period: t('plan_period'),
       description: t('plan2_description'),
       icon: Zap,
@@ -68,7 +71,8 @@ export default function Pricing() {
     {
       name: t('plan3_name'),
       subtitle: t('plan3_subtitle'),
-      price: t('plan3_price'),
+      price: currency === 'TRY' ? t('plan3_price') : t('plan3_price_usd'),
+      currencySymbol: currency === 'TRY' ? '₺' : '$',
       period: t('plan_period'),
       description: t('plan3_description'),
       icon: Crown,
@@ -207,9 +211,31 @@ export default function Pricing() {
                 {t('title_part2')}
               </span>
             </h2>
-            <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed mb-8">
               {t('subtitle')}
             </p>
+
+            {/* Currency Toggle */}
+            <div className="inline-flex items-center p-1 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
+              <button
+                onClick={() => setCurrency('TRY')}
+                className={`px-6 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${currency === 'TRY'
+                    ? 'bg-cyan-500 text-black shadow-lg shadow-cyan-500/20'
+                    : 'text-gray-400 hover:text-white hover:bg-white/5'
+                  }`}
+              >
+                ₺ TRY
+              </button>
+              <button
+                onClick={() => setCurrency('USD')}
+                className={`px-6 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${currency === 'USD'
+                    ? 'bg-cyan-500 text-black shadow-lg shadow-cyan-500/20'
+                    : 'text-gray-400 hover:text-white hover:bg-white/5'
+                  }`}
+              >
+                $ USD
+              </button>
+            </div>
           </div>
 
           {/* Pricing Cards */}
@@ -223,7 +249,7 @@ export default function Pricing() {
                   key={index}
                   className={`pricing-card group relative ${plan.popular ? 'scale-105 z-10' : ''}`}
                 >
-                    <div className={`relative h-full p-6 md:p-8 rounded-2xl bg-white/[0.03] backdrop-blur-xl border ${plan.popular ? 'border-cyan-500/30' : 'border-white/[0.08]'} transition-all duration-500 hover:bg-white/[0.06] hover:border-white/[0.15] hover:scale-[1.02] hover:shadow-2xl overflow-visible`}>
+                  <div className={`relative h-full p-6 md:p-8 rounded-2xl bg-white/[0.03] backdrop-blur-xl border ${plan.popular ? 'border-cyan-500/30' : 'border-white/[0.08]'} transition-all duration-500 hover:bg-white/[0.06] hover:border-white/[0.15] hover:scale-[1.02] hover:shadow-2xl overflow-visible`}>
                     {/* Animated Top Border */}
                     <div className="absolute top-0 left-0 w-full h-[2px] overflow-hidden rounded-t-2xl">
                       <div
@@ -264,7 +290,7 @@ export default function Pricing() {
                       <p className="text-gray-400 text-sm mb-4">{plan.subtitle}</p>
 
                       <div className="flex flex-col items-center mb-6">
-                        <span className="text-5xl font-bold text-white"><sup className="text-2xl font-normal">$</sup>{plan.price}</span>
+                        <span className="text-5xl font-bold text-white"><sup className="text-2xl font-normal">{plan.currencySymbol}</sup>{plan.price}</span>
                         <span className="text-sm text-gray-400 mt-1">{plan.period}</span>
                       </div>
 

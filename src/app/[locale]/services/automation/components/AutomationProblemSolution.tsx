@@ -78,7 +78,7 @@ export default function AutomationProblemSolution() {
                 <div className="text-center mb-20 max-w-3xl mx-auto space-y-6">
                     <div className="animate-split inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/[0.03] border border-white/[0.08] backdrop-blur-xl hover:border-cyan-500/30 transition-all cursor-default">
                         <TrendingUp size={14} className="text-cyan-400" />
-                        <span className="text-[10px] font-black text-cyan-300/60 tracking-[0.3em] uppercase">Autonomous Strategy</span>
+                        <span className="text-[10px] font-black text-cyan-300/60 tracking-[0.3em] uppercase">Otonom Strateji</span>
                     </div>
                     <div className="space-y-4">
                         <h2 className="animate-split text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.02em]">
@@ -119,7 +119,7 @@ export default function AutomationProblemSolution() {
                                         "Yüksek maliyetli ve yavaş raporlama süreçleri"
                                     ].map((item, i) => (
                                         <li key={i} className="flex items-center gap-3 text-red-300/60 transition-colors group-hover/legacy:text-red-300">
-                                            <span className="flex-shrink-0 text-red-500 font-bold animate-pulse">[ERR]</span>
+                                            <span className="flex-shrink-0 text-red-500 font-bold animate-pulse">[HATA]</span>
                                             <span className="relative text-sm">
                                                 {item}
                                                 <span className="absolute inset-0 bg-red-500/20 blur opacity-0 group-hover/legacy:animate-[glitch_2s_infinite]"></span>
@@ -152,7 +152,7 @@ export default function AutomationProblemSolution() {
                                             <Zap className="text-white" size={24} fill="currentColor" />
                                         </div>
                                         <div>
-                                            <h3 className="text-3xl font-bold text-white leading-none">Smart Automation Engine</h3>
+                                            <h3 className="text-3xl font-bold text-white leading-none">Akıllı Otomasyon Motoru</h3>
                                             <p className="text-[10px] text-cyan-400 font-mono mt-2 tracking-widest uppercase">(Sıfır Hata, 7/24 Kesintisiz)</p>
                                         </div>
                                     </div>
@@ -164,11 +164,11 @@ export default function AutomationProblemSolution() {
 
                                 <div className="grid sm:grid-cols-2 gap-4">
                                     {[
-                                        { text: "Agentic AI", icon: Brain, desc: "Süreçleri sadece takip etmeyen, kararlar alan akıllı ajanlar." },
-                                        { text: "Universal API Bridge", icon: LinkIcon, desc: "Tüm yazılımlarınızı tek bir akışta kusursuzca birleştirin." },
-                                        { text: "Error-Free Execution", icon: Settings, desc: "Sıfır insan hatası ile çalışan, yüksek güvenilirlikli sistemler." },
-                                        { text: "Infinite Scalability", icon: TrendingUp, desc: "İş yükünüz arttıkça daralmayan, esnek ve güçlü altyapı." },
-                                        { text: "Predictive Monitoring", icon: CheckCircle2, desc: "Hataları oluşmadan önce fark eden ve kendi kendini düzelten yapı." }
+                                        { text: "Ajan Tabanlı Yapay Zeka", icon: Brain, desc: "Süreçleri sadece takip etmeyen, kararlar alan akıllı ajanlar." },
+                                        { text: "Evrensel API Köprüsü", icon: LinkIcon, desc: "Tüm yazılımlarınızı tek bir akışta kusursuzca birleştirin." },
+                                        { text: "Hatasız Yürütme", icon: Settings, desc: "Sıfır insan hatası ile çalışan, yüksek güvenilirlikli sistemler." },
+                                        { text: "Sınırsız Ölçeklenebilirlik", icon: TrendingUp, desc: "İş yükünüz arttıkça daralmayan, esnek ve güçlü altyapı." },
+                                        { text: "Öngörücü İzleme", icon: CheckCircle2, desc: "Hataları oluşmadan önce fark eden ve kendi kendini düzelten yapı." }
                                     ].map((item, i) => (
                                         <div key={i} className={`group/item flex flex-col gap-3 p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:bg-cyan-500/5 hover:border-cyan-500/20 transition-all cursor-default ${i === 4 ? 'sm:col-span-2' : ''}`}>
                                             <div className="flex items-center gap-3 text-white font-bold">

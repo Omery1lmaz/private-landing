@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { LayoutTemplate, Crown, Server, Check, ArrowRight, HelpCircle, Users, Sparkles, Search, TrendingUp } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -10,10 +10,15 @@ gsap.registerPlugin(ScrollTrigger)
 export default function AiSeoPricingTeaser() {
     const sectionRef = useRef<HTMLElement>(null)
 
+    const [currency, setCurrency] = useState<'TRY' | 'USD'>('TRY')
+
     const tiers = [
         {
             name: "Foundation SEO",
             subtitle: "Sağlam Teknik Temel",
+            price: currency === 'TRY' ? "15.000" : "750",
+            currencySymbol: currency === 'TRY' ? "₺" : "$",
+            period: "/ ay",
             desc: "Arama motorlarının sitenizi doğru okumasını sağlayan teknik SEO ve temel anahtar kelime stratejisi.",
             icon: Search,
             color: "indigo",
@@ -30,6 +35,9 @@ export default function AiSeoPricingTeaser() {
             name: "Growth SEO",
             subtitle: "Sistematik İçerik & AI",
             badge: "Önerilen Seviye",
+            price: currency === 'TRY' ? "30.000" : "1.500",
+            currencySymbol: currency === 'TRY' ? "₺" : "$",
+            period: "/ ay",
             desc: "AI destekli içerik üretimi ve semantik optimizasyon ile trafik artışını otomatiğe bağlayan sistem.",
             icon: Crown,
             color: "cyan",
@@ -45,6 +53,9 @@ export default function AiSeoPricingTeaser() {
         {
             name: "Scale SEO",
             subtitle: "Pazar Hakimiyeti & Otorite",
+            price: currency === 'TRY' ? "50.000" : "2.500",
+            currencySymbol: currency === 'TRY' ? "₺" : "$",
+            period: "/ ay",
             desc: "Sektör liderliği için tasarlanmış kapsamlı SEO, PR ve otorite bağlantı inşası stratejileri.",
             icon: TrendingUp,
             color: "purple",
@@ -100,6 +111,28 @@ export default function AiSeoPricingTeaser() {
                         <p className="text-white/60 max-w-2xl mx-auto text-lg md:text-xl font-light leading-relaxed">
                             Mevcut durumunuza ve hedeflerinize uygun seviyeyi birlikte seçiyoruz.
                         </p>
+
+                        {/* Currency Toggle */}
+                        <div className="inline-flex items-center p-1 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm mt-8">
+                            <button
+                                onClick={() => setCurrency('TRY')}
+                                className={`px-6 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${currency === 'TRY'
+                                    ? 'bg-cyan-500 text-black shadow-lg shadow-cyan-500/20'
+                                    : 'text-gray-400 hover:text-white hover:bg-white/5'
+                                    }`}
+                            >
+                                ₺ TRY
+                            </button>
+                            <button
+                                onClick={() => setCurrency('USD')}
+                                className={`px-6 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${currency === 'USD'
+                                    ? 'bg-cyan-500 text-black shadow-lg shadow-cyan-500/20'
+                                    : 'text-gray-400 hover:text-white hover:bg-white/5'
+                                    }`}
+                            >
+                                $ USD
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -119,7 +152,12 @@ export default function AiSeoPricingTeaser() {
                                 </div>
                                 <div className="space-y-2">
                                     <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">{tier.name}</h3>
-                                    <div className={`text-sm md:text-base font-medium text-${tier.color}-400`}>{tier.subtitle}</div>
+                                    <div className={`text-sm md:text-base font-medium text-${tier.color}-400 mb-4`}>{tier.subtitle}</div>
+                                    <div className="flex items-baseline gap-1 text-white">
+                                        <span className="text-2xl font-normal text-gray-400">{tier.currencySymbol}</span>
+                                        <span className="text-4xl font-bold tracking-tight">{tier.price}</span>
+                                        <span className="text-sm text-gray-400 ml-1">{tier.period}</span>
+                                    </div>
                                 </div>
                                 <p className="mt-6 text-sm md:text-base text-gray-400 leading-relaxed font-light">{tier.desc}</p>
                             </div>

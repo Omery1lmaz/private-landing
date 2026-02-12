@@ -16,52 +16,52 @@ export default function AutomationWhatYouGet() {
         {
             id: 'agentic',
             icon: Brain,
-            title: "Agentic AI Swarms",
+            title: "Ajan Tabanlı Yapay Zeka Sürüleri",
             tagline: "Karar veren, işlem yapan dijital çalışanlar.",
             desc: "Sadece veriyi işlemekle kalmayan, karmaşık hedefleri analiz edip otonom adımlar atan çoklu ajan sistemleri.",
             results: ["Stratejik Karar Alma", "7/24 Kesintisiz İşlem", "Otonom Problem Çözme"],
             color: 'cyan',
-            tech: "LLM-Powered Autonomy"
+            tech: "LLM Destekli Otonomi"
         },
         {
             id: 'integration',
             icon: LinkIcon,
-            title: "Universal API Bridging",
+            title: "Evrensel API Köprüleri",
             tagline: "Tüm sistemleriniz tek bir dilde konuşsun.",
             desc: "Farklı platformlar, ERP'ler ve SaaS araçları arasında kusursuz ve gecikmesiz veri köprüleri kuruyoruz.",
-            results: ["Sıfır Manuel Giriş", "Instant Data Sync", "Unified Ecosystem"],
+            results: ["Sıfır Manuel Giriş", "Anlık Veri Eşitleme", "Birleşik Ekosistem"],
             color: 'blue',
-            tech: "Omnichannel Connector"
+            tech: "Çok Kanallı Bağlayıcı"
         },
         {
             id: 'logic',
             icon: GitBranch,
-            title: "Error-Free Logic Flows",
+            title: "Hatasız Mantık Akışları",
             tagline: "Hata payını matematiksel olarak sıfırlayın.",
             desc: "Karmaşık iş mantıklarını (conditional logic) hatasız ve hızlı bir şekilde dijital iş akışlarına dönüştürüyoruz.",
-            results: ["Reliable Operations", "Conditional Triggers", "Compliance Ready"],
+            results: ["Güvenilir Operasyonlar", "Koşullu Tetikleyiciler", "Uyumluluğa Hazır"],
             color: 'indigo',
-            tech: "State-Machine Architecture"
+            tech: "Durum Makinesi Mimarisi"
         },
         {
             id: 'mapping',
             icon: Activity,
-            title: "Process Insight Mapping",
+            title: "Süreç İçgörü Haritalaması",
             tagline: "Görünmeyen tıkanıklıkları anında tespit edin.",
             desc: "İş süreçlerinizi dijital ikizleriyle haritalandırarak verimlilik kayıplarını ve optimizasyon fırsatlarını belirleyin.",
-            results: ["Bottleneck Detection", "Visual Workflow Edit", "Real-time Metrics"],
+            results: ["Darboğaz Tespiti", "Görsel İş Akışı Düzenleme", "Gerçek Zamanlı Metrikler"],
             color: 'cyan',
-            tech: "Digital Twin Mapping"
+            tech: "Dijital İkiz Haritalama"
         },
         {
             id: 'scaling',
             icon: InfinityIcon,
-            title: "Enterprise Scaling Engine",
+            title: "Kurumsal Ölçeklendirme Motoru",
             tagline: "İş yükünüz artsa da sisteminiz yorulmaz.",
             desc: "Milyonlarca işlemi aynı anda yürütebilen, bulut tabanlı ve otomatik olarak ölçeklenen işlem motorları.",
-            results: ["Elastic Performance", "High Availability", "Cost Optimization"],
+            results: ["Esnek Performans", "Yüksek Erişilebilirlik", "Maliyet Optimizasyonu"],
             color: 'purple',
-            tech: "Cloud-Native Scaling"
+            tech: "Bulut Tabanlı Ölçeklendirme"
         }
     ]
 

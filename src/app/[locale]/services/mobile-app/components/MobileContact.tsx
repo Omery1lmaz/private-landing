@@ -28,18 +28,18 @@ export default function MobileContact() {
                     <div className="space-y-8">
                         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 backdrop-blur-sm">
                             <Sparkles className="w-4 h-4 text-cyan-400" />
-                            <span className="text-sm text-cyan-400 font-medium">Hadi Konusalim</span>
+                            <span className="text-sm text-cyan-400 font-medium">Hadi Konuşalım</span>
                         </div>
 
                         <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight">
-                            Ürününüzü
+                            Fikrinizi
                             <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-300">
-                                Cebimize Alalım
+                                Mobile Taşıyalım
                             </span>
                         </h2>
 
                         <p className="text-lg md:text-xl text-white/50 max-w-lg leading-relaxed">
-                            Fikrinizi dinlemek ve size ozel mobil cozumler uretmek icin sabirsizlaniyoruz. 24 saat icinde donus yapiyoruz.
+                            Fikrinizi dinlemek ve size özel mobil çözümler üretmek için sabırsızlanıyoruz. 24 saat içinde dönüş yapıyoruz.
                         </p>
 
                         <div className="flex flex-wrap gap-6 pt-4">
@@ -49,7 +49,7 @@ export default function MobileContact() {
                             </div>
                             <div className="flex items-center gap-3 text-white/50">
                                 <div className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
-                                <span className="text-sm">Ucretsiz Strateji Analizi</span>
+                                <span className="text-sm">Ücretsiz Strateji Analizi</span>
                             </div>
                         </div>
                     </div>

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { LayoutTemplate, Crown, Server, Check, ArrowRight, HelpCircle, Users, Sparkles, Smartphone, Zap, Infinity as InfinityIcon } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -10,10 +10,14 @@ gsap.registerPlugin(ScrollTrigger)
 export default function MobilePricingTeaser() {
     const sectionRef = useRef<HTMLElement>(null)
 
+    const [currency, setCurrency] = useState<'TRY' | 'USD'>('TRY')
+
     const tiers = [
         {
             name: "Foundation (MVP)",
             subtitle: "Hızlı Pazara Giriş",
+            price: currency === 'TRY' ? "120.000" : "4.900",
+            currencySymbol: currency === 'TRY' ? "₺" : "$",
             desc: "Temel işlevlere sahip, yüksek performanslı bir MVP ile fikrinizi doğrulayın ve ilk kullanıcılarınızı edinin.",
             icon: Zap,
             color: "indigo",
@@ -30,6 +34,8 @@ export default function MobilePricingTeaser() {
             name: "Growth (Full Scale)",
             subtitle: "Bağlılık & Performans",
             badge: "En Çok Tercih Edilen",
+            price: currency === 'TRY' ? "250.000" : "9.900",
+            currencySymbol: currency === 'TRY' ? "₺" : "$",
             desc: "Derinlemesine UX, animasyonlar ve gelişmiş özelliklerle kullanıcı sadakati sağlayan tam kapsamlı ürün.",
             icon: Crown,
             color: "cyan",
@@ -45,6 +51,8 @@ export default function MobilePricingTeaser() {
         {
             name: "Scale (Enterprise)",
             subtitle: "Sınırsız Ölçeklenebilirlik",
+            price: currency === 'TRY' ? "Özel" : "Custom",
+            currencySymbol: "",
             desc: "Karmaşık sistemlerle entegre, en yüksek güvenlik standartlarına sahip kurumsal mobil ekosistemler.",
             icon: InfinityIcon,
             color: "purple",
@@ -100,6 +108,28 @@ export default function MobilePricingTeaser() {
                         <p className="text-white/60 max-w-2xl mx-auto text-lg md:text-xl font-light leading-relaxed">
                             Mevcut etabınıza uygun yaklaşımı birlikte belirleyelim.
                         </p>
+
+                        {/* Currency Toggle */}
+                        <div className="inline-flex items-center p-1 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm mt-8">
+                            <button
+                                onClick={() => setCurrency('TRY')}
+                                className={`px-6 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${currency === 'TRY'
+                                    ? 'bg-cyan-500 text-black shadow-lg shadow-cyan-500/20'
+                                    : 'text-gray-400 hover:text-white hover:bg-white/5'
+                                    }`}
+                            >
+                                ₺ TRY
+                            </button>
+                            <button
+                                onClick={() => setCurrency('USD')}
+                                className={`px-6 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${currency === 'USD'
+                                    ? 'bg-cyan-500 text-black shadow-lg shadow-cyan-500/20'
+                                    : 'text-gray-400 hover:text-white hover:bg-white/5'
+                                    }`}
+                            >
+                                $ USD
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -119,7 +149,11 @@ export default function MobilePricingTeaser() {
                                 </div>
                                 <div className="space-y-2">
                                     <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">{tier.name}</h3>
-                                    <div className={`text-sm md:text-base font-medium text-${tier.color}-400`}>{tier.subtitle}</div>
+                                    <div className={`text-sm md:text-base font-medium text-${tier.color}-400 mb-4`}>{tier.subtitle}</div>
+                                    <div className="flex items-baseline gap-1 text-white">
+                                        <span className="text-2xl font-normal text-gray-400">{tier.currencySymbol}</span>
+                                        <span className="text-4xl font-bold tracking-tight">{tier.price}</span>
+                                    </div>
                                 </div>
                                 <p className="mt-6 text-sm md:text-base text-gray-400 leading-relaxed font-light">{tier.desc}</p>
                             </div>
