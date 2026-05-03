@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
     // Email content
     const mailOptions = {
       from: `"${body.name}" <${process.env.SMTP_USER}>`,
-      to: process.env.CONTACT_EMAIL || 'hello@elitecodestudio.com',
+      to: process.env.CONTACT_EMAIL || 'hello@arvexalabs.com',
       subject: `Yeni İletişim Formu: ${body.service || 'Genel'} - ${body.name}`,
       html: `
         <!DOCTYPE html>
@@ -155,7 +155,7 @@ export async function POST(request: NextRequest) {
             </div>
 
             <div class="footer">
-              <p>Bu email EliteCode Studio iletişim formu aracılığıyla gönderildi.</p>
+              <p>Bu email ArvexaLabs iletişim formu aracılığıyla gönderildi.</p>
               <p>⏰ Gönderim Zamanı: ${new Date().toLocaleString('tr-TR')}</p>
             </div>
           </div>
@@ -171,9 +171,9 @@ export async function POST(request: NextRequest) {
     // Send confirmation email to user (optional)
     if (process.env.SEND_CONFIRMATION_EMAIL === 'true') {
       const confirmationMailOptions = {
-        from: `"EliteCode Studio" <${process.env.SMTP_USER}>`,
+        from: `"ArvexaLabs" <${process.env.SMTP_USER}>`,
         to: body.email,
-        subject: 'Mesajınız için teşekkürler! - EliteCode Studio',
+        subject: 'Mesajınız için teşekkürler! - ArvexaLabs',
         html: `
           <!DOCTYPE html>
           <html lang="tr">
@@ -227,7 +227,7 @@ export async function POST(request: NextRequest) {
               <div class="content">
                 <p>Merhaba <strong>${body.name}</strong>,</p>
 
-                <p>Mesajınız başarıyla ulaştı! EliteCode Studio ekibi olarak en kısa sürede inceleyeceğiz ve size geri dönüş yapacağız.</p>
+                <p>Mesajınız başarıyla ulaştı! ArvexaLabs ekibi olarak en kısa sürede inceleyeceğiz ve size geri dönüş yapacağız.</p>
 
                 <div class="highlight">
                   <strong>Gönderilen bilgiler:</strong><br>
@@ -239,7 +239,7 @@ export async function POST(request: NextRequest) {
 
                 <p>Herhangi bir sorunuz olursa, bu email üzerinden bize ulaşabilirsiniz.</p>
 
-                <p>İyi günler dileriz,<br><strong>EliteCode Studio Ekibi</strong></p>
+                <p>İyi günler dileriz,<br><strong>ArvexaLabs Ekibi</strong></p>
               </div>
             </div>
           </body>

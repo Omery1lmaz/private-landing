@@ -28,10 +28,10 @@ export default function CryptoTradingShowcase() {
               DIGITAL SOLUTIONS HUB
             </div>
             <h2 className="text-5xl md:text-6xl font-bold text-white leading-tight">
-              Build Your Digital Presence with EliteCode
+              Build Your Digital Presence with ArvexaLabs
             </h2>
             <p className="text-gray-300 text-lg leading-relaxed">
-              Create powerful digital solutions with EliteCode, your gateway to online success. With a wide range of web development, mobile app, and SEO services, EliteCode offers a seamless and secure platform for businesses worldwide to build, optimize, and manage their digital assets.
+              Create powerful digital solutions with ArvexaLabs, your gateway to online success. With a wide range of web development, mobile app, and SEO services, ArvexaLabs offers a seamless and secure platform for businesses worldwide to build, optimize, and manage their digital assets.
             </p>
           </div>
 
@@ -40,7 +40,7 @@ export default function CryptoTradingShowcase() {
             <div className="w-full max-w-2xl rounded-2xl bg-[#0a1f14] backdrop-blur-xl border border-green-500/20 p-6 shadow-2xl">
               {/* Navigation Bar */}
               <div className="flex items-center justify-between mb-6 pb-4 border-b border-green-500/20">
-                <div className="text-green-400 font-bold text-xl">EliteCode</div>
+                <div className="text-green-400 font-bold text-xl">ArvexaLabs</div>
                 <div className="flex items-center gap-4 text-sm text-gray-300">
                   <span className="hover:text-green-400 cursor-pointer transition-colors">Web Dev</span>
                   <span className="hover:text-green-400 cursor-pointer transition-colors">Mobile</span>
@@ -140,7 +140,7 @@ export default function CryptoTradingShowcase() {
             </div>
             <h3 className="text-white font-semibold text-lg mb-3">Web Development Services</h3>
             <p className="text-gray-300 text-sm leading-relaxed">
-              EliteCode lets you build modern, high-performance websites using cutting-edge technologies. Select your preferred framework, define your requirements, and watch your digital presence come to life.
+              ArvexaLabs lets you build modern, high-performance websites using cutting-edge technologies. Select your preferred framework, define your requirements, and watch your digital presence come to life.
             </p>
           </div>
 
@@ -150,7 +150,7 @@ export default function CryptoTradingShowcase() {
             </div>
             <h3 className="text-white font-semibold text-lg mb-3">Mobile App Development</h3>
             <p className="text-gray-300 text-sm leading-relaxed">
-              EliteCode also supports native and cross-platform mobile development, allowing you to conveniently build iOS and Android apps. Use our mobile development services to reach your customers on all devices.
+              ArvexaLabs also supports native and cross-platform mobile development, allowing you to conveniently build iOS and Android apps. Use our mobile development services to reach your customers on all devices.
             </p>
           </div>
 
@@ -160,7 +160,7 @@ export default function CryptoTradingShowcase() {
             </div>
             <h3 className="text-white font-semibold text-lg mb-3">Expand Your Digital Portfolio</h3>
             <p className="text-gray-300 text-sm leading-relaxed">
-              Don't just build websites on EliteCode, optimize them too. EliteCode empowers you to generate organic traffic through SEO, content strategy, and more with our comprehensive digital marketing services.
+              Don't just build websites on ArvexaLabs, optimize them too. ArvexaLabs empowers you to generate organic traffic through SEO, content strategy, and more with our comprehensive digital marketing services.
             </p>
           </div>
 

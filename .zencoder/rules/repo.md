@@ -3,11 +3,11 @@ description: Repository Information Overview
 alwaysApply: true
 ---
 
-# EliteCode Studio Landing Page
+# ArvexaLabs Landing Page
 
 ## Summary
 
-A modern, professional landing page for EliteCode Studio, a digital transformation agency. Built with Next.js 16 and TypeScript, featuring GSAP animations, 3D globe visualization, and multi-language support (English and Turkish). Showcases AI-powered SEO solutions, web development services, and digital automation capabilities.
+A modern, professional landing page for ArvexaLabs, a digital transformation agency. Built with Next.js 16 and TypeScript, featuring GSAP animations, 3D globe visualization, and multi-language support (English and Turkish). Showcases AI-powered SEO solutions, web development services, and digital automation capabilities.
 
 ## Structure
 

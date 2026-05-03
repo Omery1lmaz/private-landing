@@ -881,11 +881,11 @@ Eğer istersen bu paketleri:
 tekrar düzenleyebilirim.
 
 Şunu dedin:
-# EliteCode Studio - Dijital Dönüşüm Platformu
+# ArvexaLabs - Dijital Dönüşüm Platformu
 
 **Tam Kapsamlı Site Özeti - Her Section'ın Detaylı İçeriği**
 
-EliteCode Studio'nun modern, profesyonel landing page'i. Next.js, TypeScript, TailwindCSS ve GSAP animasyonları ile geliştirilmiş, dijital dönüşüm çözümleri sunan premium bir yazılım ajansı web sitesi.
+ArvexaLabs'nun modern, profesyonel landing page'i. Next.js, TypeScript, TailwindCSS ve GSAP animasyonları ile geliştirilmiş, dijital dönüşüm çözümleri sunan premium bir yazılım ajansı web sitesi.
 
 ## 🌟 **Site Genel Özellikleri**
 
@@ -918,7 +918,7 @@ EliteCode Studio'nun modern, profesyonel landing page'i. Next.js, TypeScript, Ta
 
 #### **SVG Diyagram Özellikleri:**
 - Müşteri akışı: İhtiyaç Analizi → Görüşme
-- EliteCode Güvenli Altyapı (merkez)
+- ArvexaLabs Güvenli Altyapı (merkez)
 - Web Geliştirme & AI SEO
 - Raporlama sistemi
 - Çözüm Paketleri (Kurumsal Site, E-Ticaret, Mobil, SaaS, Dashboard)
@@ -1139,7 +1139,7 @@ EliteCode Studio'nun modern, profesyonel landing page'i. Next.js, TypeScript, Ta
 - **Açıklama:** "Fikirlerinizi paylaşın, ücretsiz danışmanlık alın. Dijital dönüşüm yolculuğunuzda yanınızdayız."
 
 #### **İletişim Bilgileri:**
-- **Email:** hello@elitecodestudio.com
+- **Email:** hello@arvexalabs.com
 - **WhatsApp:** +90 555 123 45 67
 - **Konum:** İstanbul, Türkiye (GMT+3)
 
@@ -1160,12 +1160,12 @@ EliteCode Studio'nun modern, profesyonel landing page'i. Next.js, TypeScript, Ta
 ### 🏁 **9. Footer (Alt Bilgi)**
 
 #### **İçerik:**
-- **Marka:** EliteCode Studio
+- **Marka:** ArvexaLabs
 - **Açıklama:** "Dijital dönüşümünüzü hızlandıran AI destekli çözümler."
 - **Sosyal Medya:** LinkedIn, GitHub, Twitter, Email
 - **İletişim:** Email ve konum bilgileri
 - **Linkler:** Gizlilik, Koşullar
-- **Copyright:** "© 2024 EliteCode Studio. Made with ❤️ for innovation."
+- **Copyright:** "© 2024 ArvexaLabs. Made with ❤️ for innovation."
 
 ---
 
@@ -1217,7 +1217,7 @@ SMTP_USER=your-email@gmail.com
 SMTP_PASS=your-app-password
 
 # Contact email where messages will be sent
-CONTACT_EMAIL=hello@elitecodestudio.com
+CONTACT_EMAIL=hello@arvexalabs.com
 
 # Optional: Send confirmation email to users
 SEND_CONFIRMATION_EMAIL=true
@@ -1272,7 +1272,7 @@ vercel
 
 ## 👨‍💻 **Geliştirici**
 
-**EliteCode Studio**
+**ArvexaLabs**
 - Premium Software Solutions
 - Dijital Dönüşüm Uzmanları
 
@@ -1333,7 +1333,7 @@ This project is licensed under the MIT License.
 
 ## 👨‍💻 Author
 
-EliteCode Studio - Premium Software Solutions
+ArvexaLabs - Premium Software Solutions
 
 ---
 
@@ -1345,7 +1345,7 @@ Tabii ki! Aşağıda senin verdiğin tüm site içeriğini profesyonel bir dijit
 
 Bu çıktı, hem içeriği güçlendirmek hem de premium bir ajans görünümü vermek için stratejik düzenleme rehberi olarak hazırlanmıştır.
 
-✅ EliteCode Studio – Profesyonel İçerik Düzenleme Rehberi
+✅ ArvexaLabs – Profesyonel İçerik Düzenleme Rehberi
 Aşağıda sitendeki 9 ana bölümün tamamı için:
 
 Nelerin eksik veya geliştirilebilir olduğu
@@ -1428,7 +1428,7 @@ SaaS kısmında global scaling avantajı vurgulanmalı.
 “Güçlü, Kurumsal Değer Önerisi” yerine daha spesifik ve prestijli bir başlık kullanılabilir.
 
 ⭐ Önerilen Başlık:
-“Neden EliteCode Studio? – Çünkü Sonuç Üretiyoruz.”
+“Neden ArvexaLabs? – Çünkü Sonuç Üretiyoruz.”
 
 Eklenebilecek 2 şey:
 "Ortalama proje teslim süremiz: 14–30 gün"
@@ -1513,7 +1513,7 @@ Hizmet şartları
 
 Copyright link yönlendirmeleri
 
-“EliteCode Studio ® Registered Trademark”
+“ArvexaLabs ® Registered Trademark”
 
 📌 Ek Olarak: Sitenin Genelinde Yapılacak 10 Kritik Düzenleme
 Her bölümde müşteri faydası → sonuç → aksiyon yapısı kullanılmalı.
@@ -2226,8 +2226,8 @@ Hangi isimlerin üzerine gidelim?
     "email_gonder_title": "Email Gönder",
     "email_gonder_subtitle": "Detaylı sorularınız için bize yazın.",
     "ucretsiz_danismanlik": "Ücretsiz Danışmanlık",
-    "email_subject": "EliteCode Studio Hakkında Bilgi",
-    "whatsapp_message": "Merhaba, EliteCode Studio hakkında bilgi almak istiyorum.",
+    "email_subject": "ArvexaLabs Hakkında Bilgi",
+    "whatsapp_message": "Merhaba, ArvexaLabs hakkında bilgi almak istiyorum.",
     "language_tr": "Türkçe",
     "language_en": "English"
   },
@@ -2245,7 +2245,7 @@ Hangi isimlerin üzerine gidelim?
     "svg_ihtiyac_analizi": "Ücretsiz İhtiyaç Analizi",
     "svg_ihtiyac_analizi_subtitle": "İlk adım",
     "svg_gorusme": "30 Dk Strateji Görüşmesi",
-    "svg_elitecode": "EliteCode",
+    "svg_elitecode": "ArvexaLabs",
     "svg_altyapi": "Güvenli Altyapı",
     "svg_web_gelistirme": "Web Geliştirme",
     "svg_site_uygulama": "Site & Uygulama",
@@ -2280,7 +2280,7 @@ Hangi isimlerin üzerine gidelim?
   "globe_section": {
     "badge": "Küresel Ağımız",
     "title": "14+ Ülkede İşletmelere Hizmet Veriyor",
-    "subtitle": "EliteCode Studio, dünya çapında hizmet vererek hızlı web çözümleri ve SEO hizmetleri sunuyor. Hız ve güvenlik için optimize edilmiş sunucularımız, sitenizin her yerde performans göstermesini sağlıyor.",
+    "subtitle": "ArvexaLabs, dünya çapında hizmet vererek hızlı web çözümleri ve SEO hizmetleri sunuyor. Hız ve güvenlik için optimize edilmiş sunucularımız, sitenizin her yerde performans göstermesini sağlıyor.",
     "uptime": "Uptime",
     "uptime_label": "Uptime",
     "latency": "Yükleme Süresi",
@@ -2352,7 +2352,7 @@ Hangi isimlerin üzerine gidelim?
     "scroll_indicator": "HİZMETLERİMİZ"
   },
   "why_us_section": {
-    "badge": "Neden EliteCode Studio?",
+    "badge": "Neden ArvexaLabs?",
     "title_part1": "Gerçek Sonuç Üreten",
     "title_part2": "Dijital Çözümler",
     "subtitle": "Biz sadece proje geliştirmiyoruz — markanızı büyütüyoruz.",
@@ -2470,7 +2470,7 @@ Hangi isimlerin üzerine gidelim?
     "cta_title": "Sizin Hikayeniz Ne Olacak?",
     "cta_button": "Ücretsiz Danışmanlık Al",
     "description": "Bize güvenen markalardan gerçek hikayeler",
-    "testimonial1_quote": "EliteCode Studio ile işimiz tamamen değişti. Sitelerimiz hızlandı ve Google sıralamalarımız 3 ayda %300 arttı.",
+    "testimonial1_quote": "ArvexaLabs ile işimiz tamamen değişti. Sitelerimiz hızlandı ve Google sıralamalarımız 3 ayda %300 arttı.",
     "testimonial1_author": "Ahmet Kaya",
     "testimonial1_handle": "@ahmetkaya",
     "testimonial2_company": "TechStart İnovasyon",
@@ -2524,12 +2524,12 @@ Hangi isimlerin üzerine gidelim?
     "trust_support": "7/24 Destek"
   },
   "footer": {
-    "brand_name_part1": "EliteCode",
+    "brand_name_part1": "ArvexaLabs",
     "brand_name_part2": "Studio",
-    "studio_name": "EliteCode Studio",
+    "studio_name": "ArvexaLabs",
     "description": "Dijital dönüşümünüzü hızlandıran AI destekli çözümler.",
     "email_label": "Email",
-    "email_address": "hello@elitecodestudio.com",
+    "email_address": "hello@arvexalabs.com",
     "social_linkedin": "LinkedIn",
     "social_github": "GitHub",
     "social_twitter": "Twitter",
@@ -2537,7 +2537,7 @@ Hangi isimlerin üzerine gidelim?
     "location_label": "Konum",
     "location": "İstanbul, Türkiye",
     "timezone": "GMT+3 (TSİ)",
-    "copyright_prefix": "© 2024 EliteCode Studio. Tüm Hakları Saklıdır.",
+    "copyright_prefix": "© 2024 ArvexaLabs. Tüm Hakları Saklıdır.",
     "made_with": "Sevgiyle yapıldı",
     "for_innovation": "inovasyon için.",
     "privacy_policy": "Gizlilik Politikası",
@@ -2581,7 +2581,7 @@ Hangi isimlerin üzerine gidelim?
         "email_subtitle": "Detaylı görüşmeler için",
         "whatsapp_title": "WhatsApp",
         "whatsapp_subtitle": "Hızlı iletişim için",
-        "whatsapp_message": "Merhaba, EliteCode Studio hakkında bilgi almak istiyorum.",
+        "whatsapp_message": "Merhaba, ArvexaLabs hakkında bilgi almak istiyorum.",
         "location_title": "Konum",
         "location_city": "İstanbul, Türkiye",
         "location_timezone": "GMT+3 (TSİ)",
@@ -2801,7 +2801,7 @@ Neden kuruldunuz? Yok
 Öneri
 Footer’a şunu ekle:
 
-“EliteCode Studio, dijital büyüme odaklı yazılım çözümleri sunmak üzere kurulmuş bağımsız bir teknoloji stüdyosudur.”
+“ArvexaLabs, dijital büyüme odaklı yazılım çözümleri sunmak üzere kurulmuş bağımsız bir teknoloji stüdyosudur.”
 
 Bu cümle:
 
@@ -2827,7 +2827,7 @@ Portfolio tarafını kanıt veya NDA diliyle güçlendir
 
 ✔ Hero + Pricing + Services’i yeniden yazarım
 
-✔ Marka ismini EliteCode’dan yeni isme tam rebrand ederim
+✔ Marka ismini ArvexaLabs’dan yeni isme tam rebrand ederim
 
 ✔ Mail outreach için yüksek dönüşümlü cold mail metni yazarım
 
@@ -3012,7 +3012,7 @@ Dijitalde Bir Sonraki Seviyeye Geçin
 Ücretsiz Analiz Talep Et
 
 🔷 FOOTER
-EliteCode Studio
+ArvexaLabs
 Dijital büyüme odaklı yazılım ve teknoloji çözümleri.
 
 Web • Mobile • SEO • Performance
@@ -3080,7 +3080,7 @@ Alt Başlık
 Web, mobil ve arama motoru ekosistemleri için ölçeklenebilir yazılım çözümleri.
 
 Açıklama
-EliteCode Studio, markaların dijital kanallarını yalnızca yayına almakla kalmaz;
+ArvexaLabs, markaların dijital kanallarını yalnızca yayına almakla kalmaz;
 uzun vadeli performans, görünürlük ve dönüşüm odağında yapılandırır.
 
 CTA
@@ -3227,7 +3227,7 @@ Bir Üst Seviyeye Taşıyın
 Ücretsiz Ön Değerlendirme Al
 
 🔷 FOOTER (KURUMSAL)
-EliteCode Studio
+ArvexaLabs
 Dijital ürünler ve büyüme altyapıları geliştiren bağımsız teknoloji stüdyosu.
 
 Web • Mobile • SEO • Performance
@@ -3281,7 +3281,7 @@ Alt Başlık
 Web, mobil ve arama motoru ekosistemlerinde ölçeklenebilir, ölçülebilir ve sonuç üreten yazılım sistemleri inşa ediyoruz.
 
 Açıklama
-EliteCode Studio, dijital projeleri yalnızca “yayına alan” bir ekip değildir.
+ArvexaLabs, dijital projeleri yalnızca “yayına alan” bir ekip değildir.
 Biz; büyüme, görünürlük ve dönüşüm odaklı çalışan işletmeler için
 uzun vadeli dijital altyapılar tasarlar ve uygularız.
 
@@ -3311,7 +3311,7 @@ Performans ve dönüşüm ölçülmez
 
 Yazılım, iş hedeflerinden kopuktur
 
-EliteCode Studio olarak bu hataları başlangıçtan itibaren ortadan kaldırırız.
+ArvexaLabs olarak bu hataları başlangıçtan itibaren ortadan kaldırırız.
 
 🔵 SERVICES — SATIŞ ODAKLI VE NET
 Ne İnşa Ediyoruz?
@@ -3376,7 +3376,7 @@ Kurumsal standartlarda, test edilmiş sistemler yayına alınır.
 Performans izlenir, sistem sürekli iyileştirilir.
 
 🔵 TRUST & AUTHORITY
-Neden EliteCode Studio?
+Neden ArvexaLabs?
 Proje değil, altyapı inşa ederiz
 
 Geçici çözümler sunmayız
@@ -3435,7 +3435,7 @@ Altyapınızı büyümeye hazır hale getirmek istiyorsanız
 Stratejik Ön Görüşme Talep Edin
 
 🔵 FOOTER — NET VE GÜÇLÜ
-EliteCode Studio
+ArvexaLabs
 Kurumsal dijital ürünler ve büyüme altyapıları.
 
 Web • Mobile • SEO • Performance
@@ -3675,7 +3675,7 @@ Hepsiburada, Trendyol, N11 ve benzeri platformlarda satış operasyonlarınızı
 
 Açıklama
 E-ticarette başarı yalnızca ürün yüklemekle değil; görünürlük, fiyatlama, operasyon ve veri takibi ile mümkündür.
-EliteCode Studio olarak pazaryeri satış süreçlerinizi tek merkezden, profesyonel şekilde yönetiyoruz.
+ArvexaLabs olarak pazaryeri satış süreçlerinizi tek merkezden, profesyonel şekilde yönetiyoruz.
 
 4️⃣ Neleri Kapsadığını NET Anlat (Ama Teknik Detay Yok)
 Hizmet Kapsamı (ikonlu / maddeli)

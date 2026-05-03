@@ -107,7 +107,7 @@ export default function WebDevComparison() {
                                 <div className="p-2 bg-cyan-500/10 rounded-lg border border-cyan-500/20">
                                     <ShieldCheck className="w-6 h-6 text-cyan-400" />
                                 </div>
-                                <h3 className="text-2xl font-bold text-white">EliteCode System</h3>
+                                <h3 className="text-2xl font-bold text-white">ArvexaLabs System</h3>
                             </div>
 
                             <div className="space-y-6">

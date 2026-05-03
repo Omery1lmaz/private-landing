@@ -23,7 +23,7 @@ export default function Footer() {
     { key: 'linkedin', icon: Linkedin, href: '#', color: 'hover:text-blue-400' },
     { key: 'github', icon: Github, href: '#', color: 'hover:text-gray-300' },
     { key: 'twitter', icon: Twitter, href: '#', color: 'hover:text-blue-300' },
-    { key: 'email', icon: Mail, href: 'mailto:hello@elitecodestudio.com', color: 'hover:text-cyan-400' },
+    { key: 'email', icon: Mail, href: 'mailto:hello@arvexalabs.com', color: 'hover:text-cyan-400' },
   ]
   const footerRef = useRef<HTMLElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
@@ -76,7 +76,7 @@ export default function Footer() {
             <div className="mb-6">
               <h3 className="text-2xl font-bold mb-2">
                 <span className="bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
-                  EliteCode
+                  ArvexaLabs
                 </span>
                 {' '}{t('studio_name')}
               </h3>
@@ -106,7 +106,7 @@ export default function Footer() {
             <div className="flex flex-wrap justify-center items-center gap-6 mb-8 text-sm text-gray-400">
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-cyan-400" />
-                <span>hello@elitecodestudio.com</span>
+                <span>hello@arvexalabs.com</span>
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-teal-400" />
@@ -120,7 +120,7 @@ export default function Footer() {
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               {/* Copyright */}
               <div className="flex items-center gap-2 text-gray-500 text-sm">
-                <span>{t('copyright_prefix')} {new Date().getFullYear()} EliteCode Studio.</span>
+                <span>{t('copyright_prefix')} {new Date().getFullYear()} ArvexaLabs.</span>
                 <span>{t('made_with')}</span>
                 <Heart className="w-4 h-4 text-red-500 fill-red-500" />
                 <span>{t('for_innovation')}</span>

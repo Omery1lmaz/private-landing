@@ -18,7 +18,7 @@ export default function WebDevWhatYouGet() {
             icon: MessageSquare,
             title: "Akıllı Müşteri İletişimi",
             tagline: "Tüm talepler tek yerde, doğru kişiye otomatik.",
-            desc: "Web sitesi, formlar ve WhatsApp üzerinden gelen müşteri mesajları tek merkezde toplanır. Sistem, talebin konusunu algılar ve satış, destek veya ilgili birime otomatik yönlendirir.",
+            desc: "Web sitesi, formlar ve Canlı Destek üzerinden gelen müşteri mesajları tek merkezde toplanır. Sistem, talebin konusunu algılar ve satış, destek veya ilgili birime otomatik yönlendirir.",
             results: ["Daha hızlı dönüş", "Daha az kaçan müşteri", "Daha az manuel iş"],
             color: 'cyan',
             tech: "Auto-Routing Node"

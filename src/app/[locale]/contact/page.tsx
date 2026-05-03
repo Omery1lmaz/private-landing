@@ -342,7 +342,7 @@ export default function ContactPage() {
                                             {isSubmitting ? 'Gonderiliyor...' : 'Mesaji Gonder'}
                                         </button>
                                         <a
-                                            href="mailto:hello@elitecodestudio.com"
+                                            href="mailto:hello@arvexalabs.com"
                                             className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-white/[0.05] border border-white/[0.1] text-white hover:bg-white/[0.08] transition-all"
                                         >
                                             <Mail className="w-5 h-5" />

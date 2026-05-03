@@ -15,7 +15,7 @@ export const CommsFlow = ({ }: VisualProps) => (
             <div className="flex flex-col gap-2 flex-1">
                 {[
                     { Icon: Globe, channel: 'Web Formu', msg: 'Fiyat teklifi istiyorum...', time: '2dk', color: 'cyan', isNew: true },
-                    { Icon: MessageSquare, channel: 'WhatsApp', msg: 'Merhaba, urun hakkinda...', time: '5dk', color: 'green', isNew: true },
+                    { Icon: MessageSquare, channel: 'Canlı Destek', msg: 'Merhaba, urun hakkinda...', time: '5dk', color: 'green', isNew: true },
                     { Icon: Mail, channel: 'E-posta', msg: 'Siparis takibi #4521', time: '12dk', color: 'blue', isNew: false }
                 ].map((item, i) => (
                     <div 

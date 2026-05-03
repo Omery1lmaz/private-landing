@@ -203,7 +203,7 @@ export default function Hero() {
                     <path d="M 0,0 L 20,20 L 20,120 L 0,100 Z" fill="rgba(139, 92, 246, 0.15)" stroke="rgba(139, 92, 246, 0.5)" strokeWidth="2"/>
                     {/* Right face */}
                     <path d="M 180,0 L 200,20 L 200,120 L 180,100 Z" fill="rgba(139, 92, 246, 0.1)" stroke="rgba(139, 92, 246, 0.5)" strokeWidth="2"/>
-                    <text x="90" y="50" textAnchor="middle" fill="#a855f7" fontSize="16" fontWeight="bold">EliteCode Platform</text>
+                    <text x="90" y="50" textAnchor="middle" fill="#a855f7" fontSize="16" fontWeight="bold">ArvexaLabs Platform</text>
                     <text x="90" y="70" textAnchor="middle" fill="#a855f7" fontSize="12">EC</text>
                   </g>
 

@@ -441,7 +441,7 @@ export default function Hero() {
                 </g>
               </g>
 
-              {/* TOP CENTER - EliteCode Bulut */}
+              {/* TOP CENTER - ArvexaLabs Bulut */}
               <g transform="translate(180, 50)">
                 <rect x="0" y="0" width="180" height="80" rx="16" fill="url(#cardGradientCyan)" />
                 <rect x="0" y="0" width="180" height="80" rx="16" fill="url(#cardGridCyan)" />

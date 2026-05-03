@@ -1,8 +1,8 @@
-# EliteCode Studio - Dijital Dönüşüm Platformu
+# ArvexaLabs - Dijital Dönüşüm Platformu
 
 **Tam Kapsamlı Site Özeti - Her Section'ın Detaylı İçeriği**
 
-EliteCode Studio'nun modern, profesyonel landing page'i. Next.js, TypeScript, TailwindCSS ve GSAP animasyonları ile geliştirilmiş, dijital dönüşüm çözümleri sunan premium bir yazılım ajansı web sitesi.
+ArvexaLabs'nun modern, profesyonel landing page'i. Next.js, TypeScript, TailwindCSS ve GSAP animasyonları ile geliştirilmiş, dijital dönüşüm çözümleri sunan premium bir yazılım ajansı web sitesi.
 
 ## 🌟 **Site Genel Özellikleri**
 
@@ -35,7 +35,7 @@ EliteCode Studio'nun modern, profesyonel landing page'i. Next.js, TypeScript, Ta
 
 #### **SVG Diyagram Özellikleri:**
 - Müşteri akışı: İhtiyaç Analizi → Görüşme
-- EliteCode Güvenli Altyapı (merkez)
+- ArvexaLabs Güvenli Altyapı (merkez)
 - Web Geliştirme & AI SEO
 - Raporlama sistemi
 - Çözüm Paketleri (Kurumsal Site, E-Ticaret, Mobil, SaaS, Dashboard)
@@ -262,7 +262,7 @@ EliteCode Studio'nun modern, profesyonel landing page'i. Next.js, TypeScript, Ta
   - "📧 Teklif İste"
 
 #### **İletişim Bilgileri:**
-- **Email:** hello@elitecodestudio.com
+- **Email:** hello@arvexalabs.com
 - **WhatsApp:** +90 555 123 45 67
 - **Konum:** İstanbul, Türkiye (GMT+3)
 
@@ -283,12 +283,12 @@ EliteCode Studio'nun modern, profesyonel landing page'i. Next.js, TypeScript, Ta
 ### 🏁 **9. Footer (Alt Bilgi)**
 
 #### **İçerik:**
-- **Marka:** EliteCode Studio
+- **Marka:** ArvexaLabs
 - **Açıklama:** "Dijital dönüşümünüzü hızlandıran AI destekli çözümler."
 - **Sosyal Medya:** LinkedIn, GitHub, Twitter, Email
 - **İletişim:** Email ve konum bilgileri
 - **Linkler:** Gizlilik, Koşullar
-- **Copyright:** "© 2024 EliteCode Studio. Made with ❤️ for innovation."
+- **Copyright:** "© 2024 ArvexaLabs. Made with ❤️ for innovation."
 
 ---
 
@@ -341,7 +341,7 @@ SMTP_USER=your-email@gmail.com
 SMTP_PASS=your-app-password
 
 # Contact email where messages will be sent
-CONTACT_EMAIL=hello@elitecodestudio.com
+CONTACT_EMAIL=hello@arvexalabs.com
 
 # Optional: Send confirmation email to users
 SEND_CONFIRMATION_EMAIL=true
@@ -359,7 +359,7 @@ npm run dev
 
 ## 🌍 **Internationalization (i18n)**
 
-EliteCode Studio, `next-intl` kullanarak çoklu dil desteği sunar. Şu anda Türkçe (tr) ve İngilizce (en) dilleri desteklenmektedir.
+ArvexaLabs, `next-intl` kullanarak çoklu dil desteği sunar. Şu anda Türkçe (tr) ve İngilizce (en) dilleri desteklenmektedir.
 
 ### **1. Kurulum ve Yapılandırma**
 
@@ -426,7 +426,7 @@ import { getMessages } from 'next-intl/server';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'EliteCode Studio - Digital Transformation',
+  title: 'ArvexaLabs - Digital Transformation',
   description: 'AI-powered web development, mobile apps, and SEO solutions.',
 };
 
@@ -510,8 +510,8 @@ Projenizin root dizininde bir `messages` klasörü oluşturun ve her dil için J
     "email_gonder_title": "Email Gönder",
     "email_gonder_subtitle": "Detaylı sorularınız için bize yazın.",
     "ucretsiz_danismanlik": "Ücretsiz Danışmanlık",
-    "email_subject": "EliteCode Studio Hakkında Bilgi",
-    "whatsapp_message": "Merhaba, EliteCode Studio hakkında bilgi almak istiyorum."
+    "email_subject": "ArvexaLabs Hakkında Bilgi",
+    "whatsapp_message": "Merhaba, ArvexaLabs hakkında bilgi almak istiyorum."
   },
   "hero": {
     "announcement_badge": "Tüm duyurularımızı görün",
@@ -527,7 +527,7 @@ Projenizin root dizininde bir `messages` klasörü oluşturun ve her dil için J
     "svg_ihtiyac_analizi": "İhtiyaç Analizi",
     "svg_ihtiyac_analizi_subtitle": "İlk adım",
     "svg_gorusme": "Görüşme",
-    "svg_elitecode": "EliteCode",
+    "svg_elitecode": "ArvexaLabs",
     "svg_altyapi": "Güvenli Altyapı",
     "svg_web_gelistirme": "Web Geliştirme",
     "svg_site_uygulama": "Site & Uygulama",
@@ -610,7 +610,7 @@ Projenizin root dizininde bir `messages` klasörü oluşturun ve her dil için J
     "scroll_indicator": "HİZMETLERİMİZ"
   },
   "why_us_section": {
-    "badge": "Neden EliteCode Studio?",
+    "badge": "Neden ArvexaLabs?",
     "title_part1": "Gerçek Sonuç Üreten",
     "title_part2": "Dijital Çözümler",
     "subtitle": "Biz sadece proje geliştirmiyoruz — markanızı büyütüyoruz.",
@@ -768,7 +768,7 @@ Projenizin root dizininde bir `messages` klasörü oluşturun ve her dil için J
     "email_subtitle": "Detaylı görüşmeler için",
     "whatsapp_title": "WhatsApp",
     "whatsapp_subtitle": "Hızlı iletişim için",
-    "whatsapp_message": "Merhaba, EliteCode Studio hakkında bilgi almak istiyorum.",
+    "whatsapp_message": "Merhaba, ArvexaLabs hakkında bilgi almak istiyorum.",
     "location_title": "Konum",
     "location_city": "İstanbul, Türkiye",
     "location_timezone": "GMT+3 (TSİ)",

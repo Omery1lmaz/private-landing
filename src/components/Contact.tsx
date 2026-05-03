@@ -301,7 +301,7 @@ export default function Contact() {
                     {isSubmitting ? t('button_submitting') : t('button_submit')}
                   </button>
                   <a
-                    href="mailto:hello@elitecodestudio.com"
+                    href="mailto:hello@arvexalabs.com"
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/6 text-white"
                   >
                     <Mail className="w-4 h-4" />

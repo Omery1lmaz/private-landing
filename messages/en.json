@@ -10,13 +10,13 @@
     "google_meet_subtitle": "Start a quick video call.",
     "randevu_planla_title": "Schedule an Appointment",
     "randevu_planla_subtitle": "Arrange a meeting at your convenience.",
-    "whatsapp_title": "Contact via WhatsApp",
-    "whatsapp_subtitle": "For instant messaging.",
+    
+    
     "email_gonder_title": "Send an Email",
     "email_gonder_subtitle": "Write to us for detailed inquiries.",
     "ucretsiz_danismanlik": "Free Consultation",
-    "email_subject": "Inquiry About EliteCode Studio",
-    "whatsapp_message": "Hello, I would like to get information about EliteCode Studio.",
+    "email_subject": "Inquiry About ArvexaLabs",
+    
     "language_tr": "Turkish",
     "language_en": "English"
   },
@@ -36,7 +36,7 @@
     "svg_ihtiyac_analizi": "Free Needs Analysis",
     "svg_ihtiyac_analizi_subtitle": "First step",
     "svg_gorusme": "30 Min Strategy Call",
-    "svg_elitecode": "EliteCode",
+    "svg_elitecode": "ArvexaLabs",
     "svg_altyapi": "Secure Infrastructure",
     "svg_web_gelistirme": "Web Development",
     "svg_site_uygulama": "Site & App",
@@ -415,7 +415,7 @@
       "tools": "Internal Tools"
     },
     "why_us": {
-      "title": "Why EliteCode Studio",
+      "title": "Why ArvexaLabs",
       "subtitle": "Premium value propositions",
       "reason1": "AI-driven optimization",
       "reason1_desc": "Leverage AI for better performance",
@@ -438,7 +438,7 @@
   "globe_section": {
     "badge": "Our Global Network",
     "title": "Serving Businesses in 14+ Countries",
-    "subtitle": "EliteCode Studio operates across multiple regions, delivering lightning-fast web solutions and SEO services to businesses worldwide. With servers optimized for speed and security, we ensure your site performs everywhere.",
+    "subtitle": "ArvexaLabs operates across multiple regions, delivering lightning-fast web solutions and SEO services to businesses worldwide. With servers optimized for speed and security, we ensure your site performs everywhere.",
     "uptime": "Uptime",
     "uptime_label": "Uptime",
     "latency": "Load Time",
@@ -550,7 +550,7 @@
     "scroll_indicator": "OUR SERVICES"
   },
   "why_us_section": {
-    "badge": "Why EliteCode Studio?",
+    "badge": "Why ArvexaLabs?",
     "title_part1": "Digital Solutions That",
     "title_part2": "Produce Real Results",
     "subtitle": "We don't just develop projects — we grow your brand.",
@@ -670,7 +670,7 @@
     "subtitle": "Real stories behind our success.",
     "cta_title": "What Will Your Story Be?",
     "cta_button": "Get Free Consultation",
-    "testimonial1_quote": "EliteCode Studio completely transformed our business. Our websites became faster and our Google rankings increased by 300% in just 3 months.",
+    "testimonial1_quote": "ArvexaLabs completely transformed our business. Our websites became faster and our Google rankings increased by 300% in just 3 months.",
     "testimonial1_author": "Ahmet Kaya",
     "testimonial1_handle": "@ahmetkaya",
     "testimonial2_company": "TechStart Innovation",
@@ -708,12 +708,12 @@
     "button": "Contact Us Now"
   },
   "footer": {
-    "brand_name_part1": "EliteCode",
+    "brand_name_part1": "ArvexaLabs",
     "brand_name_part2": "Studio",
-    "studio_name": "EliteCode Studio",
+    "studio_name": "ArvexaLabs",
     "description": "AI-powered solutions accelerating your digital transformation.",
     "email_label": "Email",
-    "email_address": "hello@elitecodestudio.com",
+    "email_address": "hello@arvexalabs.com",
     "social_linkedin": "LinkedIn",
     "social_github": "GitHub",
     "social_twitter": "Twitter",
@@ -721,7 +721,7 @@
     "location_label": "Location",
     "location": "Istanbul, Turkey",
     "timezone": "GMT+3 (TRT)",
-    "copyright_prefix": "© 2024 EliteCode Studio. All Rights Reserved.",
+    "copyright_prefix": "© 2024 ArvexaLabs. All Rights Reserved.",
     "made_with": "Made with",
     "for_innovation": "for innovation.",
     "privacy_policy": "Privacy Policy",
@@ -765,9 +765,9 @@
     "contact_channels_title": "Contact Channels",
     "email_title": "Email",
     "email_subtitle": "For detailed discussions",
-    "whatsapp_title": "WhatsApp",
-    "whatsapp_subtitle": "For instant communication",
-    "whatsapp_message": "Hello, I would like to get information about EliteCode Studio.",
+    
+    
+    
     "location_title": "Location",
     "location_city": "Istanbul, Turkey",
     "location_timezone": "GMT+3 (TRT)",

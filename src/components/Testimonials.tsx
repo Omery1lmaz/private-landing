@@ -21,7 +21,7 @@ export default function Testimonials() {
 
   // Mock testimonial data as fallback
   const mockTestimonials = {
-    testimonial1_quote: "EliteCode Studio with AI solutions increased our conversion rate by 45%",
+    testimonial1_quote: "ArvexaLabs with AI solutions increased our conversion rate by 45%",
     testimonial1_author: "Ayşe Kaya",
     testimonial1_handle: "@ayse_kaya",
     testimonial2_company: "Tech Innovations Inc",

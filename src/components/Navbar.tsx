@@ -60,7 +60,7 @@ export default function Navbar() {
           </div>
           <div className="flex flex-col">
             <span className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">
-              EliteCode
+              ArvexaLabs
             </span>
             <span className="text-xs text-gray-500 group-hover:text-cyan-400/60 transition-colors">
               Studio
