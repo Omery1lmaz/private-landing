@@ -1,7 +1,9 @@
 import React from 'react'
 import { useTranslations } from 'next-intl'
 
-export default function Page({ params: { locale } }: { params: { locale: string } }) {
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const resolvedParams = await params;
+  const locale = resolvedParams.locale;
   const isTr = locale === 'tr'
   
   const content = isTr ? (
