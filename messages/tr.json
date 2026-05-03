@@ -10,13 +10,10 @@
     "google_meet_subtitle": "Hızlı bir görüntülü konuşma başlatın.",
     "randevu_planla_title": "Randevu Planla",
     "randevu_planla_subtitle": "Müsait bir zaman diliminde görüşme ayarlayın.",
-    
-    
     "email_gonder_title": "Email Gönder",
     "email_gonder_subtitle": "Detaylı sorularınız için bize yazın.",
     "ucretsiz_danismanlik": "Ücretsiz Danışmanlık",
     "email_subject": "ArvexaLabs Hakkında Bilgi",
-    
     "language_tr": "Türkçe",
     "language_en": "English"
   },
@@ -768,7 +765,10 @@
     "for_innovation": "inovasyon için.",
     "privacy_policy": "Gizlilik Politikası",
     "terms_of_service": "Hizmet Şartları",
-    "back_to_top": "Yukarı çık"
+    "back_to_top": "Yukarı çık",
+    "distance_selling": "Mesafeli Satış Sözleşmesi",
+    "refund_policy": "İptal ve İade Politikası",
+    "kvkk": "KVKK Aydınlatma Metni"
   },
   "contact_section": {
     "badge": "Bize Ulaşın",
@@ -805,9 +805,6 @@
     "contact_channels_title": "İletişim Kanalları",
     "email_title": "Email",
     "email_subtitle": "Detaylı görüşmeler için",
-    
-    
-    
     "location_title": "Konum",
     "location_city": "İstanbul, Türkiye",
     "location_timezone": "GMT+3 (TSİ)",

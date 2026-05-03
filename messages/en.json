@@ -10,13 +10,10 @@
     "google_meet_subtitle": "Start a quick video call.",
     "randevu_planla_title": "Schedule an Appointment",
     "randevu_planla_subtitle": "Arrange a meeting at your convenience.",
-    
-    
     "email_gonder_title": "Send an Email",
     "email_gonder_subtitle": "Write to us for detailed inquiries.",
     "ucretsiz_danismanlik": "Free Consultation",
     "email_subject": "Inquiry About ArvexaLabs",
-    
     "language_tr": "Turkish",
     "language_en": "English"
   },
@@ -726,7 +723,10 @@
     "for_innovation": "for innovation.",
     "privacy_policy": "Privacy Policy",
     "terms_of_service": "Terms of Service",
-    "back_to_top": "Back to top"
+    "back_to_top": "Back to top",
+    "distance_selling": "Distance Selling Agreement",
+    "refund_policy": "Refund Policy",
+    "kvkk": "PDPL / GDPR Notice"
   },
   "contact_section": {
     "badge": "Contact",
@@ -765,9 +765,6 @@
     "contact_channels_title": "Contact Channels",
     "email_title": "Email",
     "email_subtitle": "For detailed discussions",
-    
-    
-    
     "location_title": "Location",
     "location_city": "Istanbul, Turkey",
     "location_timezone": "GMT+3 (TRT)",

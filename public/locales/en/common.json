@@ -252,7 +252,10 @@
     "for_innovation": "for innovation.",
     "privacy_policy": "Privacy Policy",
     "terms_conditions": "Terms & Conditions",
-    "back_to_top": "Back to top"
+    "back_to_top": "Back to top",
+    "distance_selling": "Distance Selling Agreement",
+    "refund_policy": "Refund Policy",
+    "kvkk": "PDPL / GDPR Notice"
   },
   "contact_section": {
     "badge": "Contact",
@@ -298,5 +301,3 @@
     "quick_action_request_quote": "📧 Request a Quote"
   }
 }
-
-

@@ -13,12 +13,13 @@ import {
   Linkedin,
   Heart,
 } from 'lucide-react'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function Footer() {
   const t = useTranslations('footer')
+  const locale = useLocale()
   const socialLinks = [
     { key: 'linkedin', icon: Linkedin, href: '#', color: 'hover:text-blue-400' },
     { key: 'github', icon: Github, href: '#', color: 'hover:text-gray-300' },
@@ -127,9 +128,12 @@ export default function Footer() {
               </div>
 
               {/* Links */}
-              <div className="flex items-center gap-6 text-sm text-gray-500">
-                <a href="#" className="hover:text-cyan-400 transition-colors">{t('privacy_policy')}</a>
-                <a href="#" className="hover:text-cyan-400 transition-colors">{t('terms_of_service')}</a>
+              <div className="flex flex-wrap justify-center items-center gap-4 text-xs lg:text-sm text-gray-500">
+                <a href={`/${locale}/legal/privacy`} className="hover:text-cyan-400 transition-colors">{t('privacy_policy')}</a>
+                <a href={`/${locale}/legal/terms`} className="hover:text-cyan-400 transition-colors">{t('terms_of_service')}</a>
+                <a href={`/${locale}/legal/distance-selling`} className="hover:text-cyan-400 transition-colors">{t('distance_selling')}</a>
+                <a href={`/${locale}/legal/refund`} className="hover:text-cyan-400 transition-colors">{t('refund_policy')}</a>
+                <a href={`/${locale}/legal/kvkk`} className="hover:text-cyan-400 transition-colors">{t('kvkk')}</a>
               </div>
 
               {/* Back to Top */}
