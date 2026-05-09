@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { PayTR } from '../../../../utils/paytr';
+import clientPromise from '@/lib/mongodb';
 
 const paytr = new PayTR();
 
@@ -32,6 +33,21 @@ export async function POST(request: NextRequest) {
     });
 
     if (tokenResult.status === 'success') {
+      // Save payment record to MongoDB
+      const client = await clientPromise;
+      const db = client.db();
+      await db.collection('payments').insertOne({
+        merchant_oid: merchantOid,
+        user_email: userEmail,
+        user_name: userName || 'Customer',
+        user_phone: userPhone || '0000000000',
+        plan_name: planName,
+        amount: amount,
+        status: 'pending',
+        createdAt: new Date(),
+        test_mode: process.env.PAYTR_TEST_MODE === 'true'
+      });
+
       return NextResponse.json({ 
         success: true, 
         token: tokenResult.token,
