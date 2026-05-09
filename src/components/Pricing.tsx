@@ -12,21 +12,20 @@ import {
   Sparkles,
   MessageSquare, // Added for badge icon
 } from 'lucide-react'
-import { useTranslations } from 'next-intl'
-import PaymentModal from '@/components/PaymentModal'
+import { useTranslations, useLocale } from 'next-intl'
+import Link from 'next/link'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function Pricing() {
   const t = useTranslations('pricing_section')
+  const locale = useLocale()
   const sectionRef = useRef<HTMLElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
   const cardsRef = useRef<HTMLDivElement>(null)
   const faqRef = useRef<HTMLDivElement>(null)
   const [activeFaq, setActiveFaq] = useState<number | null>(null)
   const [currency, setCurrency] = useState<'TRY' | 'USD'>('TRY')
-  const [selectedPlan, setSelectedPlan] = useState<{ name: string; price: number; currency: string } | null>(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const plans = [
     {
@@ -183,14 +182,10 @@ export default function Pricing() {
   }
 
   const handlePlanClick = (plan: any) => {
-    // Convert price string to number (e.g. "1.990" -> 1990)
-    const numericPrice = parseInt(plan.price.replace(/[^0-9]/g, ''))
-    setSelectedPlan({
-      name: plan.name,
-      price: numericPrice,
-      currency: plan.currencySymbol
-    })
-    setIsModalOpen(true)
+    if (plan.price === 'Özel' || plan.price === 'Custom' || isNaN(parseInt(plan.price.replace(/[^0-9]/g, '')))) {
+      scrollToContact()
+      return
+    }
   }
 
   return (
@@ -321,13 +316,23 @@ export default function Pricing() {
                         ))}
                       </ul>
 
-                      <button
-                        onClick={() => handlePlanClick(plan)}
-                        className={`group relative w-full bg-gradient-to-r from-${plan.color}-500 to-${plan.color}-600 hover:from-${plan.color}-400 hover:to-${plan.color}-500 text-white font-semibold px-6 py-3 rounded-xl text-sm transition-all duration-300 shadow-lg shadow-${plan.color}-500/25 hover:shadow-${plan.color}-500/40 hover:-translate-y-0.5`}
-                      >
-                        <span className="relative z-10">{plan.cta}</span>
-                        <ArrowRight className="inline-block w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                      </button>
+                      {plan.price === 'Özel' || plan.price === 'Custom' || isNaN(parseInt(plan.price.replace(/[^0-9]/g, ''))) ? (
+                        <button
+                          onClick={scrollToContact}
+                          className={`group relative w-full bg-gradient-to-r from-${plan.color}-500 to-${plan.color}-600 hover:from-${plan.color}-400 hover:to-${plan.color}-500 text-white font-semibold px-6 py-3 rounded-xl text-sm transition-all duration-300 shadow-lg shadow-${plan.color}-500/25 hover:shadow-${plan.color}-500/40 hover:-translate-y-0.5`}
+                        >
+                          <span className="relative z-10">{plan.cta}</span>
+                          <ArrowRight className="inline-block w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                        </button>
+                      ) : (
+                        <Link
+                          href={`/${locale}/checkout?plan=${encodeURIComponent(plan.name)}&price=${plan.price.replace(/[^0-9]/g, '')}&currency=${encodeURIComponent(plan.currencySymbol)}`}
+                          className={`group relative w-full bg-gradient-to-r from-${plan.color}-500 to-${plan.color}-600 hover:from-${plan.color}-400 hover:to-${plan.color}-500 text-white font-semibold px-6 py-3 rounded-xl text-sm transition-all duration-300 shadow-lg shadow-${plan.color}-500/25 hover:shadow-${plan.color}-500/40 hover:-translate-y-0.5 flex items-center justify-center`}
+                        >
+                          <span className="relative z-10">{plan.cta}</span>
+                          <ArrowRight className="inline-block w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -372,12 +377,6 @@ export default function Pricing() {
           </div>
         </div>
       </div>
-
-      <PaymentModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        plan={selectedPlan} 
-      />
     </section>
   )
 }

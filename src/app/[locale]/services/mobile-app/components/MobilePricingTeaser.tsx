@@ -2,7 +2,8 @@
 
 import React, { useEffect, useRef, useState } from 'react'
 import { LayoutTemplate, Crown, Server, Check, ArrowRight, HelpCircle, Users, Sparkles, Smartphone, Zap, Infinity as InfinityIcon, CreditCard } from 'lucide-react'
-import PaymentModal from '@/components/PaymentModal'
+import Link from 'next/link'
+import { useLocale } from 'next-intl'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -10,10 +11,9 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function MobilePricingTeaser() {
     const sectionRef = useRef<HTMLElement>(null)
+    const locale = useLocale()
 
     const [currency, setCurrency] = useState<'TRY' | 'USD'>('TRY')
-    const [selectedPlan, setSelectedPlan] = useState<{ name: string; price: number; currency: string } | null>(null)
-    const [isModalOpen, setIsModalOpen] = useState(false)
 
     const tiers = [
         {
@@ -97,12 +97,6 @@ export default function MobilePricingTeaser() {
             contactSection?.scrollIntoView({ behavior: 'smooth' })
             return
         }
-        setSelectedPlan({
-            name: tier.name,
-            price: numericPrice,
-            currency: tier.currencySymbol || (currency === 'TRY' ? '₺' : '$')
-        })
-        setIsModalOpen(true)
     }
 
     return (
@@ -207,12 +201,21 @@ export default function MobilePricingTeaser() {
                                 </div>
 
                                 {/* Card CTA */}
-                                <button 
-                                    onClick={() => handlePlanClick(tier)}
-                                    className={`w-full py-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all ${tier.highlight ? `bg-${tier.color}-500 text-black hover:bg-${tier.color}-400 shadow-lg shadow-${tier.color}-500/20` : `bg-white/5 text-white hover:bg-white/10 border border-white/10 group-hover:border-${tier.color}-500/30 group-hover:text-${tier.color}-400 transition-colors`}`}
-                                >
-                                    {isNaN(parseInt(tier.price.replace(/[^0-9]/g, ''))) ? 'Projeyi Konuşalım' : 'Hemen Başla'} <ArrowRight size={14} />
-                                </button>
+                                {isNaN(parseInt(tier.price.replace(/[^0-9]/g, ''))) ? (
+                                    <button 
+                                        onClick={() => handlePlanClick(tier)}
+                                        className={`w-full py-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all ${tier.highlight ? `bg-${tier.color}-500 text-black hover:bg-${tier.color}-400 shadow-lg shadow-${tier.color}-500/20` : `bg-white/5 text-white hover:bg-white/10 border border-white/10 group-hover:border-${tier.color}-500/30 group-hover:text-${tier.color}-400 transition-colors`}`}
+                                    >
+                                        Projeyi Konuşalım <ArrowRight size={14} />
+                                    </button>
+                                ) : (
+                                    <Link 
+                                        href={`/${locale}/checkout?plan=${encodeURIComponent(tier.name)}&price=${tier.price.replace(/[^0-9]/g, '')}&currency=${encodeURIComponent(tier.currencySymbol || (currency === 'TRY' ? '₺' : '$'))}`}
+                                        className={`w-full py-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all ${tier.highlight ? `bg-${tier.color}-500 text-black hover:bg-${tier.color}-400 shadow-lg shadow-${tier.color}-500/20` : `bg-white/5 text-white hover:bg-white/10 border border-white/10 group-hover:border-${tier.color}-500/30 group-hover:text-${tier.color}-400 transition-colors`}`}
+                                    >
+                                        Hemen Başla <ArrowRight size={14} />
+                                    </Link>
+                                )}
                             </div>
                         </div>
                     ))}
@@ -225,12 +228,6 @@ export default function MobilePricingTeaser() {
                     </p>
                 </div>
             </div>
-
-            <PaymentModal 
-                isOpen={isModalOpen} 
-                onClose={() => setIsModalOpen(false)} 
-                plan={selectedPlan} 
-            />
         </section>
     )
 }
