@@ -12,7 +12,8 @@ import {
   Sparkles,
   MessageSquare, // Added for badge icon
 } from 'lucide-react'
-import { useTranslations } from 'next-intl' // Added for i18n
+import { useTranslations } from 'next-intl'
+import PaymentModal from '@/components/PaymentModal'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -24,6 +25,8 @@ export default function Pricing() {
   const faqRef = useRef<HTMLDivElement>(null)
   const [activeFaq, setActiveFaq] = useState<number | null>(null)
   const [currency, setCurrency] = useState<'TRY' | 'USD'>('TRY')
+  const [selectedPlan, setSelectedPlan] = useState<{ name: string; price: number; currency: string } | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const plans = [
     {
@@ -179,6 +182,17 @@ export default function Pricing() {
     contactSection?.scrollIntoView({ behavior: 'smooth' })
   }
 
+  const handlePlanClick = (plan: any) => {
+    // Convert price string to number (e.g. "1.990" -> 1990)
+    const numericPrice = parseInt(plan.price.replace(/[^0-9]/g, ''))
+    setSelectedPlan({
+      name: plan.name,
+      price: numericPrice,
+      currency: plan.currencySymbol
+    })
+    setIsModalOpen(true)
+  }
+
   return (
     <section id="pricing" ref={sectionRef} className="relative py-24 md:py-32 overflow-hidden bg-[#030308]">
       {/* Grid background */}
@@ -308,7 +322,7 @@ export default function Pricing() {
                       </ul>
 
                       <button
-                        onClick={scrollToContact}
+                        onClick={() => handlePlanClick(plan)}
                         className={`group relative w-full bg-gradient-to-r from-${plan.color}-500 to-${plan.color}-600 hover:from-${plan.color}-400 hover:to-${plan.color}-500 text-white font-semibold px-6 py-3 rounded-xl text-sm transition-all duration-300 shadow-lg shadow-${plan.color}-500/25 hover:shadow-${plan.color}-500/40 hover:-translate-y-0.5`}
                       >
                         <span className="relative z-10">{plan.cta}</span>
@@ -358,6 +372,12 @@ export default function Pricing() {
           </div>
         </div>
       </div>
+
+      <PaymentModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        plan={selectedPlan} 
+      />
     </section>
   )
 }

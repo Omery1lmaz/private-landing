@@ -1,7 +1,8 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
-import { Check, ArrowRight, Layers, Cpu, Infinity as InfinityIcon, HelpCircle, Users } from 'lucide-react'
+import { Check, ArrowRight, Layers, Cpu, Infinity as InfinityIcon, HelpCircle, Users, CreditCard } from 'lucide-react'
+import PaymentModal from '@/components/PaymentModal'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -11,6 +12,8 @@ export default function AutomationPricingTeaser() {
     const sectionRef = useRef<HTMLElement>(null)
 
     const [currency, setCurrency] = useState<'TRY' | 'USD'>('TRY')
+    const [selectedPlan, setSelectedPlan] = useState<{ name: string; price: number; currency: string } | null>(null)
+    const [isModalOpen, setIsModalOpen] = useState(false)
 
     const tiers = [
         {
@@ -86,6 +89,22 @@ export default function AutomationPricingTeaser() {
         }, sectionRef)
         return () => ctx.revert()
     }, [])
+
+    const handlePlanClick = (tier: any) => {
+        // Convert price string to number (e.g. "19.900" -> 19900)
+        const numericPrice = parseInt(tier.price.replace(/[^0-9]/g, ''))
+        if (isNaN(numericPrice)) {
+            const contactSection = document.getElementById('contact')
+            contactSection?.scrollIntoView({ behavior: 'smooth' })
+            return
+        }
+        setSelectedPlan({
+            name: tier.name,
+            price: numericPrice,
+            currency: tier.currencySymbol || (currency === 'TRY' ? '₺' : '$')
+        })
+        setIsModalOpen(true)
+    }
 
     return (
         <section ref={sectionRef} id="pricing" className="relative py-32 md:py-48 bg-[#020406] overflow-hidden">
@@ -168,9 +187,12 @@ export default function AutomationPricingTeaser() {
                                 </div>
 
                                 {/* Card CTA */}
-                                <a href="#contact" className={`w-full py-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all ${tier.highlight ? `bg-${tier.color}-500 text-black hover:bg-${tier.color}-400 shadow-lg shadow-${tier.color}-500/20` : `bg-white/5 text-white hover:bg-white/10 border border-white/10 group-hover:border-${tier.color}-500/30 group-hover:text-${tier.color}-400 transition-colors`}`}>
-                                    Sistem Mimarisini Konuşalım <ArrowRight size={14} />
-                                </a>
+                                <button 
+                                    onClick={() => handlePlanClick(tier)}
+                                    className={`w-full py-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all ${tier.highlight ? `bg-${tier.color}-500 text-black hover:bg-${tier.color}-400 shadow-lg shadow-${tier.color}-500/20` : `bg-white/5 text-white hover:bg-white/10 border border-white/10 group-hover:border-${tier.color}-500/30 group-hover:text-${tier.color}-400 transition-colors`}`}
+                                >
+                                    Hemen Başla <ArrowRight size={14} />
+                                </button>
                             </div>
                         </div>
                     ))}
@@ -193,6 +215,12 @@ export default function AutomationPricingTeaser() {
                 </div>
 
             </div>
+            
+            <PaymentModal 
+                isOpen={isModalOpen} 
+                onClose={() => setIsModalOpen(false)} 
+                plan={selectedPlan} 
+            />
         </section>
     )
 }

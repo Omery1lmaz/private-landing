@@ -1,7 +1,8 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
-import { LayoutTemplate, Crown, Server, Check, ArrowRight, HelpCircle, Users, Sparkles, Search, TrendingUp } from 'lucide-react'
+import { LayoutTemplate, Crown, Server, Check, ArrowRight, HelpCircle, Users, Sparkles, Search, TrendingUp, CreditCard } from 'lucide-react'
+import PaymentModal from '@/components/PaymentModal'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -11,6 +12,8 @@ export default function AiSeoPricingTeaser() {
     const sectionRef = useRef<HTMLElement>(null)
 
     const [currency, setCurrency] = useState<'TRY' | 'USD'>('TRY')
+    const [selectedPlan, setSelectedPlan] = useState<{ name: string; price: number; currency: string } | null>(null)
+    const [isModalOpen, setIsModalOpen] = useState(false)
 
     const tiers = [
         {
@@ -89,6 +92,21 @@ export default function AiSeoPricingTeaser() {
         }, sectionRef)
         return () => ctx.revert()
     }, [])
+
+    const handlePlanClick = (tier: any) => {
+        const numericPrice = parseInt(tier.price.replace(/[^0-9]/g, ''))
+        if (isNaN(numericPrice)) {
+            const contactSection = document.getElementById('contact')
+            contactSection?.scrollIntoView({ behavior: 'smooth' })
+            return
+        }
+        setSelectedPlan({
+            name: tier.name,
+            price: numericPrice,
+            currency: tier.currencySymbol || (currency === 'TRY' ? '₺' : '$')
+        })
+        setIsModalOpen(true)
+    }
 
     return (
         <section ref={sectionRef} id="pricing" className="relative py-32 md:py-48 bg-[#020406] overflow-hidden">
@@ -193,9 +211,12 @@ export default function AiSeoPricingTeaser() {
                                 </div>
 
                                 {/* Card CTA */}
-                                <a href="#contact" className={`w-full py-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all ${tier.highlight ? `bg-${tier.color}-500 text-black hover:bg-${tier.color}-400 shadow-lg shadow-${tier.color}-500/20` : `bg-white/5 text-white hover:bg-white/10 border border-white/10 group-hover:border-${tier.color}-500/30 group-hover:text-${tier.color}-400 transition-colors`}`}>
-                                    Detayları Konuşalım <ArrowRight size={14} />
-                                </a>
+                                <button 
+                                    onClick={() => handlePlanClick(tier)}
+                                    className={`w-full py-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all ${tier.highlight ? `bg-${tier.color}-500 text-black hover:bg-${tier.color}-400 shadow-lg shadow-${tier.color}-500/20` : `bg-white/5 text-white hover:bg-white/10 border border-white/10 group-hover:border-${tier.color}-500/30 group-hover:text-${tier.color}-400 transition-colors`}`}
+                                >
+                                    {isNaN(parseInt(tier.price.replace(/[^0-9]/g, ''))) ? 'Detayları Konuşalım' : 'Hemen Başla'} <ArrowRight size={14} />
+                                </button>
                             </div>
                         </div>
                     ))}
@@ -208,6 +229,12 @@ export default function AiSeoPricingTeaser() {
                     </p>
                 </div>
             </div>
+
+            <PaymentModal 
+                isOpen={isModalOpen} 
+                onClose={() => setIsModalOpen(false)} 
+                plan={selectedPlan} 
+            />
         </section>
     )
 }
