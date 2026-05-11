@@ -67,7 +67,7 @@ export default function ContactPage() {
 
     const features = [
         { icon: Clock, title: '24 Saat İçinde Dönüş', desc: 'Hızlı geri bildirim' },
-        { icon: MapPin, title: 'Ofisimiz', desc: 'Yeni Mah 2451 Sok No 54' },
+        { icon: MapPin, title: 'Ofisimiz', desc: 'Antalya / Kepez Yeni Mah 2451 Sok No 54' },
         { icon: Phone, title: 'Telefon', desc: '0552 822 87 99' },
     ]
 

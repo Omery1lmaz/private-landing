@@ -252,7 +252,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-xs text-gray-500 uppercase tracking-wider">Adres</p>
-                    <p className="font-medium">Yeni Mah 2451 Sok No 54</p>
+                    <p className="font-medium">Antalya / Kepez Yeni Mah 2451 Sok No 54</p>
                   </div>
                 </div>
               </div>
