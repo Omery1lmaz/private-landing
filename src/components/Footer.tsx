@@ -74,13 +74,8 @@ export default function Footer() {
           {/* Main Section */}
           <div className="text-center mb-8">
             {/* Brand */}
-            <div className="mb-6">
-              <h3 className="text-2xl font-bold mb-2">
-                <span className="bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
-                  ArvexaLabs
-                </span>
-                {' '}{t('studio_name')}
-              </h3>
+            <div className="flex flex-col items-center gap-4 mb-6">
+              <img src="/logo/logo.svg" alt="ArvexaLabs" className="h-12 object-contain" />
               <p className="text-gray-400 text-sm leading-relaxed max-w-md mx-auto">
                 {t('description')}
               </p>
@@ -108,6 +103,10 @@ export default function Footer() {
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-cyan-400" />
                 <span>hello@arvexalabs.com</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Phone className="w-4 h-4 text-orange-400" />
+                <span>{t('phone_number')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-teal-400" />

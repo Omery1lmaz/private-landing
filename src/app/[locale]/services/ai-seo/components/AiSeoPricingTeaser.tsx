@@ -19,7 +19,7 @@ export default function AiSeoPricingTeaser() {
         {
             name: "Foundation SEO",
             subtitle: "Sağlam Teknik Temel",
-            price: currency === 'TRY' ? "15.000" : "750",
+            price: currency === 'TRY' ? "9.900" : "490",
             currencySymbol: currency === 'TRY' ? "₺" : "$",
             period: "/ ay",
             desc: "Arama motorlarının sitenizi doğru okumasını sağlayan teknik SEO ve temel anahtar kelime stratejisi.",
@@ -27,9 +27,11 @@ export default function AiSeoPricingTeaser() {
             color: "indigo",
             features: [
                 "Teknik SEO Audit & Uygulama",
-                "Temel Sayfa Optimizasyonu",
-                "Google Search Console Kurulumu",
-                "Hız & Performans Yapılandırması"
+                "On-Page SEO Optimizasyonu",
+                "Search Console & Analytics Kurulumu",
+                "Hız & Performans Yapılandırması",
+                "Aylık Anahtar Kelime Takibi",
+                "Temel Rakip Analizi"
             ],
             forWhom: "Yeni yayına giren veya teknik altyapısını SEO'ya uyumlu hale getirmek isteyen markalar.",
             highlight: false
@@ -38,17 +40,19 @@ export default function AiSeoPricingTeaser() {
             name: "Growth SEO",
             subtitle: "Sistematik İçerik & AI",
             badge: "Önerilen Seviye",
-            price: currency === 'TRY' ? "30.000" : "1.500",
+            price: currency === 'TRY' ? "24.900" : "1.250",
             currencySymbol: currency === 'TRY' ? "₺" : "$",
             period: "/ ay",
             desc: "AI destekli içerik üretimi ve semantik optimizasyon ile trafik artışını otomatiğe bağlayan sistem.",
             icon: Crown,
             color: "cyan",
             features: [
-                "AI Destekli İçerik Mimari",
-                "Semantik SEO Optimizasyonu",
-                "Aylık Büyüme & ROI Raporu",
-                "Sürekli Teknik İzleme"
+                "AI Destekli İçerik Mimarisi",
+                "Semantik SEO & Konu Otoritesi",
+                "Haftalık Blog/İçerik Üretimi",
+                "Gelişmiş Backlink Stratejisi",
+                "AI Search (SGE) Optimizasyonu",
+                "Detaylı ROI & Büyüme Raporu"
             ],
             forWhom: "Düzenli organik trafik ve potansiyel müşteri artışı hedefleyen büyüyen işletmeler.",
             highlight: true
@@ -56,17 +60,19 @@ export default function AiSeoPricingTeaser() {
         {
             name: "Scale SEO",
             subtitle: "Pazar Hakimiyeti & Otorite",
-            price: currency === 'TRY' ? "50.000" : "2.500",
+            price: currency === 'TRY' ? "49.900" : "2.490",
             currencySymbol: currency === 'TRY' ? "₺" : "$",
             period: "/ ay",
             desc: "Sektör liderliği için tasarlanmış kapsamlı SEO, PR ve otorite bağlantı inşası stratejileri.",
             icon: TrendingUp,
             color: "purple",
             features: [
-                "Premium Bağlantı İnşası",
-                "AI Arama Platformu Optimizasyonu",
-                "Global & Çok Dilli SEO",
-                "Özel Büyüme Dashboardları"
+                "Premium PR & Otorite Backlink",
+                "Global & Çok Dilli SEO Yönetimi",
+                "AI Arama Platformu Hakimiyeti",
+                "Kapsamlı İçerik Cluster Stratejisi",
+                "Özel Büyüme Dashboardları",
+                "7/24 Danışmanlık & Strateji"
             ],
             forWhom: "Sektöründe domine edici konuma gelmek isteyen ve global pazar hedefi olan markalar.",
             highlight: false

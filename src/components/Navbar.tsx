@@ -37,6 +37,7 @@ export default function Navbar() {
   }, [mobileOpen])
 
   const navLinks = [
+    { key: 'ready-to-go', label: 'Hazır Paketler', href: `/${locale}/ready-to-go` },
     { key: 'pricing', label: t('fiyatlandirma'), href: '#pricing' },
     { key: 'portfolio', label: t('portfoy'), href: '#portfolio' },
     { key: 'contact', label: t('iletisim'), href: '#contact' },
@@ -46,6 +47,7 @@ export default function Navbar() {
     { slug: 'web-dev', label: s('web_dev_title') },
     { slug: 'mobile-app', label: s('mobile_dev_title') },
     { slug: 'automation', label: s('automation_title') },
+    { slug: '../../ready-to-go', label: 'Hazır Web Siteleri' },
   ]
 
   return (
@@ -54,17 +56,9 @@ export default function Navbar() {
       <div className="absolute -top-32 left-1/3 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="container relative mx-auto px-6 h-20 flex items-center justify-between">
-        <Link href={`/${locale}`} className="flex items-center gap-2 group cursor-pointer" aria-label="Go to homepage">
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500 to-teal-600 flex items-center justify-center group-hover:shadow-lg group-hover:shadow-cyan-500/50 transition-all duration-300">
-            <span className="text-white font-bold text-lg">E</span>
-          </div>
-          <div className="flex flex-col">
-            <span className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">
-              ArvexaLabs
-            </span>
-            <span className="text-xs text-gray-500 group-hover:text-cyan-400/60 transition-colors">
-              Studio
-            </span>
+        <Link href={`/${locale}`} className="flex items-center group cursor-pointer" aria-label="Go to homepage">
+          <div className="relative h-10 group-hover:shadow-lg transition-all duration-300">
+            <img src="/logo/logo.svg" alt="ArvexaLabs Logo" className="h-full w-auto object-contain" />
           </div>
         </Link>
 
@@ -155,29 +149,33 @@ export default function Navbar() {
       {mobileOpen && (
         <div ref={navRef} className="lg:hidden absolute top-20 left-0 right-0 bg-[#030308]/95 backdrop-blur-xl border-b border-white/10">
           <div className="container mx-auto px-6 py-6 space-y-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.key}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300"
-              >
-                {link.label}
-              </a>
-            ))}
-
-            <div className="pt-2">
-              <div className="text-sm text-gray-400 px-4 py-2">{t('hizmetler')}</div>
-              {services.map((svc) => (
-                <Link
-                  key={svc.slug}
-                  href={`/${locale}/services/${svc.slug}`}
+            {navLinks
+              .filter(link => link.key !== 'ready-to-go')
+              .map((link) => (
+                <a
+                  key={link.key}
+                  href={link.href}
                   onClick={() => setMobileOpen(false)}
                   className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300"
                 >
-                  {svc.label}
-                </Link>
+                  {link.label}
+                </a>
               ))}
+
+            <div className="pt-2">
+              <div className="text-sm text-gray-400 px-4 py-2">{t('hizmetler')}</div>
+              {services
+                .filter(svc => !svc.slug.includes('ready-to-go'))
+                .map((svc) => (
+                  <Link
+                    key={svc.slug}
+                    href={`/${locale}/services/${svc.slug}`}
+                    onClick={() => setMobileOpen(false)}
+                    className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300"
+                  >
+                    {svc.label}
+                  </Link>
+                ))}
             </div>
 
             <div className="border-t border-white/10 pt-4 space-y-3">

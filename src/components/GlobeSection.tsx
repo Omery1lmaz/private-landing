@@ -38,7 +38,6 @@ export default function GlobeSection() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center max-w-7xl mx-auto">
           {/* Left - Content */}
           <div className="space-y-8">
-            {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-sm text-cyan-400">
               <Server className="w-4 h-4" />
               <span>{t('badge')}</span>
@@ -46,7 +45,7 @@ export default function GlobeSection() {
 
             {/* Title */}
             <div className="space-y-4">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
                 {t('title')}
               </h2>
               <p className="text-gray-400 text-lg leading-relaxed max-w-lg">
@@ -113,12 +112,16 @@ type StatCardProps = {
 
 function StatCard({ icon, label, value }: StatCardProps) {
   return (
-    <div className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 backdrop-blur-sm hover:bg-white/[0.06] hover:border-cyan-500/20 transition-all">
-      <div className="flex items-center gap-2 mb-1 text-cyan-400">
-        {icon}
-        <span className="text-xs uppercase tracking-wide text-gray-500">{label}</span>
+    <div className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-3 backdrop-blur-sm hover:bg-white/[0.06] hover:border-cyan-500/20 transition-all flex flex-col justify-between min-h-[90px]">
+      <div className="flex items-start gap-2 mb-1 text-cyan-400">
+        <div className="shrink-0 mt-0.5">{icon}</div>
+        <span className="text-[10px] uppercase tracking-wider text-gray-500 font-medium leading-tight">
+          {label}
+        </span>
       </div>
-      <div className="text-xl font-bold text-white">{value}</div>
+      <div className="text-lg md:text-xl font-bold text-white mt-auto truncate" title={value}>
+        {value}
+      </div>
     </div>
   )
 }

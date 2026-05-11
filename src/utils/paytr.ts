@@ -47,12 +47,10 @@ export class PayTR {
       testMode + 
       this.merchantSalt;
 
-    const token = crypto
+    return crypto
       .createHmac('sha256', this.merchantKey)
       .update(hashStr)
       .digest('base64');
-
-    return token;
   }
 
   async getToken(params: PayTRInitParams): Promise<{ status: string; token?: string; reason?: string }> {
@@ -79,14 +77,14 @@ export class PayTR {
     formData.append('timeout_limit', '30');
     formData.append('currency', params.currency || 'TL');
     formData.append('test_mode', params.testMode ? '1' : '0');
+    formData.append('iframe_theme', 'dark'); // Force dark mode
 
     const response = await fetch('https://www.paytr.com/odeme/api/get-token', {
       method: 'POST',
       body: formData,
     });
 
-    const result = await response.json() as any;
-    return result;
+    return await response.json() as any;
   }
 
   verifyCallback(params: any): boolean {

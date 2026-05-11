@@ -17,55 +17,61 @@ export default function WebDevPricingTeaser() {
 
     const tiers = [
         {
-            name: "Foundation",
-            subtitle: "Sağlam Bir Başlangıç",
-            price: currency === 'TRY' ? "19.900" : "990",
+            name: "Landing Page",
+            subtitle: "Hızlı & Dönüşüm Odaklı",
+            price: currency === 'TRY' ? "7.900" : "390",
             currencySymbol: currency === 'TRY' ? "₺" : "$",
-            desc: "İşini doğru temsil eden, yönetilebilir bir web altyapısı. Kurumsal görünüm, net yapı ve uzun vadeli temel.",
+            desc: "Tek sayfalık, yüksek performanslı ve doğrudan satışa/talebe odaklanmış modern bir karşılama sayfası.",
             icon: LayoutTemplate,
             color: "indigo",
             features: [
-                "Kurumsal web sistemi",
-                "Yönetilebilir içerik yapısı",
-                "Mobil uyumlu tasarım",
-                "Teknik altyapı kurulumu"
+                "Modern & Tek Sayfa Tasarım",
+                "Mobil Uyumluluk (Responsive)",
+                "İletişim Formu Entegrasyonu",
+                "Temel SEO & Hız Optimizasyonu",
+                "WhatsApp & Sosyal Medya Butonları",
+                "7 İş Gününde Teslim"
             ],
-            forWhom: "Yeni başlayan veya dijital varlığını doğru kurmak isteyen markalar.",
+            forWhom: "Tek bir ürünü veya hizmeti hızlıca pazara sunmak isteyen girişimciler.",
             highlight: false
         },
         {
-            name: "Growth",
-            subtitle: "İşinize Uyumlanan Sistem",
-            badge: "Önerilen Seviye",
-            price: currency === 'TRY' ? "39.900" : "1.990",
+            name: "Kurumsal Web",
+            subtitle: "Tam Kapsamlı Dijital Kimlik",
+            badge: "En Çok Tercih Edilen",
+            price: currency === 'TRY' ? "19.900" : "990",
             currencySymbol: currency === 'TRY' ? "₺" : "$",
-            desc: "Web sitesinden fazlasını isteyenler için. Operasyon, kullanıcı ve büyüme odaklı yapı.",
+            desc: "Markanızın gücünü yansıtan, çok sayfalı, yönetilebilir ve SEO otoritesi yüksek kurumsal sistem.",
             icon: Crown,
             color: "cyan",
             features: [
-                "Gelişmiş web veya ürün platformu",
-                "Özel akışlar ve entegrasyonlar",
-                "Yönetilebilir paneller",
-                "Ölçeklenebilir mimari"
+                "Özel Tasarım & Çok Sayfalı Yapı",
+                "Kolay Yönetim Paneli (CMS)",
+                "Blog & İçerik Yönetimi",
+                "Gelişmiş SEO & Analitik Kurulumu",
+                "Kurumsal E-posta & Güvenlik",
+                "14 İş Gününde Teslim"
             ],
-            forWhom: "Büyüyen ekipler, ürün odaklı işler ve dijital süreçlerini tek yerde toplamak isteyenler.",
+            forWhom: "Profesyonel bir kurumsal kimlik ve içerik yönetimi arayan köklü işletmeler.",
             highlight: true
         },
         {
-            name: "Scale",
-            subtitle: "Özel Sistemler & Ürünler",
-            price: currency === 'TRY' ? "69.900" : "3.490",
+            name: "SaaS & Özel Yazılım",
+            subtitle: "Ölçeklenebilir Ürünler",
+            price: currency === 'TRY' ? "49.900" : "2.490",
             currencySymbol: currency === 'TRY' ? "₺" : "$",
-            desc: "Standart çözümlerin yetmediği projeler. SaaS, özel yazılım ve ileri seviye sistemler.",
+            desc: "Standartların ötesinde; SaaS platformları, özel dashboardlar ve karmaşık veri mimarisine sahip sistemler.",
             icon: Server,
             color: "purple",
             features: [
-                "Özel mimari ve sistem tasarımı",
-                "AI destekli modüller",
-                "Yüksek trafik ve yük optimizasyonu",
-                "Uzun vadeli teknik partnerlik"
+                "Özel Yazılım Mimarisi (Next.js/Node)",
+                "Kullanıcı Paneli & Üyelik Sistemi",
+                "API Entegrasyonları & Veri Yönetimi",
+                "Yüksek Güvenlik & Ölçeklenebilirlik",
+                "AI & Otomasyon Modülleri",
+                "Birebir Teknik Partnerlik"
             ],
-            forWhom: "Ürün geliştiren, yüksek beklentisi olan ve ölçeklenebilir sistemlere ihtiyaç duyan ekipler.",
+            forWhom: "Kendi dijital ürününü geliştiren veya özel bir iş akışı otomatize etmek isteyen vizyoner ekipler.",
             highlight: false
         }
     ]

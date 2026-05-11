@@ -230,11 +230,32 @@ export default function Contact() {
                 href="https://calendly.com/omery020040/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-semibold hover:opacity-95 transition"
+                className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-semibold hover:opacity-95 transition mb-8"
               >
                 Takvimden Randevu Al
                 <ExternalLink className="w-4 h-4" />
               </a>
+
+              <div className="space-y-4 pt-4 border-t border-white/5 w-full">
+                <div className="flex items-center gap-4 text-gray-300">
+                  <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center">
+                    <Phone className="w-5 h-5 text-cyan-400" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500 uppercase tracking-wider">Telefon</p>
+                    <p className="font-medium">0552 822 87 99</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 text-gray-300">
+                  <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center">
+                    <MapPin className="w-5 h-5 text-teal-400" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500 uppercase tracking-wider">Adres</p>
+                    <p className="font-medium">Yeni Mah 2451 Sok No 54</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Email form */}

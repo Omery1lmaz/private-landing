@@ -143,7 +143,7 @@ export default function Hero() {
             <div>
               <h1
                 ref={titleRef}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-white min-h-[1.15em]"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-white min-h-[1.15em]"
               >
                 {t('main_title')}
                 <br />

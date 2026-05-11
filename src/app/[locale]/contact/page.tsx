@@ -11,10 +11,13 @@ import {
     MessageSquare,
     ArrowLeft,
     Calendar,
+    Video,
     ExternalLink,
     Clock,
     Shield,
     Zap,
+    MapPin,
+    Phone,
 } from 'lucide-react'
 import { useTranslations, useLocale } from 'next-intl'
 import Link from 'next/link'
@@ -63,9 +66,9 @@ export default function ContactPage() {
     ]
 
     const features = [
-        { icon: Clock, title: '24 Saat Icinde Donus', desc: 'Hizli geri bildirim' },
-        { icon: Shield, title: 'Guvenli Iletisim', desc: 'Verileriniz korunur' },
-        { icon: Zap, title: 'Hizli Baslangic', desc: 'Projeye hemen baslayin' },
+        { icon: Clock, title: '24 Saat İçinde Dönüş', desc: 'Hızlı geri bildirim' },
+        { icon: MapPin, title: 'Ofisimiz', desc: 'Yeni Mah 2451 Sok No 54' },
+        { icon: Phone, title: 'Telefon', desc: '0552 822 87 99' },
     ]
 
     useEffect(() => {

@@ -19,16 +19,18 @@ export default function FastDeliveryPricingTeaser() {
         {
             name: "Flash Sprint",
             subtitle: "One-Time Delivery",
-            price: currency === 'TRY' ? "49.000" : "1.500",
+            price: currency === 'TRY' ? "7.900" : "390",
             currencySymbol: currency === 'TRY' ? "₺" : "$",
             desc: "Tek bir ana sorunu veya özelliği (MVP) rekor sürede çözmek için tasarlandı.",
             icon: Timer,
             color: "indigo",
             features: [
-                "14 gün içinde anahtar teslim",
+                "7 gün içinde anahtar teslim",
+                "Tek sayfa (Landing Page) veya Mini-App",
                 "Temel UI/UX tasarımı",
-                "MVP seviyesi geliştirme",
-                "Cloud deployment & Launch"
+                "Vercel/Netlify Deployment",
+                "Mobil uyumluluk garantisi",
+                "Temel SEO ayarları"
             ],
             forWhom: "Fikrini hızlıca doğrulamak ve pazara girmek isteyen girişimciler.",
             highlight: false
@@ -37,16 +39,18 @@ export default function FastDeliveryPricingTeaser() {
             name: "Momentum",
             subtitle: "Agile Scalability",
             badge: "En Verimli",
-            price: currency === 'TRY' ? "89.000" : "3.000",
+            price: currency === 'TRY' ? "14.900" : "750",
             currencySymbol: currency === 'TRY' ? "₺" : "$",
             desc: "Sürekli gelişim ve hızlı iterasyonlar. Ürününüzün her hafta yeni yetenekler kazanması.",
             icon: Flame,
             color: "cyan",
             features: [
-                "Haftalık release döngüleri",
+                "Haftalık sprint döngüleri",
                 "Gelişmiş teknik altyapı",
                 "Kullanıcı geri bildirim odaklılık",
-                "Kesintisiz destek & Scale"
+                "Hata ayıklama ve performans takibi",
+                "Haftalık 10 saat geliştirme desteği",
+                "Kesintisiz sürüm (CI/CD) yönetimi"
             ],
             forWhom: "Büyümek için hıza ihtiyaç duyan ve sürekli gelişim hedefleyen ölçekli projeler.",
             highlight: true
@@ -54,18 +58,20 @@ export default function FastDeliveryPricingTeaser() {
         {
             name: "Ultimate Velocity",
             subtitle: "Enterprise Turbo",
-            price: currency === 'TRY' ? "Özel" : "Custom",
-            currencySymbol: "",
+            price: currency === 'TRY' ? "24.900" : "1.250",
+            currencySymbol: currency === 'TRY' ? "₺" : "$",
             desc: "Karmaşık sistemlerin hiper-hızla dönüştürülmesi. Kurumsal projeler için tam kapasite.",
             icon: Zap,
             color: "purple",
             features: [
-                "Tamamen özelleştirilmiş ekip",
+                "Tam kapasite dedicated ekip",
                 "Karmaşık sistem entegrasyonları",
                 "Day 1 production güvencesi",
-                "Stratejik teknoloji danışmanlığı"
+                "Haftalık 20+ saat geliştirme",
+                "Stratejik teknoloji danışmanlığı",
+                "7/24 Öncelikli destek hattı"
             ],
-            forWhom: "Hantallıktan kurtulup kurumsal projelerini saniyeler seviyesinde çevikliğe taşımak isteyenler.",
+            forWhom: "Hantallıktan kurtulup projelerini saniyeler seviyesinde çevikliğe taşımak isteyenler.",
             highlight: false
         }
     ]

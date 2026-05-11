@@ -19,16 +19,18 @@ export default function MobilePricingTeaser() {
         {
             name: "Foundation (MVP)",
             subtitle: "Hızlı Pazara Giriş",
-            price: currency === 'TRY' ? "120.000" : "4.900",
+            price: currency === 'TRY' ? "24.900" : "1.250",
             currencySymbol: currency === 'TRY' ? "₺" : "$",
             desc: "Temel işlevlere sahip, yüksek performanslı bir MVP ile fikrinizi doğrulayın ve ilk kullanıcılarınızı edinin.",
             icon: Zap,
             color: "indigo",
             features: [
-                "Cross-Platform Temel Mimari",
-                "UI/UX Tasarım Taslağı",
-                "Temel Bulut Entegrasyonu",
-                "App Store & Play Store Yayını"
+                "Cross-Platform (iOS & Android) Geliştirme",
+                "Kullanıcı Dostu UI/UX Tasarımı",
+                "Firebase Bulut Entegrasyonu",
+                "App Store & Play Store Yayını",
+                "Temel Analitik Kurulumu",
+                "Push Bildirim Sistemi"
             ],
             forWhom: "Fikrini hızlıca test etmek ve bütçesini kontrollü kullanmak isteyen startup'lar.",
             highlight: false
@@ -37,16 +39,18 @@ export default function MobilePricingTeaser() {
             name: "Growth (Full Scale)",
             subtitle: "Bağlılık & Performans",
             badge: "En Çok Tercih Edilen",
-            price: currency === 'TRY' ? "250.000" : "9.900",
+            price: currency === 'TRY' ? "54.900" : "2.750",
             currencySymbol: currency === 'TRY' ? "₺" : "$",
             desc: "Derinlemesine UX, animasyonlar ve gelişmiş özelliklerle kullanıcı sadakati sağlayan tam kapsamlı ürün.",
             icon: Crown,
             color: "cyan",
             features: [
-                "Gelişmiş Animasyonlar & UX",
+                "Gelişmiş Animasyonlar & Akıcı UX",
                 "Çevrimdışı Çalışma (Offline-First)",
-                "Full-Stack Bulut Altyapısı",
-                "Ayrıntılı Analitik & İzleme"
+                "Gelişmiş Backend & API Mimarisi",
+                "A/B Testi & Gelişmiş Analitik",
+                "Uygulama İçi Satın Alım (IAP)",
+                "Öncelikli Teknik Destek"
             ],
             forWhom: "Pazarda güçlü bir yer edinmek ve kullanıcı deneyimini zirveye taşımak isteyen işletmeler.",
             highlight: true
@@ -54,16 +58,18 @@ export default function MobilePricingTeaser() {
         {
             name: "Scale (Enterprise)",
             subtitle: "Sınırsız Ölçeklenebilirlik",
-            price: currency === 'TRY' ? "Özel" : "Custom",
-            currencySymbol: "",
+            price: currency === 'TRY' ? "119.900" : "5.990",
+            currencySymbol: currency === 'TRY' ? "₺" : "$",
             desc: "Karmaşık sistemlerle entegre, en yüksek güvenlik standartlarına sahip kurumsal mobil ekosistemler.",
             icon: InfinityIcon,
             color: "purple",
             features: [
-                "Kurumsal Sistem Entegrasyonu",
-                "Çok Katmanlı Güvenlik Katmanı",
-                "Özel Backend & Otomasyon",
-                "7/24 Teknik Destek & Bakım"
+                "Kurumsal Sistem Entegrasyonları",
+                "Yüksek Güvenlik & Şifreleme",
+                "Özel AI & Makine Öğrenmesi Modülleri",
+                "7/24 Teknik Bakım & Monitoring",
+                "Sınırsız Kullanıcı Desteği",
+                "Teknik Partnerlik & Danışmanlık"
             ],
             forWhom: "Karmaşık operasyonları olan, yüksek güvenlik ve ölçek beklentisi olan kurumsal yapılar.",
             highlight: false

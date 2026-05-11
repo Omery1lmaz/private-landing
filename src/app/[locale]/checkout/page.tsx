@@ -255,7 +255,7 @@ function CheckoutContent() {
                 </div>
                 <iframe 
                   src={iframeUrl!} 
-                  className="w-full h-[700px] border-none bg-white rounded-3xl shadow-2xl"
+                  className="w-full h-[700px] border-none bg-transparent rounded-3xl shadow-2xl shadow-cyan-500/5"
                   title="PayTR Payment"
                 />
               </div>

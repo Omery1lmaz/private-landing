@@ -16,44 +16,48 @@ export default function AutomationPricingTeaser() {
 
     const tiers = [
         {
-            name: "Temel",
+            name: "Basic",
             subtitle: "Görev Otomasyonu",
-            price: currency === 'TRY' ? "19.900" : "990",
+            price: currency === 'TRY' ? "12.900" : "650",
             currencySymbol: currency === 'TRY' ? "₺" : "$",
             desc: "Tekil ve tekrarlayan görevlerin otomasyonu. Belirli işleri otonom hale getirerek zaman kazanın.",
             icon: Layers,
             color: "indigo",
             features: [
                 "Tekil iş akışı otomasyonu",
-                "Temel API entegrasyonları",
-                "Veri formatlama ve taşıma",
-                "E-posta ve bildirim tetikleyicileri"
+                "Temel API entegrasyonları (Zapier/Make)",
+                "Veri formatlama ve otomatik taşıma",
+                "E-posta ve bildirim tetikleyicileri",
+                "Haftalık performans raporu",
+                "7/24 Teknik destek"
             ],
             forWhom: "Belirli bir operasyonel yükü hızlıca hafifletmek isteyen işletmeler.",
             highlight: false
         },
         {
-            name: "Büyüme",
+            name: "Pro",
             subtitle: "Akıllı Ekosistem",
             badge: "En Popüler",
-            price: currency === 'TRY' ? "39.900" : "1.990",
+            price: currency === 'TRY' ? "29.900" : "1.490",
             currencySymbol: currency === 'TRY' ? "₺" : "$",
             desc: "Uçtan uca otonom süreçler. Birbirini tetikleyen akıllı akışlar ve tam entegrasyon.",
             icon: Cpu,
             color: "cyan",
             features: [
                 "Çoklu adım otonom akışlar",
-                "AI destekli karar mekanizmaları",
-                "Gelişmiş API köprüleri",
-                "Hata yakalama ve düzeltme"
+                "AI (GPT-4) destekli karar mekanizmaları",
+                "Gelişmiş API köprüleri ve CRM entegrasyonu",
+                "Otomatik hata yakalama ve self-healing",
+                "Özel dashboard panel erişimi",
+                "Öncelikli destek hattı"
             ],
             forWhom: "Tüm departman süreçlerini birbiriyle konuşturan otonom bir yapı kurmak isteyenler.",
             highlight: true
         },
         {
-            name: "Ölçeklenme",
+            name: "Enterprise",
             subtitle: "Ajan Tabanlı İşletme",
-            price: currency === 'TRY' ? "69.900" : "3.490",
+            price: currency === 'TRY' ? "59.900" : "2.990",
             currencySymbol: currency === 'TRY' ? "₺" : "$",
             desc: "Kendi başına karar verebilen AI ajan ordusu. Karmaşık problemler için tam otonomi.",
             icon: InfinityIcon,
@@ -61,10 +65,12 @@ export default function AutomationPricingTeaser() {
             features: [
                 "Ajan Tabanlı Yapay Zeka Sürüleri",
                 "Kendi kendini onaran otonom mimari",
-                "Kurumsal entegrasyon havuzu",
-                "Özel AI model eğitimleri"
+                "Kurumsal veri havuzu (Vector DB) eğitimi",
+                "Özel AI model fine-tuning desteği",
+                "Sınırsız operasyonel hacim",
+                "Birebir danışmanlık ve optimizasyon"
             ],
-            forWhom: "İşletmesini tamamen otonom bir sistem builder üzerine inşa etmek isteyen vizyoner ekipler.",
+            forWhom: "İşletmesini tamamen otonom bir sistem üzerine inşa etmek isteyen vizyoner ekipler.",
             highlight: false
         }
     ]
