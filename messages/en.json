@@ -1523,5 +1523,19 @@
     "custom_labeling": "Custom Labeling",
     "advanced_filtering": "Advanced Filtering",
     "visual_categorization": "Visual Categorization"
+  },
+  "ai_assistant": {
+    "welcome_message": "Hello! I'm Arvexa AI. How can I help you today? You can ask about our projects, pricing, or services.",
+    "online_status": "Online now",
+    "input_placeholder": "Type a message...",
+    "disclaimer": "AI assistant may provide incorrect info. Contact us for the most accurate details.",
+    "suggest_services": "What Services?",
+    "suggest_pricing": "Show Pricing",
+    "suggest_contact": "I Want to Work with You",
+    "default_response": "That's a great question! Would you like me to help you with that? Or should we schedule a call with our team directly?",
+    "pricing_response": "Our pricing models vary based on project scope. Basic packages start at $749. You can check our 'Pricing' page for details or contact us for a custom quote.",
+    "services_response": "At ArvexaLabs, we specialize in AI SEO, Web Systems, Mobile Apps, and Operational Automation. Which area are you interested in?",
+    "contact_response": "We're excited to meet you! You can fill out the 'Contact' form on the home page or write to us directly at hello@arvexalabs.com to schedule a strategy call.",
+    "about_response": "ArvexaLabs is a technology studio that accelerates digital transformation for businesses with AI-powered solutions. We don't just write code; we build systems to grow your business."
   }
 }

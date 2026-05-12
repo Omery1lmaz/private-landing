@@ -1,6 +1,6 @@
-'use client'
-
 import React from 'react'
+import { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import AiSeoHero from './components/AiSeoHero'
@@ -10,6 +10,24 @@ import AiSeoProcess from './components/AiSeoProcess'
 import AiSeoProofOutcome from './components/AiSeoProofOutcome'
 import AiSeoPricingTeaser from './components/AiSeoPricingTeaser'
 import AiSeoContact from './components/AiSeoContact'
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'services_section' });
+
+  return {
+    title: t('ai_seo_title'),
+    description: t('ai_seo_description'),
+    alternates: {
+      canonical: `https://arvexalabs.com/${locale}/services/ai-seo`,
+    },
+    openGraph: {
+      title: t('ai_seo_title'),
+      description: t('ai_seo_description'),
+      type: 'article',
+    },
+  };
+}
 
 export default function AISeoPage() {
   return (

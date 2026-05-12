@@ -1542,5 +1542,19 @@
     "custom_labeling": "Özel Etiketleme",
     "advanced_filtering": "Gelişmiş Filtreleme",
     "visual_categorization": "Görsel Kategorizasyon"
+  },
+  "ai_assistant": {
+    "welcome_message": "Merhaba! Ben Arvexa AI. Size nasıl yardımcı olabilirim? Projeleriniz, fiyatlandırma veya hizmetlerimiz hakkında sorularınızı sorabilirsiniz.",
+    "online_status": "Şu an çevrimiçi",
+    "input_placeholder": "Bir mesaj yazın...",
+    "disclaimer": "AI asistan bazen hatalı bilgi verebilir. En doğru bilgi için bizimle iletişime geçin.",
+    "suggest_services": "Hizmetler Neler?",
+    "suggest_pricing": "Fiyatları Göster",
+    "suggest_contact": "Sizinle Çalışmak İstiyorum",
+    "default_response": "Harika bir soru! Bu konuda size yardımcı olmamı ister misiniz? Yoksa direkt olarak ekibimizle bir görüşme mi planlayalım?",
+    "pricing_response": "Fiyatlandırma modellerimiz projenin kapsamına göre değişmektedir. Temel paketlerimiz 14.900 TL'den başlamaktadır. Detaylı fiyatlandırma için 'Fiyatlandırma' sayfamıza göz atabilir veya size özel bir teklif için bizimle iletişime geçebilirsiniz.",
+    "services_response": "ArvexaLabs olarak AI SEO, Web Sistemleri, Mobil Uygulamalar ve Operasyonel Otomasyon konularında uzmanız. Hangi alanla daha çok ilgileniyorsunuz?",
+    "contact_response": "Sizinle tanışmak için sabırsızlanıyoruz! Hemen bir strateji görüşmesi planlamak için ana sayfadaki 'İletişim' formunu doldurabilir veya doğrudan hello@arvexalabs.com adresinden bize yazabilirsiniz.",
+    "about_response": "ArvexaLabs, işletmelerin dijital dönüşümünü hızlandıran, AI destekli çözümler üreten bir teknoloji stüdyosudur. Sadece kod yazmıyoruz, işinizi büyütecek sistemler kuruyoruz."
   }
 }

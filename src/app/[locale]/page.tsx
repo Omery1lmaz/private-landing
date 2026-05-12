@@ -1,5 +1,3 @@
-'use client'
-
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import Services from '@/components/Services'
@@ -23,10 +21,12 @@ import SimpleClearUseful from '@/components/SimpleClearUseful'
 import AISEOFeatures from '@/components/AISEOFeatures'
 import PalantirFoundry from '@/components/PalantirFoundry'
 import Web3Infrastructure from '@/components/Web3Infrastructure'
+import StructuredData from '@/components/SEO/StructuredData'
 
 export default function Home() {
   return (
     <main className="min-h-screen">
+      <StructuredData />
       <Navbar />
       <div id="home">
         <Hero />

@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useLocale, useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
 import { Globe, Menu, X, ArrowRight, ChevronDown } from 'lucide-react'
@@ -57,8 +58,14 @@ export default function Navbar() {
 
       <div className="container relative mx-auto px-6 h-20 flex items-center justify-between">
         <Link href={`/${locale}`} className="flex items-center group cursor-pointer" aria-label="Go to homepage">
-          <div className="relative h-10 group-hover:shadow-lg transition-all duration-300">
-            <img src="/logo/logo.svg" alt="ArvexaLabs Logo" className="h-full w-auto object-contain" />
+          <div className="relative h-10 w-40 group-hover:shadow-lg transition-all duration-300">
+            <Image 
+              src="/logo/logo.svg" 
+              alt="ArvexaLabs Logo" 
+              fill
+              priority
+              className="object-contain" 
+            />
           </div>
         </Link>
 
