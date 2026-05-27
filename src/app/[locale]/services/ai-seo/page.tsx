@@ -31,18 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default function AISeoPage() {
   return (
-    <main className="min-h-screen relative overflow-hidden bg-[#020408]">
-      {/* Global Scroll Progress or similar theme styles can be added here if needed */}
-      <style jsx global>{`
-        html {
-          scroll-behavior: smooth;
-        }
-        ::selection {
-          background: rgba(6, 182, 212, 0.3);
-          color: #fff;
-        }
-      `}</style>
-
+    <main className="min-h-screen relative overflow-hidden bg-[#020408] selection:bg-cyan-500/30 selection:text-white">
       <div className="relative z-10">
         <Navbar />
 

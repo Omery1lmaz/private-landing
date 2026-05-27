@@ -26,6 +26,8 @@ export default function Navbar() {
   const navRef = useRef<HTMLDivElement>(null)
 
   const pathnameWithoutLocale = pathname ? pathname.replace(/^\/(tr|en)/, '') : ''
+  const isHomePage = pathnameWithoutLocale === '' || pathnameWithoutLocale === '/'
+  const homeAnchor = (id: string) => (isHomePage ? `#${id}` : `/${locale}/#${id}`)
 
   useEffect(() => {
     if (mobileOpen && navRef.current) {
@@ -39,9 +41,10 @@ export default function Navbar() {
 
   const navLinks = [
     { key: 'ready-to-go', label: 'Hazır Paketler', href: `/${locale}/ready-to-go` },
-    { key: 'pricing', label: t('fiyatlandirma'), href: '#pricing' },
-    { key: 'portfolio', label: t('portfoy'), href: '#portfolio' },
-    { key: 'contact', label: t('iletisim'), href: '#contact' },
+    { key: 'templates', label: t('templates'), href: `/${locale}/templates` },
+    { key: 'pricing', label: t('fiyatlandirma'), href: homeAnchor('pricing') },
+    { key: 'portfolio', label: t('portfoy'), href: homeAnchor('portfolio') },
+    { key: 'contact', label: t('iletisim'), href: homeAnchor('contact') },
   ]
 
   const services = [
@@ -131,7 +134,7 @@ export default function Navbar() {
           </DropdownMenu>
 
           <a
-            href="#contact"
+            href={homeAnchor('contact')}
             className="relative group px-5 py-2.5 rounded-md bg-gradient-to-r from-cyan-500 to-teal-600 text-white text-sm font-semibold overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/50 flex items-center gap-2 ring-0 focus:ring-2 focus:ring-cyan-500/30"
           >
             <span className="relative z-10 flex items-center gap-2">
@@ -220,7 +223,7 @@ export default function Navbar() {
               </div>
 
               <a
-                href="#contact"
+                href={homeAnchor('contact')}
                 onClick={() => setMobileOpen(false)}
                 className="block w-full px-6 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-teal-600 text-white text-sm font-semibold text-center hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300"
               >

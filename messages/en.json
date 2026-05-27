@@ -6,6 +6,7 @@
   },
   "navbar": {
     "hizmetler": "Services",
+    "templates": "Templates",
     "fiyatlandirma": "Pricing",
     "portfoy": "Portfolio",
     "hakkimizda": "About Us",
