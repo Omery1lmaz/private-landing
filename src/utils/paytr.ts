@@ -34,17 +34,17 @@ export class PayTR {
     const currency = params.currency || 'TL';
     const testMode = params.testMode ? '1' : '0';
 
-    const hashStr = 
-      this.merchantId + 
-      params.userIp + 
-      params.merchantOid + 
-      params.email + 
-      paymentAmount + 
-      userBasket + 
-      noInstallment + 
-      maxInstallment + 
-      currency + 
-      testMode + 
+    const hashStr =
+      this.merchantId +
+      params.userIp +
+      params.merchantOid +
+      params.email +
+      paymentAmount +
+      userBasket +
+      noInstallment +
+      maxInstallment +
+      currency +
+      testMode +
       this.merchantSalt;
 
     return crypto

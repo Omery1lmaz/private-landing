@@ -43,6 +43,41 @@ function CheckoutContent() {
     }
   }, [planName, price, router])
 
+  // Dynamic load of PayTR installment table script
+  useEffect(() => {
+    if (!price) return
+
+    const cleanUp = () => {
+      const existingScript = document.getElementById('paytr-taksit-script')
+      if (existingScript) {
+        existingScript.remove()
+      }
+      const container = document.getElementById('paytr_taksit_tablosu')
+      if (container) {
+        container.innerHTML = ''
+      }
+    }
+
+    cleanUp()
+
+    const script = document.createElement('script')
+    script.id = 'paytr-taksit-script'
+    script.src = `https://www.paytr.com/odeme/taksit-tablosu/v2?token=2fef5a06c8a9fd868050ae64e34336ebaf35f2ae5ecf9760d29469aba1881bd6&merchant_id=701207&amount=${parseInt(price)}&taksit=0&tumu=0`
+    script.async = true
+
+    const timer = setTimeout(() => {
+      const targetDiv = document.getElementById('paytr_taksit_tablosu')
+      if (targetDiv) {
+        document.body.appendChild(script)
+      }
+    }, 100)
+
+    return () => {
+      clearTimeout(timer)
+      cleanUp()
+    }
+  }, [price])
+
   if (!planName || !price) return null
 
   const handleInitPayment = async (e: React.FormEvent) => {
@@ -260,9 +295,111 @@ function CheckoutContent() {
                 />
               </div>
             )}
+
+            {/* Taksit Tablosu */}
+            <div className="mt-12 pt-12 border-t border-white/5 space-y-6">
+              <div className="flex items-center gap-2">
+                <CreditCard className="text-cyan-400" size={18} />
+                <h3 className="text-sm font-bold tracking-wider uppercase text-gray-400">Taksit Seçenekleri</h3>
+              </div>
+              <div id="paytr_taksit_tablosu" className="w-full" />
+            </div>
           </div>
         </div>
       </div>
+
+      {/* PayTR Installment Table Styles */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        #paytr_taksit_tablosu {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+          gap: 16px;
+          justify-content: center;
+          margin-top: 1.5rem;
+          margin-bottom: 1.5rem;
+          width: 100%;
+        }
+        .taksit-tablosu-wrapper {
+          background: rgba(255, 255, 255, 0.02);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 16px;
+          padding: 16px;
+          backdrop-filter: blur(12px);
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          display: flex;
+          flex-direction: column;
+        }
+        .taksit-tablosu-wrapper:hover {
+          border-color: rgba(6, 182, 212, 0.3);
+          background: rgba(255, 255, 255, 0.04);
+          transform: translateY(-2px);
+          box-shadow: 0 10px 30px -15px rgba(6, 182, 212, 0.15);
+        }
+        .taksit-logo {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 36px;
+          margin-bottom: 12px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+          padding-bottom: 8px;
+        }
+        .taksit-logo img {
+          max-height: 24px;
+          object-fit: contain;
+          filter: brightness(0) invert(1) opacity(0.85);
+          transition: filter 0.3s;
+        }
+        .taksit-tablosu-wrapper:hover .taksit-logo img {
+          filter: brightness(0) invert(1) opacity(1);
+        }
+        .taksit-baslik {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 8px;
+          padding: 0 4px;
+        }
+        .taksit-tutari-text {
+          font-size: 10px;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          color: rgba(255, 255, 255, 0.4);
+        }
+        .taksit-tutar-wrapper {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.04);
+          border-radius: 8px;
+          padding: 8px 12px;
+          margin-bottom: 6px;
+          transition: all 0.2s;
+        }
+        .taksit-tutar-wrapper:hover {
+          background: rgba(255, 255, 255, 0.08);
+          border-color: rgba(255, 255, 255, 0.1);
+        }
+        .taksit-tutari {
+          font-size: 13px;
+          color: rgba(255, 255, 255, 0.7);
+        }
+        .taksit-tutar-wrapper.taksit-tutari-bold {
+          background: rgba(6, 182, 212, 0.05);
+          border-color: rgba(6, 182, 212, 0.15);
+        }
+        .taksit-tutar-wrapper.taksit-tutari-bold .taksit-tutari {
+          font-weight: 700;
+          color: #22d3ee;
+        }
+        @media all and (max-width: 600px) {
+          .taksit-tablosu-wrapper {
+            margin: 6px 0;
+            max-width: 100%;
+          }
+        }
+      `}} />
     </div>
   )
 }

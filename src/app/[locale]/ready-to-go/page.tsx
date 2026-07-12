@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { Check, ArrowRight, Layout, ShoppingCart, Search, Filter, Sparkles, Globe, Monitor, Smartphone, Zap } from 'lucide-react'
+import { Check, ArrowRight, Layout, ShoppingCart, Search, Filter, Sparkles, Globe, Monitor, Smartphone, Zap, Camera } from 'lucide-react'
 import Link from 'next/link'
 import { useLocale, useTranslations } from 'next-intl'
 import gsap from 'gsap'
@@ -189,6 +189,42 @@ const products = [
         desc: "Arıza kaydı ve servis takibi için ideal altyapı.",
         features: ["Arıza Formu", "Marka/Model Seçimi", "Süreç Takibi"],
         color: "cyan"
+    },
+    {
+        id: 21,
+        name: "Başlangıç Ürün Resmi Paketi",
+        category: "Ürün Resmi",
+        price: "2.000",
+        desc: "E-ticaret platformları için temel düzeyde yapay zeka destekli arka plan ve ürün görseli oluşturma.",
+        features: ["Yapay Zeka Sahne Tasarımı", "Arka Plan Temizleme", "Yüksek Çözünürlük", "E-Ticaret Platformlarına Uyum"],
+        color: "cyan"
+    },
+    {
+        id: 22,
+        name: "Standart Ürün Resmi Paketi",
+        category: "Ürün Resmi",
+        price: "3.000",
+        desc: "Sosyal medya ve kataloglarınız için stüdyo kalitesinde kreatif konsept tasarımları.",
+        features: ["Gerçekçi Gölgelendirme", "Detaylı Retouch", "Sosyal Medya Boyutlandırma", "Revizyon Desteği"],
+        color: "blue"
+    },
+    {
+        id: 23,
+        name: "Profesyonel Ürün Resmi Paketi",
+        category: "Ürün Resmi",
+        price: "5.000",
+        desc: "Web siteniz ve reklam kampanyalarınız için ultra yüksek çözünürlüklü premium görseller.",
+        features: ["Gelişmiş Işıklandırma", "Ultra HD Çözünürlük", "PSD Kaynak Dosyalar", "Öncelikli Teslimat"],
+        color: "violet"
+    },
+    {
+        id: 24,
+        name: "Premium Ürün Resmi Paketi",
+        category: "Ürün Resmi",
+        price: "10.000",
+        desc: "Sınırsız konsept ve ticari lisans içeren, büyük markalara özel kurumsal çözüm.",
+        features: ["Özel Marka Stilizasyonu", "4K Baskıya Hazır Çıktı", "Ticari Lisans & Telif Devri", "VIP Retouch"],
+        color: "emerald"
     }
 ]
 
@@ -200,14 +236,14 @@ export default function ReadyMadePage() {
     const categories = ['All', ...Array.from(new Set(products.map(p => p.category)))]
 
     const filteredProducts = products.filter(p => {
-        const matchesSearch = p.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                             p.category.toLowerCase().includes(searchTerm.toLowerCase())
+        const matchesSearch = p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            p.category.toLowerCase().includes(searchTerm.toLowerCase())
         const matchesCategory = selectedCategory === 'All' || p.category === selectedCategory
         return matchesSearch && matchesCategory
     })
 
     useEffect(() => {
-        gsap.fromTo(".product-card", 
+        gsap.fromTo(".product-card",
             { opacity: 0, y: 30 },
             { opacity: 1, y: 0, duration: 0.6, stagger: 0.05, ease: "power3.out" }
         )
@@ -216,7 +252,7 @@ export default function ReadyMadePage() {
     return (
         <main className="min-h-screen bg-[#030406] text-white selection:bg-cyan-500/30 relative">
             <Navbar />
-            
+
             {/* Global Scroll Progress */}
             <div
                 id="scroll-progress"
@@ -240,7 +276,7 @@ export default function ReadyMadePage() {
                         İşinizi <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Bugün</span> Dijitalleştirin
                     </h1>
                     <p className="text-gray-400 text-lg md:text-xl font-light leading-relaxed">
-                        Sektörünüze özel hazırlanmış, 24 saat içinde teslim alabileceğiniz profesyonel web sistemleri. 
+                        Sektörünüze özel hazırlanmış, 24 saat içinde teslim alabileceğiniz profesyonel web sistemleri.
                         Kodlama derdi yok, beklemek yok.
                     </p>
                 </div>
@@ -249,7 +285,7 @@ export default function ReadyMadePage() {
                 <div className="max-w-6xl mx-auto mb-16 flex flex-col md:flex-row gap-6 items-center">
                     <div className="relative flex-1 group">
                         <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 group-focus-within:text-cyan-400 transition-colors" />
-                        <input 
+                        <input
                             type="text"
                             placeholder="Sektör veya paket ara..."
                             value={searchTerm}
@@ -273,14 +309,18 @@ export default function ReadyMadePage() {
                 {/* Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-[1600px] mx-auto">
                     {filteredProducts.map((product) => (
-                        <div 
+                        <div
                             key={product.id}
                             className="product-card group relative flex flex-col bg-white/[0.03] border border-white/10 rounded-3xl p-6 hover:bg-white/[0.06] hover:border-white/20 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/5"
                         >
                             {/* Icon & Category */}
                             <div className="flex justify-between items-start mb-6">
                                 <div className={`w-12 h-12 rounded-2xl flex items-center justify-center bg-${product.color}-500/10 border border-${product.color}-500/20 text-${product.color}-400`}>
-                                    <Layout className="w-6 h-6" />
+                                    {product.category === "Ürün Resmi" ? (
+                                        <Camera className="w-6 h-6" />
+                                    ) : (
+                                        <Layout className="w-6 h-6" />
+                                    )}
                                 </div>
                                 <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-bold text-gray-500 uppercase tracking-wider">
                                     {product.category}
@@ -309,7 +349,7 @@ export default function ReadyMadePage() {
                                     <span className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Başlangıç</span>
                                     <span className="text-2xl font-bold">₺{product.price}</span>
                                 </div>
-                                <Link 
+                                <Link
                                     href={`/${locale}/checkout?plan=${encodeURIComponent(product.name)}&price=${product.price.replace(/[^0-9]/g, '')}&currency=₺`}
                                     className={`p-3 rounded-xl bg-${product.color}-500 text-black hover:scale-110 transition-all shadow-lg shadow-${product.color}-500/20`}
                                 >
