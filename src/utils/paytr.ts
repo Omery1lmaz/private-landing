@@ -78,6 +78,8 @@ export class PayTR {
     formData.append('currency', params.currency || 'TL');
     formData.append('test_mode', params.testMode ? '1' : '0');
     formData.append('iframe_theme', 'dark'); // Force dark mode
+    formData.append('iframe_v2', '1');
+    formData.append('iframe_v2_dark', '1');
 
     const response = await fetch('https://www.paytr.com/odeme/api/get-token', {
       method: 'POST',
