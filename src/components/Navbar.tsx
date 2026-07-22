@@ -42,6 +42,7 @@ export default function Navbar() {
   const navLinks = [
     { key: 'ready-to-go', label: 'Hazır Paketler', href: `/${locale}/ready-to-go` },
     { key: 'templates', label: t('templates'), href: `/${locale}/templates` },
+    { key: 'gallery', label: t('galeri'), href: `/${locale}/gallery` },
     { key: 'pricing', label: t('fiyatlandirma'), href: homeAnchor('pricing') },
     { key: 'portfolio', label: t('portfoy'), href: homeAnchor('portfolio') },
     { key: 'contact', label: t('iletisim'), href: homeAnchor('contact') },
