@@ -125,6 +125,7 @@ export default function GalleryLightbox({
                 src={item.src}
                 controls
                 autoPlay
+                suppressHydrationWarning
                 className="w-full h-full object-contain"
                 preload="metadata"
               />

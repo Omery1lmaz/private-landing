@@ -76,7 +76,7 @@ type LocaleLayoutProps = {
   }>;
 };
 
-import AIAssistant from '@/components/AIAssistant';
+// import AIAssistant from '@/components/AIAssistant';
 
 export default async function LocaleLayout({
   children,
@@ -101,7 +101,7 @@ export default async function LocaleLayout({
       <div id="main-content">
         {children}
       </div>
-      <AIAssistant />
+      {/* <AIAssistant /> */}
     </NextIntlClientProvider>
   );
 }

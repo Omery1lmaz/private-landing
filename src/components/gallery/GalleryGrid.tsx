@@ -108,6 +108,7 @@ export default function GalleryGrid({ locale }: GalleryGridProps) {
                         preload="metadata"
                         muted
                         playsInline
+                        suppressHydrationWarning
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70"
                       />
                       {/* Play Button Overlay */}
